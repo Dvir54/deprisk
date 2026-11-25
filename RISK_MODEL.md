@@ -38,13 +38,49 @@ has an installable file for the target. A file is installable if it is not yanke
 The **reference version** is the effective version, or, if there is none, the newest final
 release that has a non-yanked file.
 
-Evidence-only signals are shown in the report and to the agent, but never scored:
+Evidence-only signals are recorded in `results.json` and given to the agent, but never scored:
 
 - S3: age of the effective version.
 - S8: PyPI role accounts.
 - S9: share of fully yanked releases.
 - S10: 0.x version.
 - S14: "Inactive" development status.
+
+### Why these signals
+
+Each scored signal is something that can break a production service, that PyPI metadata shows
+directly, and whose direction ("more is riskier") is defensible:
+
+- **S1, S2 (maintenance):** an unmaintained project gets no fixes for bugs, CVEs or new Python
+  releases. S1 catches long silence; S2 catches a project that is alive only in name (one
+  recent upload after years of nothing still scores low on S2). They are correlated, so they
+  share one category and are averaged.
+- **S4 (Python 3.12 evidence):** the service runs 3.12. The risk is a failed install or, worse,
+  a silent fallback to an ancient release (typing installs 3.7.4.3 from 2020, futures 3.0.5
+  from 2016). Missing declarations are not proof of incompatibility, so S4 is an ordinal
+  state rather than a yes/no.
+- **S5 (install path):** an sdist-only release must be built on every deploy and may need a
+  compiler; a release with no installable file cannot be installed at all.
+- **S6 (known vulnerabilities):** direct security exposure in the version that gets installed.
+  It is rare in the baseline (0.2% of packages), so a single vulnerability is a strong signal.
+- **S7 (direct dependencies):** each dependency adds breakage and supply-chain surface. Only
+  direct ones are visible without a resolver.
+
+Considered and not scored:
+
+- S3 (age of the installed version) differs from S1 only when pip falls back to an old
+  release, which S4 state 4 already scores.
+- S8 (PyPI role accounts) counts accounts, not active maintainers (boto3 has one: `aws`).
+- S9 (yanked releases) is ambiguous: yanking a bad release is good practice.
+- S10 (0.x version) mislabels stable libraries such as httpx and loguru.
+- S14 (`Development Status :: 7 - Inactive`) is almost never set.
+- Major-version churn (CalVer breaks it), project age and release count (no defensible
+  direction), and metadata completeness (weak, overlaps S4) were excluded.
+
+The evidence-only signals are still recorded and given to the agent. The
+requirement context (S16: does the specifier span a major version, does it allow releases
+with advisories) is a property of this `requirements.txt`, not of the package, so it has no
+baseline equivalent; it informs recommendations only.
 
 ### S4 states (first matching rule)
 
@@ -102,6 +138,48 @@ bad value add a lot instead of being averaged away. It measures rarity, not seve
 is why critical flags (unfixed advisories, no installable version, a pip fallback, sdist
 only, missing metadata) are shown next to the score. Flags never change the score.
 
+## What was measured across the baseline
+
+The six scored signals were computed for all 4,920 scorable baseline packages at `T`, with an
+empty specifier (the newest installable release). These are the reference distributions every
+target is placed on (also in `results.json`, `baseline_summary`):
+
+| Signal | n_s | Median | 90th percentile | Share at the best value |
+|---|---|---|---|---|
+| S1 days since last upload | 4,920 | 82.8 | 1,453 | 0.02% |
+| S2 releases in 24 months | 4,920 | 5 | 41 | 0.02% |
+| S4 Python 3.12 evidence state | 4,920 | 0 | 2 | 60.1% (state 0) |
+| S5 install path state | 4,920 | 0 | 0 | 95.4% (wheel) |
+| S6 distinct vulnerabilities | 4,920 | 0 | 0 | 99.8% (none) |
+| S7 direct dependencies | 3,778 | 2 | 8 | 17.0% (none) |
+
+Baseline totals: median 1.74, 90th percentile 3.97. The zero-inflated signals (S5, S6) are
+where the rarity transform matters most: a value the baseline almost never has contributes
+close to `ln n`, while the common best value contributes nothing.
+
+### Worked example: placing pycrypto
+
+pycrypto (`pycrypto>=2.6`) resolves to 2.6.1, an sdist from 2014 with two unfixed
+vulnerabilities and no `requires_dist`:
+
+| Signal | Value | q (share as risky or riskier) | Contribution −ln q |
+|---|---|---|---|
+| S1 | 4,541 days | 0.18% | 6.30 |
+| S2 | 0 releases | 20.3% | 1.59 |
+| S4 | state 2 (no declaration) | 13.2% | 2.02 |
+| S5 | state 1 (sdist only) | 4.6% | 3.08 |
+| S6 | 2 vulnerabilities | 0.06% (3 of 4,920) | 7.40 |
+| S7 | unknown (`null`) | 50% (neutral) | 0.69 |
+
+Categories: maintenance (6.30 + 1.59) / 2 = 3.95; compatibility (2.02 + 3.08) / 2 = 2.55;
+security 7.40; dependencies 0.69. Total 14.60, higher than 99.96% of the baseline totals, so
+its final score is 99.96 and it ranks first. Its flags (`unfixed_advisory`, `sdist_only`,
+`missing:requires_dist`) are listed next to the score.
+
+For contrast, requests (rank 13, score 53.88) has a wheel, positive 3.12 evidence and no
+advisories; its total of 1.86 comes from an ordinary upload age (S1 0.93, S2 0.54) and four
+dependencies (S7 1.12), which is close to the baseline median.
+
 ## Missing metadata
 
 Missing information is never treated as evidence of safety, and no signal is ever dropped.
@@ -129,8 +207,8 @@ the model does not guess:
   declared empty list. That is about 40% of the median baseline total (1.74); the 90th
   percentile total is 3.97.
 - A dependency-free package with `null` therefore ranks somewhat higher than an identical
-  one with an explicit `[]`. The `missing:requires_dist` flag makes that visible in the
-  report.
+  one with an explicit `[]`. The `missing:requires_dist` flag makes that visible in
+  `results.json`.
 - The S7 distribution is built from the 3,778 packages that declare a value. Packages with
   many declared dependencies are compared only with other declared values.
 - This penalty is a deliberate consequence of "missing is never safe". It does not reward a

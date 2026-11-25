@@ -22,7 +22,7 @@ import anthropic
 
 from deprisk import config
 from deprisk.agent.models import Recommendation, ToolCall
-from deprisk.agent.prompts import SUBMIT_NAME, SUBMIT_TOOL, SYSTEM_PROMPT
+from deprisk.agent.prompts import SUBMIT_NAME, SUBMIT_TOOL, SYSTEM_PROMPT, describe_signal
 from deprisk.agent.tools import TOOL_SCHEMAS, AgentTools
 from deprisk.agent.validator import top_signals, validate
 from deprisk.config import ConfigError, LLMSettings
@@ -179,18 +179,24 @@ def check_connectivity(client: Any, settings: LLMSettings) -> dict[str, Any]:
     return result
 
 
-# --- per-package recommendation loop (M7) -----------------------------------------------
+# --- per-package recommendation loop ----------------------------------------------------
 
 
 def _user_message(package: str, tools: AgentTools, profile: ToolCall) -> str:
-    """The first user turn: the deterministic profile, already logged as a citable call."""
+    """The first user turn: each signal value in words, and the deterministic profile,
+    already logged as a citable call."""
     req = tools.requirements.get(package)
     flags = [f["code"] for f in profile.output.get("flags", [])]
+    signals = "\n".join(
+        f"- {describe_signal(s, entry)} (contribution {entry['contribution']:.2f})"
+        for s, entry in profile.output.get("signals", {}).items()
+    )
     return (
         f"Package: {package}\n"
         f"Requirement line: {req.line if req is not None else package}\n"
         f"Top-2 signals: {', '.join(top_signals(profile.output)) or 'none'}. "
         f"Flags: {', '.join(flags) or 'none'}.\n"
+        f"Signal values:\n{signals}\n"
         f"Its deterministic profile is logged as tool call {profile.id} "
         f'(get_package_profile); cite it with call_id "{profile.id}".\n'
         f"```json\n{json.dumps(profile.output, sort_keys=True, default=str)}\n```\n"

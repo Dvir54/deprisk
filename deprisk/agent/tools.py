@@ -87,15 +87,18 @@ TOOL_SCHEMAS: list[dict[str, Any]] = [
     ),
     _schema(
         "lookup_candidate",
-        "A possible replacement: whether it is a Python 3.12 stdlib module, whether it "
-        "exists on PyPI, and its score against the same frozen baseline as of T.",
+        "A possible replacement: whether it is a Python 3.12 stdlib module "
+        "(is_stdlib_module), and for a PyPI project its score against the same frozen "
+        "baseline as of T. exists, valid and the score describe PyPI only, so a stdlib "
+        "module that is not on PyPI has exists false.",
         {"name": {**_STRING, "description": "A PyPI project name or a stdlib module name"}},
     ),
     _schema(
         "get_requirement",
-        "The package's requirement line and its context: the oldest allowed version, its "
-        "vulnerabilities, and whether the specifier spans a major version or allows "
-        "versions with advisories.",
+        "The package's requirement line and its context: the oldest allowed version and "
+        "its vulnerabilities, whether the specifier spans a major version, and "
+        "spec_allows_advisories, which is true when the oldest allowed version has "
+        "advisories (false does not show that the other allowed versions are free of them).",
         {},
     ),
 ]

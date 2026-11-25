@@ -3344,13 +3344,6094 @@
       "total": 0.130856
     }
   ],
-  "recommendations": null,
+  "recommendations": [
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:06:17.412385Z",
+          "id": "call_1",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 2.55231,
+              "dependencies": 0.693147,
+              "maintenance": 3.948574,
+              "security": 7.402452
+            },
+            "effective_version": "2.6.1",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 4541.23595,
+              "S8": 2,
+              "S9": 0.0,
+              "advisories": [
+                {
+                  "aliases": [
+                    "CVE-2013-7459",
+                    "GHSA-cq27-v7xp-c356"
+                  ],
+                  "fixed_in": [],
+                  "id": "PYSEC-2017-94"
+                },
+                {
+                  "aliases": [
+                    "CVE-2018-6594",
+                    "GHSA-6528-wvf6-f6qg"
+                  ],
+                  "fixed_in": [],
+                  "id": "PYSEC-2018-97"
+                },
+                {
+                  "aliases": [
+                    "CVE-2018-6594",
+                    "PYSEC-2018-97"
+                  ],
+                  "fixed_in": [],
+                  "id": "GHSA-6528-wvf6-f6qg"
+                },
+                {
+                  "aliases": [
+                    "CVE-2013-7459",
+                    "PYSEC-2017-94"
+                  ],
+                  "fixed_in": [],
+                  "id": "GHSA-cq27-v7xp-c356"
+                }
+              ],
+              "advisory_groups": [
+                {
+                  "aliases": [
+                    "CVE-2018-6594"
+                  ],
+                  "fixed_in": [],
+                  "ids": [
+                    "GHSA-6528-wvf6-f6qg",
+                    "PYSEC-2018-97"
+                  ]
+                },
+                {
+                  "aliases": [
+                    "CVE-2013-7459"
+                  ],
+                  "fixed_in": [],
+                  "ids": [
+                    "GHSA-cq27-v7xp-c356",
+                    "PYSEC-2017-94"
+                  ]
+                }
+              ],
+              "dependencies": [],
+              "last_upload": "2014-06-20T08:10:20.813938+00:00",
+              "malformed_requires_dist": [],
+              "missing": [
+                "requires_dist"
+              ],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 3
+              },
+              "specifier": ">=2.6"
+            },
+            "final_score": 99.96,
+            "flags": [
+              {
+                "code": "missing:requires_dist",
+                "evidence": {
+                  "field": "requires_dist",
+                  "value": null,
+                  "version": "2.6.1"
+                }
+              },
+              {
+                "code": "sdist_only",
+                "evidence": {
+                  "S5": 1,
+                  "effective_version": "2.6.1"
+                }
+              },
+              {
+                "code": "unfixed_advisory",
+                "evidence": {
+                  "version": "2.6.1",
+                  "vulnerabilities": [
+                    {
+                      "aliases": [
+                        "CVE-2018-6594"
+                      ],
+                      "fixed_in": [],
+                      "ids": [
+                        "GHSA-6528-wvf6-f6qg",
+                        "PYSEC-2018-97"
+                      ]
+                    },
+                    {
+                      "aliases": [
+                        "CVE-2013-7459"
+                      ],
+                      "fixed_in": [],
+                      "ids": [
+                        "GHSA-cq27-v7xp-c356",
+                        "PYSEC-2017-94"
+                      ]
+                    }
+                  ]
+                }
+              }
+            ],
+            "name": "pycrypto",
+            "rank": 1,
+            "reference_version": "2.6.1",
+            "signals": {
+              "S1": {
+                "contribution": 6.303839,
+                "partial": false,
+                "q": 0.001829,
+                "value": 4541.23595
+              },
+              "S2": {
+                "contribution": 1.593309,
+                "partial": false,
+                "q": 0.203252,
+                "value": 0.0
+              },
+              "S4": {
+                "contribution": 2.024091,
+                "partial": false,
+                "q": 0.132114,
+                "value": 2.0
+              },
+              "S5": {
+                "contribution": 3.080529,
+                "partial": false,
+                "q": 0.045935,
+                "value": 1.0
+              },
+              "S6": {
+                "contribution": 7.402452,
+                "partial": false,
+                "q": 0.00061,
+                "value": 2.0
+              },
+              "S7": {
+                "contribution": 0.693147,
+                "partial": false,
+                "q": 0.5,
+                "value": null
+              }
+            },
+            "specifier": ">=2.6",
+            "total": 14.596483
+          },
+          "package": "pycrypto",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:23:46.934870Z",
+          "id": "call_2",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              2
+            ],
+            "allowed_versions": 2,
+            "floor_version": "2.6",
+            "floor_vulnerabilities": [
+              {
+                "aliases": [
+                  "CVE-2013-1445",
+                  "GHSA-x377-f64p-hf5j"
+                ],
+                "fixed_in": [
+                  "2.6.1"
+                ],
+                "id": "PYSEC-2013-29"
+              },
+              {
+                "aliases": [
+                  "CVE-2013-7459",
+                  "GHSA-cq27-v7xp-c356"
+                ],
+                "fixed_in": [],
+                "id": "PYSEC-2017-94"
+              },
+              {
+                "aliases": [
+                  "CVE-2018-6594",
+                  "GHSA-6528-wvf6-f6qg"
+                ],
+                "fixed_in": [],
+                "id": "PYSEC-2018-97"
+              },
+              {
+                "aliases": [
+                  "CVE-2018-6594",
+                  "PYSEC-2018-97"
+                ],
+                "fixed_in": [],
+                "id": "GHSA-6528-wvf6-f6qg"
+              },
+              {
+                "aliases": [
+                  "CVE-2013-7459",
+                  "PYSEC-2017-94"
+                ],
+                "fixed_in": [],
+                "id": "GHSA-cq27-v7xp-c356"
+              },
+              {
+                "aliases": [
+                  "CVE-2013-1445",
+                  "PYSEC-2013-29"
+                ],
+                "fixed_in": [
+                  "2.6.1"
+                ],
+                "id": "GHSA-x377-f64p-hf5j"
+              }
+            ],
+            "line": "pycrypto>=2.6",
+            "spec_allows_advisories": true,
+            "spec_spans_major": false,
+            "specifier": ">=2.6"
+          },
+          "package": "pycrypto",
+          "source": "live"
+        },
+        {
+          "args": {
+            "name": "pycryptodome"
+          },
+          "fetched_at": "2026-11-25T13:05:34.706343Z",
+          "id": "call_3",
+          "name": "lookup_candidate",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "effective_version": "4.6.0",
+            "exists": true,
+            "final_score": 1.67,
+            "flags": [],
+            "in_snapshot": true,
+            "is_stdlib_module": false,
+            "name": "pycryptodome",
+            "reason": null,
+            "reference_version": "4.6.0",
+            "total": 0.218853,
+            "valid": true,
+            "values": {
+              "S1": 2.97617,
+              "S2": 12.0,
+              "S4": 0.0,
+              "S5": 0.0,
+              "S6": 0.0,
+              "S7": 0.0
+            }
+          },
+          "package": "pycrypto",
+          "source": "snapshot"
+        },
+        {
+          "args": {
+            "name": "pycryptodome"
+          },
+          "fetched_at": "2026-11-25T13:05:34.706343Z",
+          "id": "call_4",
+          "name": "lookup_candidate",
+          "origin": "validation",
+          "output": {
+            "beyond_baseline_range": [],
+            "effective_version": "4.6.0",
+            "exists": true,
+            "final_score": 1.67,
+            "flags": [],
+            "in_snapshot": true,
+            "is_stdlib_module": false,
+            "name": "pycryptodome",
+            "reason": null,
+            "reference_version": "4.6.0",
+            "total": 0.218853,
+            "valid": true,
+            "values": {
+              "S1": 2.97617,
+              "S2": 12.0,
+              "S4": 0.0,
+              "S5": 0.0,
+              "S6": 0.0,
+              "S7": 0.0
+            }
+          },
+          "package": "pycrypto",
+          "source": "snapshot"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 2,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "replace",
+        "confidence": "high",
+        "evidence": [
+          {
+            "call_id": "call_1",
+            "field": "signals.S6.value",
+            "value": 2.0
+          },
+          {
+            "call_id": "call_1",
+            "field": "flags[2].code",
+            "value": "unfixed_advisory"
+          },
+          {
+            "call_id": "call_3",
+            "field": "final_score",
+            "value": 1.67
+          }
+        ],
+        "finding": "S6",
+        "rationale": "pycrypto 2.6.1 has 2 distinct known vulnerabilities with no fixed version listed, so no upgrade can fix them. pycryptodome has no flags and scores 1.67 against pycrypto's 99.96.",
+        "replacement_type": "pypi",
+        "suitability_assumptions": [
+          "pycryptodome is assumed to be a largely API-compatible drop-in for pycrypto, for example through its Crypto namespace.",
+          "Migration effort is assumed to be small, but it is not verified."
+        ],
+        "target": "pycryptodome",
+        "uncertainties": [
+          "Functional suitability is not verified.",
+          "The code may use pycrypto APIs that pycryptodome has changed or removed."
+        ]
+      },
+      "package": "pycrypto",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 6006,
+        "cache_read_input_tokens": 5164,
+        "input_tokens": 6,
+        "output_tokens": 600
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:06:38.975497Z",
+          "id": "call_5",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 4.181358,
+              "dependencies": 0.693147,
+              "maintenance": 2.220942,
+              "security": 0.0
+            },
+            "effective_version": "3.7.4.3",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 2325.60445,
+              "S8": 8,
+              "S9": 0.0,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [],
+              "last_upload": "2021-05-01T18:03:58.186786+00:00",
+              "malformed_requires_dist": [],
+              "missing": [
+                "requires_dist"
+              ],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 1
+              },
+              "specifier": ""
+            },
+            "final_score": 99.29,
+            "flags": [
+              {
+                "code": "missing:requires_dist",
+                "evidence": {
+                  "field": "requires_dist",
+                  "value": null,
+                  "version": "3.7.4.3"
+                }
+              },
+              {
+                "code": "python_fallback",
+                "evidence": {
+                  "S4": 4,
+                  "effective_version": "3.7.4.3"
+                }
+              },
+              {
+                "code": "sdist_only",
+                "evidence": {
+                  "S5": 1,
+                  "effective_version": "3.7.4.3"
+                }
+              }
+            ],
+            "name": "typing",
+            "rank": 2,
+            "reference_version": "3.7.4.3",
+            "signals": {
+              "S1": {
+                "contribution": 2.848575,
+                "partial": false,
+                "q": 0.057927,
+                "value": 2033.823712
+              },
+              "S2": {
+                "contribution": 1.593309,
+                "partial": false,
+                "q": 0.203252,
+                "value": 0.0
+              },
+              "S4": {
+                "contribution": 5.282188,
+                "partial": false,
+                "q": 0.005081,
+                "value": 4.0
+              },
+              "S5": {
+                "contribution": 3.080529,
+                "partial": false,
+                "q": 0.045935,
+                "value": 1.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 0.693147,
+                "partial": false,
+                "q": 0.5,
+                "value": null
+              }
+            },
+            "specifier": "",
+            "total": 7.095447
+          },
+          "package": "typing",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:23:53.204183Z",
+          "id": "call_6",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              3
+            ],
+            "allowed_versions": 14,
+            "floor_version": "3.5.0",
+            "floor_vulnerabilities": [],
+            "line": "typing",
+            "spec_allows_advisories": false,
+            "spec_spans_major": false,
+            "specifier": ""
+          },
+          "package": "typing",
+          "source": "live"
+        },
+        {
+          "args": {
+            "name": "typing"
+          },
+          "fetched_at": "2026-11-25T13:06:38.975497Z",
+          "id": "call_7",
+          "name": "lookup_candidate",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "effective_version": "3.7.4.3",
+            "exists": true,
+            "final_score": 99.29,
+            "flags": [
+              "missing:requires_dist",
+              "python_fallback",
+              "sdist_only"
+            ],
+            "in_snapshot": true,
+            "is_stdlib_module": true,
+            "name": "typing",
+            "reason": null,
+            "reference_version": "3.7.4.3",
+            "total": 7.095447,
+            "valid": true,
+            "values": {
+              "S1": 2033.823712,
+              "S2": 0.0,
+              "S4": 4.0,
+              "S5": 1.0,
+              "S6": 0.0,
+              "S7": null
+            }
+          },
+          "package": "typing",
+          "source": "snapshot"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 2,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "replace",
+        "confidence": "high",
+        "evidence": [
+          {
+            "call_id": "call_5",
+            "field": "signals.S4.value",
+            "value": 4.0
+          },
+          {
+            "call_id": "call_5",
+            "field": "flags[1].code",
+            "value": "python_fallback"
+          },
+          {
+            "call_id": "call_7",
+            "field": "is_stdlib_module",
+            "value": true
+          }
+        ],
+        "finding": "S4",
+        "rationale": "S4 = 4: pip falls back to an older release because newer allowed releases cannot install on 3.12, and S5 = 1 means sdist only, built from source at install. The python_fallback flag is set. The name typing is a Python 3.12 standard-library module, so the PyPI backport is not needed.",
+        "replacement_type": "stdlib",
+        "suitability_assumptions": [
+          "The stdlib typing module covers the APIs the code uses; imports stay 'import typing'.",
+          "Migration effort is only removing the PyPI dependency from requirements."
+        ],
+        "target": "typing",
+        "uncertainties": [
+          "Whether any code depends on backport-specific behaviour is not verified."
+        ]
+      },
+      "package": "typing",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 5087,
+        "cache_read_input_tokens": 4628,
+        "input_tokens": 6,
+        "output_tokens": 615
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:06:59.267382Z",
+          "id": "call_8",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 4.181358,
+              "dependencies": 0.693147,
+              "maintenance": 1.967639,
+              "security": 0.0
+            },
+            "effective_version": "3.0.5",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 3936.665598,
+              "S8": 2,
+              "S9": 0.083333,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [],
+              "last_upload": "2022-10-31T21:40:32.078999+00:00",
+              "malformed_requires_dist": [],
+              "missing": [
+                "requires_dist"
+              ],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 0
+              },
+              "specifier": ""
+            },
+            "final_score": 99.11,
+            "flags": [
+              {
+                "code": "missing:requires_dist",
+                "evidence": {
+                  "field": "requires_dist",
+                  "value": null,
+                  "version": "3.0.5"
+                }
+              },
+              {
+                "code": "python_fallback",
+                "evidence": {
+                  "S4": 4,
+                  "effective_version": "3.0.5"
+                }
+              },
+              {
+                "code": "sdist_only",
+                "evidence": {
+                  "S5": 1,
+                  "effective_version": "3.0.5"
+                }
+              }
+            ],
+            "name": "futures",
+            "rank": 3,
+            "reference_version": "3.0.5",
+            "signals": {
+              "S1": {
+                "contribution": 2.341968,
+                "partial": false,
+                "q": 0.096138,
+                "value": 1485.67332
+              },
+              "S2": {
+                "contribution": 1.593309,
+                "partial": false,
+                "q": 0.203252,
+                "value": 0.0
+              },
+              "S4": {
+                "contribution": 5.282188,
+                "partial": false,
+                "q": 0.005081,
+                "value": 4.0
+              },
+              "S5": {
+                "contribution": 3.080529,
+                "partial": false,
+                "q": 0.045935,
+                "value": 1.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 0.693147,
+                "partial": false,
+                "q": 0.5,
+                "value": null
+              }
+            },
+            "specifier": "",
+            "total": 6.842144
+          },
+          "package": "futures",
+          "source": "snapshot"
+        },
+        {
+          "args": {
+            "name": "concurrent.futures"
+          },
+          "fetched_at": null,
+          "id": "call_9",
+          "name": "lookup_candidate",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "effective_version": null,
+            "exists": false,
+            "final_score": null,
+            "flags": [],
+            "in_snapshot": false,
+            "is_stdlib_module": true,
+            "name": "concurrent-futures",
+            "reason": "not found on PyPI",
+            "reference_version": null,
+            "total": null,
+            "valid": false,
+            "values": null
+          },
+          "package": "futures",
+          "source": "live"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:23:59.570585Z",
+          "id": "call_10",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              0,
+              1,
+              2,
+              3
+            ],
+            "allowed_versions": 22,
+            "floor_version": "0.1",
+            "floor_vulnerabilities": [],
+            "line": "futures",
+            "spec_allows_advisories": false,
+            "spec_spans_major": true,
+            "specifier": ""
+          },
+          "package": "futures",
+          "source": "live"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 2,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "replace",
+        "confidence": "high",
+        "evidence": [
+          {
+            "call_id": "call_8",
+            "field": "signals.S4.value",
+            "value": 4
+          },
+          {
+            "call_id": "call_8",
+            "field": "flags[1].code",
+            "value": "python_fallback"
+          }
+        ],
+        "finding": "S4",
+        "rationale": "S4 = 4: pip falls back to an older release because newer allowed releases cannot install on 3.12, and S5 = 1 means the effective version is sdist only, built from source at install. The concurrent.futures module is in the Python 3.12 standard library, so the package is not needed.",
+        "replacement_type": "stdlib",
+        "suitability_assumptions": [
+          "The stdlib concurrent.futures API is equivalent to the futures backport for the features the code uses.",
+          "Migration effort is small: imports already use concurrent.futures, so only the dependency needs removing."
+        ],
+        "target": "concurrent.futures",
+        "uncertainties": [
+          "Functional suitability was not verified against the actual code."
+        ]
+      },
+      "package": "futures",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 5099,
+        "cache_read_input_tokens": 4623,
+        "input_tokens": 6,
+        "output_tokens": 657
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:06:31.589783Z",
+          "id": "call_11",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 1.012045,
+              "dependencies": 0.693147,
+              "maintenance": 3.549321,
+              "security": 0.0
+            },
+            "effective_version": "1.3.7",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 4194.192754,
+              "S8": 3,
+              "S9": 0.0,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [],
+              "last_upload": "2015-06-02T09:12:40.570975+00:00",
+              "malformed_requires_dist": [],
+              "missing": [
+                "requires_dist"
+              ],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 0
+              },
+              "specifier": ""
+            },
+            "final_score": 96.34,
+            "flags": [
+              {
+                "code": "missing:requires_dist",
+                "evidence": {
+                  "field": "requires_dist",
+                  "value": null,
+                  "version": "1.3.7"
+                }
+              }
+            ],
+            "name": "nose",
+            "rank": 4,
+            "reference_version": "1.3.7",
+            "signals": {
+              "S1": {
+                "contribution": 5.505332,
+                "partial": false,
+                "q": 0.004065,
+                "value": 4194.192666
+              },
+              "S2": {
+                "contribution": 1.593309,
+                "partial": false,
+                "q": 0.203252,
+                "value": 0.0
+              },
+              "S4": {
+                "contribution": 2.024091,
+                "partial": false,
+                "q": 0.132114,
+                "value": 2.0
+              },
+              "S5": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 0.693147,
+                "partial": false,
+                "q": 0.5,
+                "value": null
+              }
+            },
+            "specifier": "",
+            "total": 5.254513
+          },
+          "package": "nose",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:24:05.070779Z",
+          "id": "call_12",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              1
+            ],
+            "allowed_versions": 13,
+            "floor_version": "1.0.0",
+            "floor_vulnerabilities": [],
+            "line": "nose",
+            "spec_allows_advisories": false,
+            "spec_spans_major": false,
+            "specifier": ""
+          },
+          "package": "nose",
+          "source": "live"
+        },
+        {
+          "args": {
+            "name": "pytest"
+          },
+          "fetched_at": "2026-11-25T13:04:44.347189Z",
+          "id": "call_13",
+          "name": "lookup_candidate",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "effective_version": "9.2.0",
+            "exists": true,
+            "final_score": 40.89,
+            "flags": [],
+            "in_snapshot": true,
+            "is_stdlib_module": false,
+            "name": "pytest",
+            "reason": null,
+            "reference_version": "9.2.0",
+            "total": 1.505009,
+            "valid": true,
+            "values": {
+              "S1": 28.680395,
+              "S2": 12.0,
+              "S4": 0.0,
+              "S5": 0.0,
+              "S6": 0.0,
+              "S7": 4.0
+            }
+          },
+          "package": "nose",
+          "source": "snapshot"
+        },
+        {
+          "args": {
+            "name": "pytest"
+          },
+          "fetched_at": "2026-11-25T13:04:44.347189Z",
+          "id": "call_14",
+          "name": "lookup_candidate",
+          "origin": "validation",
+          "output": {
+            "beyond_baseline_range": [],
+            "effective_version": "9.2.0",
+            "exists": true,
+            "final_score": 40.89,
+            "flags": [],
+            "in_snapshot": true,
+            "is_stdlib_module": false,
+            "name": "pytest",
+            "reason": null,
+            "reference_version": "9.2.0",
+            "total": 1.505009,
+            "valid": true,
+            "values": {
+              "S1": 28.680395,
+              "S2": 12.0,
+              "S4": 0.0,
+              "S5": 0.0,
+              "S6": 0.0,
+              "S7": 4.0
+            }
+          },
+          "package": "nose",
+          "source": "snapshot"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 2,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "replace",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "call_id": "call_11",
+            "field": "signals.S1.value",
+            "value": 4194.192666
+          },
+          {
+            "call_id": "call_13",
+            "field": "final_score",
+            "value": 40.89
+          },
+          {
+            "call_id": "call_11",
+            "field": "final_score",
+            "value": 96.34
+          }
+        ],
+        "finding": "S1",
+        "rationale": "S1 shows 4194.2 days since the last upload, the largest score contribution. pytest scores 40.89 against nose's 96.34 on the same baseline and has no flags. S4 is 2 for nose, meaning no requires_python declaration and no Python 3 minor-version classifiers.",
+        "replacement_type": "pypi",
+        "suitability_assumptions": [
+          "pytest can run the existing nose-style tests, possibly with test rewrites",
+          "Migration effort is moderate and has not been verified"
+        ],
+        "target": "pytest",
+        "uncertainties": [
+          "Functional API equivalence is not verified",
+          "nose-specific plugins may have no pytest equivalent"
+        ]
+      },
+      "package": "nose",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 4953,
+        "cache_read_input_tokens": 4517,
+        "input_tokens": 6,
+        "output_tokens": 577
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:06:30.180004Z",
+          "id": "call_15",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 1.333127,
+              "dependencies": 0.693147,
+              "maintenance": 2.456295,
+              "security": 0.0
+            },
+            "effective_version": "1.1.10",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 2450.834824,
+              "S8": 1,
+              "S9": 0.0,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [],
+              "last_upload": "2020-03-10T17:48:03.174785+00:00",
+              "malformed_requires_dist": [],
+              "missing": [
+                "requires_dist"
+              ],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 0
+              },
+              "specifier": ""
+            },
+            "final_score": 93.54,
+            "flags": [
+              {
+                "code": "missing:requires_dist",
+                "evidence": {
+                  "field": "requires_dist",
+                  "value": null,
+                  "version": "1.1.10"
+                }
+              }
+            ],
+            "name": "enum34",
+            "rank": 5,
+            "reference_version": "1.1.10",
+            "signals": {
+              "S1": {
+                "contribution": 3.31928,
+                "partial": false,
+                "q": 0.036179,
+                "value": 2450.834765
+              },
+              "S2": {
+                "contribution": 1.593309,
+                "partial": false,
+                "q": 0.203252,
+                "value": 0.0
+              },
+              "S4": {
+                "contribution": 2.666253,
+                "partial": false,
+                "q": 0.069512,
+                "value": 3.0
+              },
+              "S5": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 0.693147,
+                "partial": false,
+                "q": 0.5,
+                "value": null
+              }
+            },
+            "specifier": "",
+            "total": 4.482569
+          },
+          "package": "enum34",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:24:09.775219Z",
+          "id": "call_16",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              0,
+              1
+            ],
+            "allowed_versions": 30,
+            "floor_version": "0.9",
+            "floor_vulnerabilities": [],
+            "line": "enum34",
+            "spec_allows_advisories": false,
+            "spec_spans_major": true,
+            "specifier": ""
+          },
+          "package": "enum34",
+          "source": "live"
+        },
+        {
+          "args": {
+            "name": "enum"
+          },
+          "fetched_at": "2026-11-25T15:24:09.937170Z",
+          "id": "call_17",
+          "name": "lookup_candidate",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "effective_version": "0.4.7",
+            "exists": true,
+            "final_score": 98.05,
+            "flags": [
+              "missing:requires_dist",
+              "sdist_only"
+            ],
+            "in_snapshot": false,
+            "is_stdlib_module": true,
+            "name": "enum",
+            "reason": null,
+            "reference_version": "0.4.7",
+            "total": 6.01047,
+            "valid": true,
+            "values": {
+              "S1": 3017.358688,
+              "S2": 0.0,
+              "S4": 2.0,
+              "S5": 1.0,
+              "S6": 0.0,
+              "S7": null
+            }
+          },
+          "package": "enum34",
+          "source": "live"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 2,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "replace",
+        "confidence": "high",
+        "evidence": [
+          {
+            "call_id": "call_15",
+            "field": "signals.S1.value",
+            "value": 2450.834765
+          },
+          {
+            "call_id": "call_17",
+            "field": "is_stdlib_module",
+            "value": true
+          }
+        ],
+        "finding": "S1",
+        "rationale": "S1 shows 2450.8 days since the last upload, and S4 shows only classifiers for older Python 3 versions. The enum module is part of the Python 3.12 standard library, so the backport should not be needed.",
+        "replacement_type": "stdlib",
+        "suitability_assumptions": [
+          "The stdlib enum API covers the usage in this code, since enum34 is a backport of it.",
+          "Migration only means removing enum34 and keeping the existing 'import enum' lines."
+        ],
+        "target": "enum",
+        "uncertainties": [
+          "Code that uses enum34-specific behavior or runs on Python 2 has not been checked."
+        ]
+      },
+      "package": "enum34",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 4961,
+        "cache_read_input_tokens": 4511,
+        "input_tokens": 6,
+        "output_tokens": 594
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:06:36.097813Z",
+          "id": "call_18",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 1.333127,
+              "dependencies": 0.693147,
+              "maintenance": 2.02587,
+              "security": 0.0
+            },
+            "effective_version": "1.0.1",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 4465.922335,
+              "S8": 1,
+              "S9": 0.0,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [],
+              "last_upload": "2022-05-04T13:37:20.585901+00:00",
+              "malformed_requires_dist": [],
+              "missing": [
+                "requires_dist"
+              ],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 0
+              },
+              "specifier": ""
+            },
+            "final_score": 90.81,
+            "flags": [
+              {
+                "code": "missing:requires_dist",
+                "evidence": {
+                  "field": "requires_dist",
+                  "value": null,
+                  "version": "1.0.1"
+                }
+              }
+            ],
+            "name": "pathlib",
+            "rank": 6,
+            "reference_version": "1.0.1",
+            "signals": {
+              "S1": {
+                "contribution": 2.458431,
+                "partial": false,
+                "q": 0.085569,
+                "value": 1666.008869
+              },
+              "S2": {
+                "contribution": 1.593309,
+                "partial": false,
+                "q": 0.203252,
+                "value": 0.0
+              },
+              "S4": {
+                "contribution": 2.666253,
+                "partial": false,
+                "q": 0.069512,
+                "value": 3.0
+              },
+              "S5": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 0.693147,
+                "partial": false,
+                "q": 0.5,
+                "value": null
+              }
+            },
+            "specifier": "",
+            "total": 4.052144
+          },
+          "package": "pathlib",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:20:39.425055Z",
+          "id": "call_19",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              0,
+              1
+            ],
+            "allowed_versions": 11,
+            "floor_version": "0.1",
+            "floor_vulnerabilities": [],
+            "line": "pathlib",
+            "spec_allows_advisories": false,
+            "spec_spans_major": true,
+            "specifier": ""
+          },
+          "package": "pathlib",
+          "source": "live"
+        },
+        {
+          "args": {
+            "name": "pathlib"
+          },
+          "fetched_at": "2026-11-25T13:06:36.097813Z",
+          "id": "call_20",
+          "name": "lookup_candidate",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "effective_version": "1.0.1",
+            "exists": true,
+            "final_score": 90.81,
+            "flags": [
+              "missing:requires_dist"
+            ],
+            "in_snapshot": true,
+            "is_stdlib_module": true,
+            "name": "pathlib",
+            "reason": null,
+            "reference_version": "1.0.1",
+            "total": 4.052144,
+            "valid": true,
+            "values": {
+              "S1": 1666.008869,
+              "S2": 0.0,
+              "S4": 3.0,
+              "S5": 0.0,
+              "S6": 0.0,
+              "S7": null
+            }
+          },
+          "package": "pathlib",
+          "source": "snapshot"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 2,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "replace",
+        "confidence": "high",
+        "evidence": [
+          {
+            "call_id": "call_18",
+            "field": "signals.S4.value",
+            "value": 3.0
+          },
+          {
+            "call_id": "call_20",
+            "field": "is_stdlib_module",
+            "value": true
+          }
+        ],
+        "finding": "S4",
+        "rationale": "S4 is 3 (only classifiers for older Python 3 versions) and S1 is 1666 days since the last upload. pathlib is a Python 3.12 standard-library module, so the PyPI package is not needed.",
+        "replacement_type": "stdlib",
+        "suitability_assumptions": [
+          "The code only uses the standard pathlib API, which the stdlib module provides.",
+          "Migration effort is low: removing the PyPI dependency makes imports resolve to the stdlib module."
+        ],
+        "target": "pathlib",
+        "uncertainties": [
+          "API compatibility was not verified.",
+          "The PyPI package is an old backport. Code relying on its behavior may differ from the stdlib module."
+        ]
+      },
+      "package": "pathlib",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 4963,
+        "cache_read_input_tokens": 4514,
+        "input_tokens": 6,
+        "output_tokens": 597
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:05:10.889741Z",
+          "id": "call_21",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 0.459672,
+              "dependencies": 1.6916,
+              "maintenance": 0.952978,
+              "security": 0.0
+            },
+            "effective_version": "3.1.3",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 279.367487,
+              "S8": 0,
+              "S9": 0.0,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [
+                "blinker",
+                "click",
+                "itsdangerous",
+                "jinja2",
+                "markupsafe",
+                "werkzeug"
+              ],
+              "last_upload": "2026-02-19T05:00:57.678803+00:00",
+              "malformed_requires_dist": [],
+              "missing": [],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 2
+              },
+              "specifier": ">=2.0"
+            },
+            "final_score": 81.36,
+            "flags": [],
+            "name": "flask",
+            "rank": 7,
+            "reference_version": "3.1.3",
+            "signals": {
+              "S1": {
+                "contribution": 1.07392,
+                "partial": false,
+                "q": 0.341667,
+                "value": 279.367468
+              },
+              "S2": {
+                "contribution": 0.832036,
+                "partial": false,
+                "q": 0.435163,
+                "value": 3.0
+              },
+              "S4": {
+                "contribution": 0.919344,
+                "partial": false,
+                "q": 0.39878,
+                "value": 1.0
+              },
+              "S5": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 1.6916,
+                "partial": false,
+                "q": 0.184224,
+                "value": 6.0
+              }
+            },
+            "specifier": ">=2.0",
+            "total": 3.10425
+          },
+          "package": "flask",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:24:21.413968Z",
+          "id": "call_22",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              2,
+              3
+            ],
+            "allowed_versions": 26,
+            "floor_version": "2.0.0",
+            "floor_vulnerabilities": [
+              {
+                "aliases": [
+                  "CVE-2023-30861",
+                  "PYSEC-2023-62"
+                ],
+                "fixed_in": [
+                  "2.3.2",
+                  "2.2.5"
+                ],
+                "id": "GHSA-m2qf-hxjv-5gpq"
+              },
+              {
+                "aliases": [
+                  "CVE-2023-30861",
+                  "GHSA-m2qf-hxjv-5gpq"
+                ],
+                "fixed_in": [
+                  "2.2.5",
+                  "2.3.2"
+                ],
+                "id": "PYSEC-2023-62"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-27205",
+                  "PYSEC-2026-2151"
+                ],
+                "fixed_in": [
+                  "3.1.3"
+                ],
+                "id": "GHSA-68rp-wp8r-4726"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-27205",
+                  "GHSA-68rp-wp8r-4726"
+                ],
+                "fixed_in": [
+                  "3.1.3"
+                ],
+                "id": "PYSEC-2026-2151"
+              }
+            ],
+            "line": "flask>=2.0",
+            "spec_allows_advisories": true,
+            "spec_spans_major": true,
+            "specifier": ">=2.0"
+          },
+          "package": "flask",
+          "source": "live"
+        },
+        {
+          "args": {
+            "version": "3.1.3"
+          },
+          "fetched_at": "2026-11-25T13:05:10.889741Z",
+          "id": "call_23",
+          "name": "get_version_details",
+          "origin": "agent",
+          "output": {
+            "classifiers": [
+              "Development Status :: 5 - Production/Stable",
+              "Environment :: Web Environment",
+              "Framework :: Flask",
+              "Intended Audience :: Developers",
+              "Operating System :: OS Independent",
+              "Programming Language :: Python",
+              "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+              "Topic :: Internet :: WWW/HTTP :: WSGI",
+              "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+              "Topic :: Software Development :: Libraries :: Application Frameworks",
+              "Typing :: Typed"
+            ],
+            "eligible": true,
+            "eligible_files": [
+              "flask-3.1.3-py3-none-any.whl",
+              "flask-3.1.3.tar.gz"
+            ],
+            "files": {
+              "other": 0,
+              "sdists": 1,
+              "total": 2,
+              "wheels": 1,
+              "yanked": 0
+            },
+            "is_final": true,
+            "release_date": "2026-02-19T05:00:56.027585+00:00",
+            "requires_dist": [
+              "blinker>=1.9.0",
+              "click>=8.1.3",
+              "importlib-metadata>=3.6.0; python_version < \"3.10\"",
+              "itsdangerous>=2.2.0",
+              "jinja2>=3.1.2",
+              "markupsafe>=2.1.1",
+              "werkzeug>=3.1.0",
+              "asgiref>=3.2; extra == \"async\"",
+              "python-dotenv; extra == \"dotenv\""
+            ],
+            "requires_python": [
+              ">=3.9"
+            ],
+            "satisfies_specifier": true,
+            "version": "3.1.3",
+            "vulnerabilities": [],
+            "yanked": false
+          },
+          "package": "flask",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:05:10.889741Z",
+          "id": "call_24",
+          "name": "find_eligible_versions",
+          "origin": "validation",
+          "output": {
+            "effective_version": "3.1.3",
+            "oldest_allowed_version": "2.0.0",
+            "specifier": ">=2.0",
+            "versions": [
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.1.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.1.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.1.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.1.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.0.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.0.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.0.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.0.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.3.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.3.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.3.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.3.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.2.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.2.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.2.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.2.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.2.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.2.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.1.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.1.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.1.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.1.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.0.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.0.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.0.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "2.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.12.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.12.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.12.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.12.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.12.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.12"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.11.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.11"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.10.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.10"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.9"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.7.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.7.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.5.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.5.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.3.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1"
+              }
+            ]
+          },
+          "package": "flask",
+          "source": "snapshot"
+        },
+        {
+          "args": {
+            "version": "3.1.3"
+          },
+          "fetched_at": "2026-11-25T13:05:10.889741Z",
+          "id": "call_25",
+          "name": "get_version_details",
+          "origin": "validation",
+          "output": {
+            "classifiers": [
+              "Development Status :: 5 - Production/Stable",
+              "Environment :: Web Environment",
+              "Framework :: Flask",
+              "Intended Audience :: Developers",
+              "Operating System :: OS Independent",
+              "Programming Language :: Python",
+              "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+              "Topic :: Internet :: WWW/HTTP :: WSGI",
+              "Topic :: Internet :: WWW/HTTP :: WSGI :: Application",
+              "Topic :: Software Development :: Libraries :: Application Frameworks",
+              "Typing :: Typed"
+            ],
+            "eligible": true,
+            "eligible_files": [
+              "flask-3.1.3-py3-none-any.whl",
+              "flask-3.1.3.tar.gz"
+            ],
+            "files": {
+              "other": 0,
+              "sdists": 1,
+              "total": 2,
+              "wheels": 1,
+              "yanked": 0
+            },
+            "is_final": true,
+            "release_date": "2026-02-19T05:00:56.027585+00:00",
+            "requires_dist": [
+              "blinker>=1.9.0",
+              "click>=8.1.3",
+              "importlib-metadata>=3.6.0; python_version < \"3.10\"",
+              "itsdangerous>=2.2.0",
+              "jinja2>=3.1.2",
+              "markupsafe>=2.1.1",
+              "werkzeug>=3.1.0",
+              "asgiref>=3.2; extra == \"async\"",
+              "python-dotenv; extra == \"dotenv\""
+            ],
+            "requires_python": [
+              ">=3.9"
+            ],
+            "satisfies_specifier": true,
+            "version": "3.1.3",
+            "vulnerabilities": [],
+            "yanked": false
+          },
+          "package": "flask",
+          "source": "snapshot"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 3,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "upgrade",
+        "confidence": "high",
+        "evidence": [
+          {
+            "call_id": "call_22",
+            "field": "spec_allows_advisories",
+            "value": true
+          },
+          {
+            "call_id": "call_22",
+            "field": "floor_vulnerabilities[2].id",
+            "value": "GHSA-68rp-wp8r-4726"
+          },
+          {
+            "call_id": "call_23",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "finding": "spec_allows_advisories",
+        "rationale": "The specifier flask>=2.0 allows the floor version 2.0.0, which has known advisories, including GHSA-68rp-wp8r-4726 fixed in 3.1.3. Release 3.1.3 is final, not yanked, eligible on 3.12 and has no vulnerabilities. Raising the lower bound to 3.1.3 excludes the affected releases.",
+        "replacement_type": "none",
+        "suitability_assumptions": [
+          "Application code is compatible with Flask 3.x APIs"
+        ],
+        "target": ">=3.1.3",
+        "uncertainties": [
+          "Migration effort from 2.x to 3.x is not verified"
+        ]
+      },
+      "package": "flask",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 5623,
+        "cache_read_input_tokens": 9454,
+        "input_tokens": 8,
+        "output_tokens": 659
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:05:42.881182Z",
+          "id": "call_26",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 0.0,
+              "dependencies": 2.443936,
+              "maintenance": 0.38199,
+              "security": 0.0
+            },
+            "effective_version": "5.7.0",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 19.941542,
+              "S8": 5,
+              "S9": 0.008772,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [
+                "billiard",
+                "click",
+                "click-didyoumean",
+                "click-plugins",
+                "click-repl",
+                "kombu",
+                "python-dateutil",
+                "tzlocal",
+                "vine"
+              ],
+              "last_upload": "2026-11-05T15:14:24.027748+00:00",
+              "malformed_requires_dist": [],
+              "missing": [],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 54
+              },
+              "specifier": ">=5.0"
+            },
+            "final_score": 77.09,
+            "flags": [],
+            "name": "celery",
+            "rank": 8,
+            "reference_version": "5.7.0",
+            "signals": {
+              "S1": {
+                "contribution": 0.319343,
+                "partial": false,
+                "q": 0.726626,
+                "value": 19.941468
+              },
+              "S2": {
+                "contribution": 0.444637,
+                "partial": false,
+                "q": 0.641057,
+                "value": 9.0
+              },
+              "S4": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S5": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 2.443936,
+                "partial": false,
+                "q": 0.086818,
+                "value": 9.0
+              }
+            },
+            "specifier": ">=5.0",
+            "total": 2.825926
+          },
+          "package": "celery",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:24:27.964100Z",
+          "id": "call_27",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              5
+            ],
+            "allowed_versions": 31,
+            "floor_version": "5.0.0",
+            "floor_vulnerabilities": [
+              {
+                "aliases": [
+                  "CVE-2021-23727",
+                  "SNYK-PYTHON-CELERY-2314953",
+                  "GHSA-q4xr-rc97-m4xx"
+                ],
+                "fixed_in": [
+                  "5.2.2"
+                ],
+                "id": "PYSEC-2021-858"
+              },
+              {
+                "aliases": [
+                  "CVE-2021-23727",
+                  "PYSEC-2021-858",
+                  "SNYK-PYTHON-CELERY-2314953"
+                ],
+                "fixed_in": [
+                  "5.2.2"
+                ],
+                "id": "GHSA-q4xr-rc97-m4xx"
+              }
+            ],
+            "line": "celery>=5.0",
+            "spec_allows_advisories": true,
+            "spec_spans_major": false,
+            "specifier": ">=5.0"
+          },
+          "package": "celery",
+          "source": "live"
+        },
+        {
+          "args": {
+            "version": "5.2.2"
+          },
+          "fetched_at": "2026-11-25T15:24:29.226672Z",
+          "id": "call_28",
+          "name": "get_version_details",
+          "origin": "agent",
+          "output": {
+            "classifiers": [
+              "Development Status :: 5 - Production/Stable",
+              "Framework :: Celery",
+              "License :: OSI Approved :: BSD License",
+              "Operating System :: OS Independent",
+              "Programming Language :: Python",
+              "Programming Language :: Python :: 3",
+              "Programming Language :: Python :: 3 :: Only",
+              "Programming Language :: Python :: 3.10",
+              "Programming Language :: Python :: 3.7",
+              "Programming Language :: Python :: 3.8",
+              "Programming Language :: Python :: 3.9",
+              "Programming Language :: Python :: Implementation :: CPython",
+              "Programming Language :: Python :: Implementation :: PyPy",
+              "Topic :: Software Development :: Object Brokering",
+              "Topic :: System :: Distributed Computing"
+            ],
+            "eligible": true,
+            "eligible_files": [
+              "celery-5.2.2-py3-none-any.whl",
+              "celery-5.2.2.tar.gz"
+            ],
+            "files": {
+              "other": 0,
+              "sdists": 1,
+              "total": 2,
+              "wheels": 1,
+              "yanked": 0
+            },
+            "is_final": true,
+            "release_date": "2021-12-26T14:31:56.465926+00:00",
+            "requires_dist": [
+              "pytz (>0.dev.0)",
+              "billiard (<4.0,>=3.6.4.0)",
+              "kombu (<6.0,>=5.2.2)",
+              "vine (<6.0,>=5.0.0)",
+              "click (<9.0,>=8.0)",
+              "click-didyoumean (>=0.0.3)",
+              "click-repl (>=0.2.0)",
+              "click-plugins (>=1.1.1)",
+              "setuptools",
+              "pyArango (>=1.3.2) ; extra == 'arangodb'",
+              "cryptography ; extra == 'auth'",
+              "azure-storage-blob (==12.9.0) ; extra == 'azureblockblob'",
+              "brotli (>=1.0.0) ; (platform_python_implementation == \"CPython\") and extra == 'brotli'",
+              "brotlipy (>=0.7.0) ; (platform_python_implementation == \"PyPy\") and extra == 'brotli'",
+              "cassandra-driver (<3.21.0) ; extra == 'cassandra'",
+              "python-consul2 ; extra == 'consul'",
+              "pydocumentdb (==2.3.2) ; extra == 'cosmosdbsql'",
+              "couchbase (>=3.0.0) ; (platform_python_implementation != \"PyPy\" and (platform_system != \"Windows\" or python_version < \"3.10\")) and extra == 'couchbase'",
+              "pycouchdb ; extra == 'couchdb'",
+              "Django (>=1.11) ; extra == 'django'",
+              "boto3 (>=1.9.178) ; extra == 'dynamodb'",
+              "elasticsearch ; extra == 'elasticsearch'",
+              "eventlet (>=0.32.0) ; (python_version < \"3.10\") and extra == 'eventlet'",
+              "gevent (>=1.5.0) ; extra == 'gevent'",
+              "librabbitmq (>=1.5.0) ; extra == 'librabbitmq'",
+              "pylibmc ; (platform_system != \"Windows\") and extra == 'memcache'",
+              "pymongo[srv] (<3.12.1,>=3.3.0) ; extra == 'mongodb'",
+              "msgpack ; extra == 'msgpack'",
+              "python-memcached ; extra == 'pymemcache'",
+              "pyro4 ; extra == 'pyro'",
+              "pytest-celery ; extra == 'pytest'",
+              "redis (<4.0.0,>=3.4.1) ; extra == 'redis'",
+              "boto3 (>=1.9.125) ; extra == 's3'",
+              "softlayer-messaging (>=1.0.3) ; extra == 'slmq'",
+              "ephem ; (platform_python_implementation != \"PyPy\") and extra == 'solar'",
+              "sqlalchemy ; extra == 'sqlalchemy'",
+              "kombu[sqs] ; extra == 'sqs'",
+              "tblib (>=1.3.0) ; (python_version < \"3.8.0\") and extra == 'tblib'",
+              "tblib (>=1.5.0) ; (python_version >= \"3.8.0\") and extra == 'tblib'",
+              "PyYAML (>=3.10) ; extra == 'yaml'",
+              "kazoo (>=1.3.1) ; extra == 'zookeeper'",
+              "zstandard ; extra == 'zstd'"
+            ],
+            "requires_python": [
+              ">=3.7,"
+            ],
+            "satisfies_specifier": true,
+            "version": "5.2.2",
+            "vulnerabilities": [],
+            "yanked": false
+          },
+          "package": "celery",
+          "source": "live"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:05:42.881182Z",
+          "id": "call_29",
+          "name": "find_eligible_versions",
+          "origin": "validation",
+          "output": {
+            "effective_version": "5.7.0",
+            "oldest_allowed_version": "5.0.0",
+            "specifier": ">=5.0",
+            "versions": [
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.7.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.6.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.6.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.6.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.6.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.5.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.5.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.5.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.5.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.4.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.3.6"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.3.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.3.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.3.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.3.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.2.7"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.2.6"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.2.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.2.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.2.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.2.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.2.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.1.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.1.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.1.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.0.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.0.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.0.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.0.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.0.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "5.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.4.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.4.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.4.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.4.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.4.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.4.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.4.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.4.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.3.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.3.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.2.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.2.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.2.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.1.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.1.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.0.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "4.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.26.post2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.26-1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.25"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.24"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.23"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.22"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.21"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.20"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.19"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.18"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.17"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.16"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.15"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.14"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.13"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.12"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.11"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.10"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.9"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.8"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.25"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.24"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.23"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.22"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.21"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.20"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.19"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.18"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.17"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.16"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.15"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.14"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.13"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.12"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.11"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.10"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.9"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.8"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.5.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.5.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.5.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.5.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.5.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.4.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.4.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.4.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.4.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.4.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.4.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.4.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.4.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.10"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.9"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.8"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.1.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.1.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.1.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.1.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.1.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.4.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.4.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.3.20"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.3.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.3.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.2.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.15"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.14"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.13"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.12"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.11"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.10"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.8"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1.2"
+              }
+            ]
+          },
+          "package": "celery",
+          "source": "snapshot"
+        },
+        {
+          "args": {
+            "version": "5.2.2"
+          },
+          "fetched_at": "2026-11-25T15:24:29.226672Z",
+          "id": "call_30",
+          "name": "get_version_details",
+          "origin": "validation",
+          "output": {
+            "classifiers": [
+              "Development Status :: 5 - Production/Stable",
+              "Framework :: Celery",
+              "License :: OSI Approved :: BSD License",
+              "Operating System :: OS Independent",
+              "Programming Language :: Python",
+              "Programming Language :: Python :: 3",
+              "Programming Language :: Python :: 3 :: Only",
+              "Programming Language :: Python :: 3.10",
+              "Programming Language :: Python :: 3.7",
+              "Programming Language :: Python :: 3.8",
+              "Programming Language :: Python :: 3.9",
+              "Programming Language :: Python :: Implementation :: CPython",
+              "Programming Language :: Python :: Implementation :: PyPy",
+              "Topic :: Software Development :: Object Brokering",
+              "Topic :: System :: Distributed Computing"
+            ],
+            "eligible": true,
+            "eligible_files": [
+              "celery-5.2.2-py3-none-any.whl",
+              "celery-5.2.2.tar.gz"
+            ],
+            "files": {
+              "other": 0,
+              "sdists": 1,
+              "total": 2,
+              "wheels": 1,
+              "yanked": 0
+            },
+            "is_final": true,
+            "release_date": "2021-12-26T14:31:56.465926+00:00",
+            "requires_dist": [
+              "pytz (>0.dev.0)",
+              "billiard (<4.0,>=3.6.4.0)",
+              "kombu (<6.0,>=5.2.2)",
+              "vine (<6.0,>=5.0.0)",
+              "click (<9.0,>=8.0)",
+              "click-didyoumean (>=0.0.3)",
+              "click-repl (>=0.2.0)",
+              "click-plugins (>=1.1.1)",
+              "setuptools",
+              "pyArango (>=1.3.2) ; extra == 'arangodb'",
+              "cryptography ; extra == 'auth'",
+              "azure-storage-blob (==12.9.0) ; extra == 'azureblockblob'",
+              "brotli (>=1.0.0) ; (platform_python_implementation == \"CPython\") and extra == 'brotli'",
+              "brotlipy (>=0.7.0) ; (platform_python_implementation == \"PyPy\") and extra == 'brotli'",
+              "cassandra-driver (<3.21.0) ; extra == 'cassandra'",
+              "python-consul2 ; extra == 'consul'",
+              "pydocumentdb (==2.3.2) ; extra == 'cosmosdbsql'",
+              "couchbase (>=3.0.0) ; (platform_python_implementation != \"PyPy\" and (platform_system != \"Windows\" or python_version < \"3.10\")) and extra == 'couchbase'",
+              "pycouchdb ; extra == 'couchdb'",
+              "Django (>=1.11) ; extra == 'django'",
+              "boto3 (>=1.9.178) ; extra == 'dynamodb'",
+              "elasticsearch ; extra == 'elasticsearch'",
+              "eventlet (>=0.32.0) ; (python_version < \"3.10\") and extra == 'eventlet'",
+              "gevent (>=1.5.0) ; extra == 'gevent'",
+              "librabbitmq (>=1.5.0) ; extra == 'librabbitmq'",
+              "pylibmc ; (platform_system != \"Windows\") and extra == 'memcache'",
+              "pymongo[srv] (<3.12.1,>=3.3.0) ; extra == 'mongodb'",
+              "msgpack ; extra == 'msgpack'",
+              "python-memcached ; extra == 'pymemcache'",
+              "pyro4 ; extra == 'pyro'",
+              "pytest-celery ; extra == 'pytest'",
+              "redis (<4.0.0,>=3.4.1) ; extra == 'redis'",
+              "boto3 (>=1.9.125) ; extra == 's3'",
+              "softlayer-messaging (>=1.0.3) ; extra == 'slmq'",
+              "ephem ; (platform_python_implementation != \"PyPy\") and extra == 'solar'",
+              "sqlalchemy ; extra == 'sqlalchemy'",
+              "kombu[sqs] ; extra == 'sqs'",
+              "tblib (>=1.3.0) ; (python_version < \"3.8.0\") and extra == 'tblib'",
+              "tblib (>=1.5.0) ; (python_version >= \"3.8.0\") and extra == 'tblib'",
+              "PyYAML (>=3.10) ; extra == 'yaml'",
+              "kazoo (>=1.3.1) ; extra == 'zookeeper'",
+              "zstandard ; extra == 'zstd'"
+            ],
+            "requires_python": [
+              ">=3.7,"
+            ],
+            "satisfies_specifier": true,
+            "version": "5.2.2",
+            "vulnerabilities": [],
+            "yanked": false
+          },
+          "package": "celery",
+          "source": "live"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 3,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "upgrade",
+        "confidence": "high",
+        "evidence": [
+          {
+            "call_id": "call_27",
+            "field": "spec_allows_advisories",
+            "value": true
+          },
+          {
+            "call_id": "call_27",
+            "field": "floor_vulnerabilities[0].id",
+            "value": "PYSEC-2021-858"
+          },
+          {
+            "call_id": "call_27",
+            "field": "floor_vulnerabilities[0].fixed_in[0]",
+            "value": "5.2.2"
+          },
+          {
+            "call_id": "call_28",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "finding": "spec_allows_advisories",
+        "rationale": "The floor version 5.0.0 allowed by celery>=5.0 carries advisory PYSEC-2021-858 (also GHSA-q4xr-rc97-m4xx), fixed in 5.2.2. Version 5.2.2 is final, not yanked, eligible and lists no vulnerabilities, so raising the lower bound excludes the affected releases.",
+        "replacement_type": "none",
+        "suitability_assumptions": [
+          "Code written for 5.0/5.1 works unchanged on 5.2.2 and later within major 5."
+        ],
+        "target": ">=5.2.2",
+        "uncertainties": [
+          "The dependency count (S7) is not reduced by this change.",
+          "Other allowed versions above 5.2.2 were not individually checked for advisories."
+        ]
+      },
+      "package": "celery",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 6554,
+        "cache_read_input_tokens": 9411,
+        "input_tokens": 8,
+        "output_tokens": 733
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:04:20.136315Z",
+          "id": "call_31",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 0.459672,
+              "dependencies": 0.693147,
+              "maintenance": 1.419482,
+              "security": 0.0
+            },
+            "effective_version": "1.17.0",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 720.843523,
+              "S8": 1,
+              "S9": 0.0,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [],
+              "last_upload": "2024-12-04T17:35:28.174320+00:00",
+              "malformed_requires_dist": [],
+              "missing": [
+                "requires_dist"
+              ],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 1
+              },
+              "specifier": ""
+            },
+            "final_score": 72.97,
+            "flags": [
+              {
+                "code": "missing:requires_dist",
+                "evidence": {
+                  "field": "requires_dist",
+                  "value": null,
+                  "version": "1.17.0"
+                }
+              }
+            ],
+            "name": "six",
+            "rank": 9,
+            "reference_version": "1.17.0",
+            "signals": {
+              "S1": {
+                "contribution": 1.596313,
+                "partial": false,
+                "q": 0.202642,
+                "value": 720.843504
+              },
+              "S2": {
+                "contribution": 1.242652,
+                "partial": false,
+                "q": 0.288618,
+                "value": 1.0
+              },
+              "S4": {
+                "contribution": 0.919344,
+                "partial": false,
+                "q": 0.39878,
+                "value": 1.0
+              },
+              "S5": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 0.693147,
+                "partial": false,
+                "q": 0.5,
+                "value": null
+              }
+            },
+            "specifier": "",
+            "total": 2.572301
+          },
+          "package": "six",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:24:34.231130Z",
+          "id": "call_32",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              0,
+              1
+            ],
+            "allowed_versions": 28,
+            "floor_version": "0.9.0",
+            "floor_vulnerabilities": [],
+            "line": "six",
+            "spec_allows_advisories": false,
+            "spec_spans_major": true,
+            "specifier": ""
+          },
+          "package": "six",
+          "source": "live"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 2,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "do_nothing",
+        "confidence": "medium",
+        "evidence": [
+          {
+            "call_id": "call_31",
+            "field": "signals.S1.value",
+            "value": 720.843504
+          },
+          {
+            "call_id": "call_31",
+            "field": "signals.S2.value",
+            "value": 1.0
+          },
+          {
+            "call_id": "call_31",
+            "field": "signals.S6.value",
+            "value": 0.0
+          }
+        ],
+        "finding": "S1",
+        "rationale": "The two top signals are S1 (720.8 days since the last non-yanked upload) and S2 (1 final release in the 24 months before T). Both are maintenance-age signals. The profile shows no known vulnerabilities (S6 = 0), a compatible wheel (S5 = 0), and the effective version 1.17.0 has no advisories. No version bound can address S1 or S2.",
+        "replacement_type": "none",
+        "suitability_assumptions": [],
+        "target": "",
+        "uncertainties": [
+          "Low release activity may reflect a finished, stable library rather than neglect; this is not confirmed by the tools.",
+          "requires_dist is null on PyPI, so the dependency count is unknown."
+        ]
+      },
+      "package": "six",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 4644,
+        "cache_read_input_tokens": 4504,
+        "input_tokens": 6,
+        "output_tokens": 594
+      }
+    },
+    {
+      "attempts": 1,
+      "calls": [
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:04:48.548413Z",
+          "id": "call_33",
+          "name": "get_package_profile",
+          "origin": "agent",
+          "output": {
+            "beyond_baseline_range": [],
+            "categories": {
+              "compatibility": 0.0,
+              "dependencies": 2.206265,
+              "maintenance": 0.33014,
+              "security": 0.0
+            },
+            "effective_version": "3.14.5",
+            "evidence": {
+              "S10": false,
+              "S14": false,
+              "S3": 45.535408,
+              "S8": 5,
+              "S9": 0.022293,
+              "advisories": [],
+              "advisory_groups": [],
+              "dependencies": [
+                "aiohappyeyeballs",
+                "aiosignal",
+                "attrs",
+                "frozenlist",
+                "multidict",
+                "propcache",
+                "typing-extensions",
+                "yarl"
+              ],
+              "last_upload": "2026-10-11T01:05:12.408664+00:00",
+              "malformed_requires_dist": [],
+              "missing": [],
+              "skipped_versions": {
+                "invalid": 0,
+                "prerelease": 82
+              },
+              "specifier": ">=3.8"
+            },
+            "final_score": 72.34,
+            "flags": [],
+            "name": "aiohttp",
+            "rank": 10,
+            "reference_version": "3.14.5",
+            "signals": {
+              "S1": {
+                "contribution": 0.527908,
+                "partial": false,
+                "q": 0.589837,
+                "value": 45.531186
+              },
+              "S2": {
+                "contribution": 0.132371,
+                "partial": false,
+                "q": 0.876016,
+                "value": 34.0
+              },
+              "S4": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S5": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S6": {
+                "contribution": 0.0,
+                "partial": false,
+                "q": 1.0,
+                "value": 0.0
+              },
+              "S7": {
+                "contribution": 2.206265,
+                "partial": false,
+                "q": 0.110111,
+                "value": 8.0
+              }
+            },
+            "specifier": ">=3.8",
+            "total": 2.536405
+          },
+          "package": "aiohttp",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T15:20:59.233336Z",
+          "id": "call_34",
+          "name": "get_requirement",
+          "origin": "agent",
+          "output": {
+            "allowed_majors": [
+              3
+            ],
+            "allowed_versions": 66,
+            "floor_version": "3.8.0",
+            "floor_vulnerabilities": [
+              {
+                "aliases": [
+                  "CVE-2026-34515",
+                  "PYSEC-2026-2097"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-p998-jp59-783m"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34513",
+                  "PYSEC-2026-2095"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-hcc4-c3v8-rx92"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34516",
+                  "PYSEC-2026-2098"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-m5qp-6w8w-w647"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-23334",
+                  "GHSA-5h86-8mv2-jq9f"
+                ],
+                "fixed_in": [
+                  "3.9.2"
+                ],
+                "id": "PYSEC-2024-24"
+              },
+              {
+                "aliases": [
+                  "CVE-2023-37276",
+                  "PYSEC-2023-120"
+                ],
+                "fixed_in": [
+                  "3.8.5"
+                ],
+                "id": "GHSA-45c4-8wx5-qw6w"
+              },
+              {
+                "aliases": [
+                  "GHSA-45c4-8wx5-qw6w",
+                  "CVE-2023-37276"
+                ],
+                "fixed_in": [
+                  "3.8.5"
+                ],
+                "id": "PYSEC-2023-120"
+              },
+              {
+                "aliases": [
+                  "CVE-2023-49081",
+                  "GHSA-q3qx-c6g2-7pw2"
+                ],
+                "fixed_in": [
+                  "3.9.0"
+                ],
+                "id": "PYSEC-2023-250"
+              },
+              {
+                "aliases": [
+                  "CVE-2023-49082",
+                  "GHSA-qvrw-v9rv-5rjx"
+                ],
+                "fixed_in": [
+                  "3.9.0"
+                ],
+                "id": "PYSEC-2023-251"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-23334",
+                  "PYSEC-2024-24"
+                ],
+                "fixed_in": [
+                  "3.9.2"
+                ],
+                "id": "GHSA-5h86-8mv2-jq9f"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-23829",
+                  "PYSEC-2024-26"
+                ],
+                "fixed_in": [
+                  "3.9.2"
+                ],
+                "id": "GHSA-8qpw-xqxj-h4r2"
+              },
+              {
+                "aliases": [
+                  "CVE-2023-47627",
+                  "PYSEC-2023-246"
+                ],
+                "fixed_in": [
+                  "3.8.6"
+                ],
+                "id": "GHSA-gfw2-4jvh-wgfg"
+              },
+              {
+                "aliases": [
+                  "CVE-2023-47627",
+                  "GHSA-gfw2-4jvh-wgfg"
+                ],
+                "fixed_in": [
+                  "3.8.6"
+                ],
+                "id": "PYSEC-2023-246"
+              },
+              {
+                "aliases": [
+                  "CVE-2023-49082",
+                  "PYSEC-2023-251"
+                ],
+                "fixed_in": [
+                  "3.9.0"
+                ],
+                "id": "GHSA-qvrw-v9rv-5rjx"
+              },
+              {
+                "aliases": [
+                  "CVE-2023-49081",
+                  "PYSEC-2023-250"
+                ],
+                "fixed_in": [
+                  "3.9.0"
+                ],
+                "id": "GHSA-q3qx-c6g2-7pw2"
+              },
+              {
+                "aliases": [],
+                "fixed_in": [
+                  "3.8.6"
+                ],
+                "id": "GHSA-pjjw-qhg8-p2p9"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34517",
+                  "PYSEC-2026-2099"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-3wq7-rqq7-wx6j"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-23829",
+                  "GHSA-8qpw-xqxj-h4r2"
+                ],
+                "fixed_in": [
+                  "3.9.2"
+                ],
+                "id": "PYSEC-2024-26"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34519",
+                  "PYSEC-2026-2101"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-mwh4-6h8g-pg8w"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34518",
+                  "PYSEC-2026-2100"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-966j-vmvw-g2g9"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34520",
+                  "PYSEC-2026-2102"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-63hf-3vf5-4wqf"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-27306",
+                  "PYSEC-2026-1102"
+                ],
+                "fixed_in": [
+                  "3.9.4"
+                ],
+                "id": "GHSA-7gpw-8wmc-pm8g"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-30251",
+                  "PYSEC-2026-1098"
+                ],
+                "fixed_in": [
+                  "3.9.4"
+                ],
+                "id": "GHSA-5m98-qgg9-wh84"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69228",
+                  "GHSA-6jhg-hg63-jvvf"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "PYSEC-2026-1100"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69223",
+                  "GHSA-6mq8-rvhq-8wgg"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "PYSEC-2026-1101"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-30251",
+                  "GHSA-5m98-qgg9-wh84"
+                ],
+                "fixed_in": [
+                  "3.9.4"
+                ],
+                "id": "PYSEC-2026-1098"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-52304",
+                  "GHSA-8495-4g3g-x7pr"
+                ],
+                "fixed_in": [
+                  "3.10.11"
+                ],
+                "id": "PYSEC-2026-1103"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34525",
+                  "PYSEC-2026-2103"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-c427-h43c-vf67"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-52304",
+                  "PYSEC-2026-1103"
+                ],
+                "fixed_in": [
+                  "3.10.11"
+                ],
+                "id": "GHSA-8495-4g3g-x7pr"
+              },
+              {
+                "aliases": [
+                  "CVE-2024-27306",
+                  "GHSA-7gpw-8wmc-pm8g"
+                ],
+                "fixed_in": [
+                  "3.9.4"
+                ],
+                "id": "PYSEC-2026-1102"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-53643",
+                  "PYSEC-2026-1104"
+                ],
+                "fixed_in": [
+                  "3.12.14"
+                ],
+                "id": "GHSA-9548-qrrj-x5pj"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69223",
+                  "PYSEC-2026-1101"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "GHSA-6mq8-rvhq-8wgg"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69224",
+                  "PYSEC-2026-1099"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "GHSA-69f9-5gxw-wvc2"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69228",
+                  "PYSEC-2026-1100"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "GHSA-6jhg-hg63-jvvf"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69229",
+                  "PYSEC-2026-1106"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "GHSA-g84x-mcqj-x9qq"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69230",
+                  "PYSEC-2026-1105"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "GHSA-fh55-r93g-j68g"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69226",
+                  "PYSEC-2026-1097"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "GHSA-54jq-c3m8-4m76"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69227",
+                  "PYSEC-2026-1107"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "GHSA-jj3x-wxrx-4x23"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69225",
+                  "PYSEC-2026-1109"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "GHSA-mqqc-3gqh-h2x8"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-53643",
+                  "GHSA-9548-qrrj-x5pj"
+                ],
+                "fixed_in": [
+                  "3.12.14"
+                ],
+                "id": "PYSEC-2026-1104"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-22815",
+                  "PYSEC-2026-2094"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-w2fm-2cpv-w7v5"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34514",
+                  "PYSEC-2026-2096"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "GHSA-2vrm-gr82-f7m5"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69229",
+                  "GHSA-g84x-mcqj-x9qq"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "PYSEC-2026-1106"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69227",
+                  "GHSA-jj3x-wxrx-4x23"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "PYSEC-2026-1107"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69224",
+                  "GHSA-69f9-5gxw-wvc2"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "PYSEC-2026-1099"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69230",
+                  "GHSA-fh55-r93g-j68g"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "PYSEC-2026-1105"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34993",
+                  "PYSEC-2026-2104"
+                ],
+                "fixed_in": [
+                  "3.14.0"
+                ],
+                "id": "GHSA-jg22-mg44-37j8"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-47265",
+                  "PYSEC-2026-2105"
+                ],
+                "fixed_in": [
+                  "3.14.0"
+                ],
+                "id": "GHSA-hg6j-4rv6-33pg"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54273",
+                  "PYSEC-2026-2107"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "GHSA-4fvr-rgm6-gqmc"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54279",
+                  "PYSEC-2026-2112"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "GHSA-2fqr-mr3j-6wp8"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54277",
+                  "PYSEC-2026-2110"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "GHSA-63hw-fmq6-xxg2"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-50269",
+                  "PYSEC-2026-2106"
+                ],
+                "fixed_in": [
+                  "3.14.0"
+                ],
+                "id": "GHSA-m6qw-4cw2-hm4m"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54276",
+                  "PYSEC-2026-2109"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "GHSA-hpj7-wq8m-9hgp"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54278",
+                  "PYSEC-2026-2111"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "GHSA-g3cq-j2xw-wf74"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54280",
+                  "PYSEC-2026-2113"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "GHSA-9x8q-7h8h-wcw9"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54274",
+                  "PYSEC-2026-2108"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "GHSA-xcgm-r5h9-7989"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54275",
+                  "PYSEC-2026-237"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "GHSA-4m7w-qmgq-4wj5"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54275",
+                  "GHSA-4m7w-qmgq-4wj5"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "PYSEC-2026-237"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69225",
+                  "GHSA-mqqc-3gqh-h2x8"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "PYSEC-2026-1109"
+              },
+              {
+                "aliases": [
+                  "CVE-2025-69226",
+                  "GHSA-54jq-c3m8-4m76"
+                ],
+                "fixed_in": [
+                  "3.13.3"
+                ],
+                "id": "PYSEC-2026-1097"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34993",
+                  "GHSA-jg22-mg44-37j8"
+                ],
+                "fixed_in": [
+                  "3.14.0"
+                ],
+                "id": "PYSEC-2026-2104"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34525",
+                  "GHSA-c427-h43c-vf67"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2103"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54279",
+                  "GHSA-2fqr-mr3j-6wp8"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "PYSEC-2026-2112"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54278",
+                  "GHSA-g3cq-j2xw-wf74"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "PYSEC-2026-2111"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54280",
+                  "GHSA-9x8q-7h8h-wcw9"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "PYSEC-2026-2113"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34520",
+                  "GHSA-63hf-3vf5-4wqf"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2102"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54277",
+                  "GHSA-63hw-fmq6-xxg2"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "PYSEC-2026-2110"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54276",
+                  "GHSA-hpj7-wq8m-9hgp"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "PYSEC-2026-2109"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54274",
+                  "GHSA-xcgm-r5h9-7989"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "PYSEC-2026-2108"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-47265",
+                  "GHSA-hg6j-4rv6-33pg"
+                ],
+                "fixed_in": [
+                  "3.14.0"
+                ],
+                "id": "PYSEC-2026-2105"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34516",
+                  "GHSA-m5qp-6w8w-w647"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2098"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34514",
+                  "GHSA-2vrm-gr82-f7m5"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2096"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34519",
+                  "GHSA-mwh4-6h8g-pg8w"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2101"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34513",
+                  "GHSA-hcc4-c3v8-rx92"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2095"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-50269",
+                  "GHSA-m6qw-4cw2-hm4m"
+                ],
+                "fixed_in": [
+                  "3.14.0"
+                ],
+                "id": "PYSEC-2026-2106"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34518",
+                  "GHSA-966j-vmvw-g2g9"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2100"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34515",
+                  "GHSA-p998-jp59-783m"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2097"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-54273",
+                  "GHSA-4fvr-rgm6-gqmc"
+                ],
+                "fixed_in": [
+                  "3.14.1"
+                ],
+                "id": "PYSEC-2026-2107"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-34517",
+                  "GHSA-3wq7-rqq7-wx6j"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2099"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-22815",
+                  "GHSA-w2fm-2cpv-w7v5"
+                ],
+                "fixed_in": [
+                  "3.13.4"
+                ],
+                "id": "PYSEC-2026-2094"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-59881",
+                  "PYSEC-2026-3547"
+                ],
+                "fixed_in": [
+                  "3.14.2"
+                ],
+                "id": "GHSA-mq44-7p77-q5h7"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-69243",
+                  "PYSEC-2026-3546"
+                ],
+                "fixed_in": [
+                  "3.14.2"
+                ],
+                "id": "GHSA-mfx4-hv73-q22v"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-69244",
+                  "PYSEC-2026-3545"
+                ],
+                "fixed_in": [
+                  "3.14.3"
+                ],
+                "id": "GHSA-cq5v-8q36-5273"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-69244",
+                  "GHSA-cq5v-8q36-5273"
+                ],
+                "fixed_in": [
+                  "3.14.3"
+                ],
+                "id": "PYSEC-2026-3545"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-69243",
+                  "GHSA-mfx4-hv73-q22v"
+                ],
+                "fixed_in": [
+                  "3.14.2"
+                ],
+                "id": "PYSEC-2026-3546"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-59881",
+                  "GHSA-mq44-7p77-q5h7"
+                ],
+                "fixed_in": [
+                  "3.14.2"
+                ],
+                "id": "PYSEC-2026-3547"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111064"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-5wr8-gcqf-gqf3"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-123817"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-2g87-pp6c-29x5"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111063"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-494j-54xm-rwp3"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111750"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-pqxq-w44r-73xw"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111066"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-9xw5-w5jj-pvcg"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111749"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-gx76-c99x-2c96"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111065"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-6cjc-53gc-5rqm"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111748"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-f9xw-jh8m-3mwq"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128132"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-5rmc-48h2-hvcm"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128129"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-pw86-h8fm-j323"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128130"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-28qf-cpwq-vmc2"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128127"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-24c4-3p7v-29cm"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128128"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-3rp8-rxj8-mvjw"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128131"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-h4cc-hm5h-fmm9"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128126"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-xgw8-8ccx-rmqh"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128125"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-5pv8-vvhc-h7jv"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128124"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "GHSA-jm3w-gw2p-xjfj"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111064",
+                  "GHSA-5wr8-gcqf-gqf3"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4366"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111063",
+                  "GHSA-494j-54xm-rwp3"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4365"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111066",
+                  "GHSA-9xw5-w5jj-pvcg"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4368"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111748",
+                  "GHSA-f9xw-jh8m-3mwq"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4369"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111749",
+                  "GHSA-gx76-c99x-2c96"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4370"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111065",
+                  "GHSA-6cjc-53gc-5rqm"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4367"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-111750",
+                  "GHSA-pqxq-w44r-73xw"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4371"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-123817",
+                  "GHSA-2g87-pp6c-29x5"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4389"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128127",
+                  "GHSA-24c4-3p7v-29cm"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4394"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128126",
+                  "GHSA-xgw8-8ccx-rmqh"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4393"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128124",
+                  "GHSA-jm3w-gw2p-xjfj"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4391"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128128",
+                  "GHSA-3rp8-rxj8-mvjw"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4395"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128125",
+                  "GHSA-5pv8-vvhc-h7jv"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4392"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128130",
+                  "GHSA-28qf-cpwq-vmc2"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4398"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128132",
+                  "GHSA-5rmc-48h2-hvcm"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4400"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128129",
+                  "GHSA-pw86-h8fm-j323"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4397"
+              },
+              {
+                "aliases": [
+                  "CVE-2026-128131",
+                  "GHSA-h4cc-hm5h-fmm9"
+                ],
+                "fixed_in": [
+                  "3.14.4"
+                ],
+                "id": "PYSEC-2026-4399"
+              }
+            ],
+            "line": "aiohttp>=3.8",
+            "spec_allows_advisories": true,
+            "spec_spans_major": false,
+            "specifier": ">=3.8"
+          },
+          "package": "aiohttp",
+          "source": "live"
+        },
+        {
+          "args": {
+            "version": "3.14.5"
+          },
+          "fetched_at": "2026-11-25T13:04:48.548413Z",
+          "id": "call_35",
+          "name": "get_version_details",
+          "origin": "agent",
+          "output": {
+            "classifiers": [
+              "Development Status :: 5 - Production/Stable",
+              "Framework :: AsyncIO",
+              "Intended Audience :: Developers",
+              "Operating System :: MacOS :: MacOS X",
+              "Operating System :: Microsoft :: Windows",
+              "Operating System :: POSIX",
+              "Programming Language :: Python",
+              "Programming Language :: Python :: 3",
+              "Programming Language :: Python :: 3.10",
+              "Programming Language :: Python :: 3.11",
+              "Programming Language :: Python :: 3.12",
+              "Programming Language :: Python :: 3.13",
+              "Programming Language :: Python :: 3.14",
+              "Topic :: Internet :: WWW/HTTP"
+            ],
+            "eligible": true,
+            "eligible_files": [
+              "aiohttp-3.14.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+              "aiohttp-3.14.5-py3-none-any.whl",
+              "aiohttp-3.14.5.tar.gz"
+            ],
+            "files": {
+              "other": 0,
+              "sdists": 1,
+              "total": 161,
+              "wheels": 160,
+              "yanked": 0
+            },
+            "is_final": true,
+            "release_date": "2026-10-11T00:59:07.668168+00:00",
+            "requires_dist": [
+              "aiohappyeyeballs>=2.5.0",
+              "aiosignal>=1.4.0",
+              "async-timeout<6.0,>=4.0; python_version < \"3.11\"",
+              "attrs>=17.3.0",
+              "frozenlist>=1.1.1",
+              "multidict<8.0,>=4.5",
+              "propcache>=0.2.0",
+              "typing_extensions>=4.4; python_version < \"3.13\"",
+              "yarl<2.0,>=1.25.1",
+              "aiodns>=3.3.0; (sys_platform != \"android\" and sys_platform != \"ios\") and extra == \"speedups\"",
+              "Brotli>=1.2; (platform_python_implementation == \"CPython\" and sys_platform != \"android\" and sys_platform != \"ios\") and extra == \"speedups\"",
+              "brotlicffi>=1.2; platform_python_implementation != \"CPython\" and extra == \"speedups\"",
+              "backports.zstd; (platform_python_implementation == \"CPython\" and python_version < \"3.14\" and sys_platform != \"android\" and sys_platform != \"ios\") and extra == \"speedups\""
+            ],
+            "requires_python": [
+              ">=3.10"
+            ],
+            "satisfies_specifier": true,
+            "version": "3.14.5",
+            "vulnerabilities": [],
+            "yanked": false
+          },
+          "package": "aiohttp",
+          "source": "snapshot"
+        },
+        {
+          "args": {},
+          "fetched_at": "2026-11-25T13:04:48.548413Z",
+          "id": "call_36",
+          "name": "find_eligible_versions",
+          "origin": "validation",
+          "output": {
+            "effective_version": "3.14.5",
+            "oldest_allowed_version": "3.8.0",
+            "specifier": ">=3.8",
+            "versions": [
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.14.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.14.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.14.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.14.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.14.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.14.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.13.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.13.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.13.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.13.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.13.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.13.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.15"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.14"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.13"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.12"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.11"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.10"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.9"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.8"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.7"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.6"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.12.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.18"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.16"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.15"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.12"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.11"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.10"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.9"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.8"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.7"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.6"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.11.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.11"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.10"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.9"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.8"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.7"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.6"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.10.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.9.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.9.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.9.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.9.2"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.9.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.9.0"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.8.6"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.8.5"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.8.4"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.8.3"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.8.1"
+              },
+              {
+                "allowed": true,
+                "eligible": true,
+                "version": "3.8.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.7.4.post0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.7.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.7.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.7.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.7.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.7.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.6.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.6.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.6.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.6.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.5.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.5.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.5.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.5.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.5.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.4.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.4.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.4.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.4.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.4.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.3.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.3.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.3.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.2.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.2.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.1.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.9"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.8"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "3.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.10"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.9"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.8"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.3.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.2.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.1.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.7"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "2.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.3.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.3.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.3.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.3.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.3.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.3.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.2.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.1.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "1.0.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.22.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.22.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.22.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.22.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.22.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.22.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.21.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.21.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.21.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.21.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.21.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.21.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.20.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.20.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.20.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.19.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.18.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.18.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.18.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.18.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.18.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.17.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.17.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.17.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.17.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.17.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.16.6"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.16.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.16.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.16.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.16.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.16.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.16.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.15.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.15.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.15.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.15.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.14.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.14.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.14.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.14.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.14.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.13.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.13.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.12.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.11.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.10.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.10.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.10.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.9.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.9.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.9.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.9.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.8.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.7.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.7.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.7.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.7.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6.5"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.6.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.5.0"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.4.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.4.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.4.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.4.1"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.4"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.3"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.2"
+              },
+              {
+                "allowed": false,
+                "eligible": true,
+                "version": "0.1"
+              }
+            ]
+          },
+          "package": "aiohttp",
+          "source": "snapshot"
+        },
+        {
+          "args": {
+            "version": "3.14.5"
+          },
+          "fetched_at": "2026-11-25T13:04:48.548413Z",
+          "id": "call_37",
+          "name": "get_version_details",
+          "origin": "validation",
+          "output": {
+            "classifiers": [
+              "Development Status :: 5 - Production/Stable",
+              "Framework :: AsyncIO",
+              "Intended Audience :: Developers",
+              "Operating System :: MacOS :: MacOS X",
+              "Operating System :: Microsoft :: Windows",
+              "Operating System :: POSIX",
+              "Programming Language :: Python",
+              "Programming Language :: Python :: 3",
+              "Programming Language :: Python :: 3.10",
+              "Programming Language :: Python :: 3.11",
+              "Programming Language :: Python :: 3.12",
+              "Programming Language :: Python :: 3.13",
+              "Programming Language :: Python :: 3.14",
+              "Topic :: Internet :: WWW/HTTP"
+            ],
+            "eligible": true,
+            "eligible_files": [
+              "aiohttp-3.14.5-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl",
+              "aiohttp-3.14.5-py3-none-any.whl",
+              "aiohttp-3.14.5.tar.gz"
+            ],
+            "files": {
+              "other": 0,
+              "sdists": 1,
+              "total": 161,
+              "wheels": 160,
+              "yanked": 0
+            },
+            "is_final": true,
+            "release_date": "2026-10-11T00:59:07.668168+00:00",
+            "requires_dist": [
+              "aiohappyeyeballs>=2.5.0",
+              "aiosignal>=1.4.0",
+              "async-timeout<6.0,>=4.0; python_version < \"3.11\"",
+              "attrs>=17.3.0",
+              "frozenlist>=1.1.1",
+              "multidict<8.0,>=4.5",
+              "propcache>=0.2.0",
+              "typing_extensions>=4.4; python_version < \"3.13\"",
+              "yarl<2.0,>=1.25.1",
+              "aiodns>=3.3.0; (sys_platform != \"android\" and sys_platform != \"ios\") and extra == \"speedups\"",
+              "Brotli>=1.2; (platform_python_implementation == \"CPython\" and sys_platform != \"android\" and sys_platform != \"ios\") and extra == \"speedups\"",
+              "brotlicffi>=1.2; platform_python_implementation != \"CPython\" and extra == \"speedups\"",
+              "backports.zstd; (platform_python_implementation == \"CPython\" and python_version < \"3.14\" and sys_platform != \"android\" and sys_platform != \"ios\") and extra == \"speedups\""
+            ],
+            "requires_python": [
+              ">=3.10"
+            ],
+            "satisfies_specifier": true,
+            "version": "3.14.5",
+            "vulnerabilities": [],
+            "yanked": false
+          },
+          "package": "aiohttp",
+          "source": "snapshot"
+        }
+      ],
+      "errors": [],
+      "llm_requests": 3,
+      "model": "claude-sonnet-5-5",
+      "output": {
+        "action": "upgrade",
+        "confidence": "high",
+        "evidence": [
+          {
+            "call_id": "call_34",
+            "field": "spec_allows_advisories",
+            "value": true
+          },
+          {
+            "call_id": "call_34",
+            "field": "floor_vulnerabilities[0].id",
+            "value": "GHSA-p998-jp59-783m"
+          },
+          {
+            "call_id": "call_35",
+            "field": "eligible",
+            "value": true
+          },
+          {
+            "call_id": "call_35",
+            "field": "vulnerabilities",
+            "value": "[]"
+          }
+        ],
+        "finding": "spec_allows_advisories",
+        "rationale": "The specifier >=3.8 still allows the floor version 3.8.0, which has many known advisories, such as GHSA-p998-jp59-783m. Version 3.14.5 is final, not yanked, eligible on 3.12 and lists no vulnerabilities, so raising the lower bound to it excludes the vulnerable releases.",
+        "replacement_type": "none",
+        "suitability_assumptions": [
+          "Code written against aiohttp 3.8 APIs works on 3.14.x without changes",
+          "Python 3.10 or newer is available (3.14.5 requires >=3.10; the service runs 3.12)"
+        ],
+        "target": ">=3.14.5",
+        "uncertainties": [
+          "Breaking changes between 3.8 and 3.14 were not checked",
+          "The high S7 dependency count (8 direct runtime dependencies) is not addressed by this action"
+        ]
+      },
+      "package": "aiohttp",
+      "status": "validated",
+      "usage": {
+        "cache_creation_input_tokens": 14119,
+        "cache_read_input_tokens": 17661,
+        "input_tokens": 8,
+        "output_tokens": 754
+      }
+    }
+  ],
   "run": {
     "T": "2026-11-25T13:50:06.898024+00:00",
     "baseline_n": 4920,
     "config_hash": "84831a861b3516fb",
     "list_last_update": "2026-11-01 06:41:05",
-    "model": null,
+    "model": "claude-sonnet-5-5",
     "snapshot_config_hash": "84831a861b3516fb",
     "snapshot_id": "5c1e0e851f88d945"
   },

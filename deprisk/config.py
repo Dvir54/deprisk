@@ -87,6 +87,7 @@ MAX_TOOL_CALLS = 8  # per attempt
 MAX_RETRIES = 2  # validator-driven retries after the first attempt
 MAX_LLM_REQUESTS_PER_PACKAGE = (MAX_RETRIES + 1) * (MAX_TOOL_CALLS + 2)
 HISTORY_LIMIT = 40
+REPORT_MAX_FACTORS = 3  # main risk factors listed per package in REPORT.md
 ADVISORY_SUMMARY_CHARS = 200
 
 # --- LLM ------------------------------------------------------------------------

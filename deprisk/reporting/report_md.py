@@ -1,206 +1,192 @@
-"""REPORT.md: the human-readable report (SPEC §16).
+"""REPORT.md: the short human-readable report (SPEC §16).
 
-A ranked table, then per package every signal that adds to its score (raw value and the
-share of the baseline that is as risky or riskier), its flags and evidence-only
-signals, then unscored packages, the baseline summary and the recommendations.
+Three sections: a summary, the ranking of every package with its main risk factors in
+plain words, and the top recommendations. Every detail (signal values, placements,
+flags with evidence, the baseline distributions and the agent's tool-call log) lives in
+results.json; the method lives in RISK_MODEL.md.
 """
 
 from __future__ import annotations
 
-import json
+import math
 from collections.abc import Sequence
-from typing import Any
+from datetime import UTC, datetime
 
 from deprisk import config
 from deprisk.agent.models import Recommendation
 from deprisk.risk.models import AnalysisResult, PackageScore
 
-SIGNAL_LABELS = {
+_DAYS_PER_YEAR = 365.25
+# A factor is "main" when the package is riskier than at least half of the baseline on it,
+# i.e. its contribution is at least that of the neutral placement (ln 2).
+_MAIN_FACTOR_MIN = -math.log(config.NEUTRAL_Q)
+_S4_TEXT = {
+    0: "Python 3.12 support shown",
+    1: "Python 3.12 support not confirmed (only requires_python)",
+    2: "no Python version metadata",
+    3: "classifiers only for Python 3 versions before 3.12",
+    5: "no release installable on 3.12",
+}
+_S5_TEXT = {1: "sdist only (built from source at install)", 2: "no installable release"}
+_REPLACEMENT_KIND = {"stdlib": "standard-library module", "pypi": "PyPI package"}
+_SIGNAL_IDS = {
     "S1": "days since the last upload",
     "S2": "final releases in the last 24 months",
-    "S4": "Python 3.12 evidence",
-    "S5": "install path",
-    "S6": "distinct vulnerabilities on the reference version",
-    "S7": "direct runtime dependencies",
-}
-S4_STATES = {
-    0: "positive 3.12 evidence (classifier or cp312 wheel)",
-    1: "requires_python declared, no 3.12 evidence",
-    2: "no requires_python and no Python 3 minor classifiers",
-    3: "only stale Python 3 classifiers (< 3.12)",
-    4: "pip falls back to an older release",
-    5: "no eligible version",
-}
-S5_STATES = {0: "wheel", 1: "sdist only (build required)", 2: "no eligible version"}
-EVIDENCE_LABELS = {
-    "S3": "effective version age (days)",
-    "S8": "PyPI role accounts",
-    "S9": "share of fully yanked releases",
-    "S10": "0.x reference version",
-    "S14": "'Development Status :: 7 - Inactive'",
+    "S4": "Python 3.12 evidence state",
+    "S5": "install path state",
+    "S6": "known vulnerabilities",
+    "S7": "direct dependencies",
 }
 
 
-def _value(signal: str, value: float | None) -> str:
-    if value is None:
-        return "unknown (metadata missing)"
-    if signal == "S4":
-        return f"state {value:.0f}: {S4_STATES[int(value)]}"
-    if signal == "S5":
-        return f"state {value:.0f}: {S5_STATES[int(value)]}"
+def _factor(signal: str, p: PackageScore) -> str:
+    """One signal of one package in plain words, with its value."""
+    value = p.signals.values[signal]
     if signal == "S1":
-        return f"{value:.0f} days"
-    return f"{value:.0f}"
+        years = value / _DAYS_PER_YEAR
+        return (
+            f"last upload {years:.1f} years ago"
+            if years >= 1
+            else f"last upload {value:.0f} days ago"
+        )
+    if signal == "S2":
+        if value == 0:
+            return "no release in 2 years"
+        return "1 release in 2 years" if value == 1 else f"{value:.0f} releases in 2 years"
+    if signal == "S4":
+        if value == 4:
+            return f"pip falls back to the old release {p.signals.effective_version}"
+        return _S4_TEXT[int(value)]
+    if signal == "S5":
+        return _S5_TEXT[int(value)]
+    if signal == "S6":
+        if value is None:
+            return "no vulnerability data"
+        unfixed = next((f for f in p.flags if f.code == "unfixed_advisory"), None)
+        n_unfixed = len(unfixed.evidence["vulnerabilities"]) if unfixed else 0
+        noun = "vulnerability" if value == 1 else "vulnerabilities"
+        if n_unfixed == value:
+            return f"{value:.0f} known {noun} (no fix listed)"
+        return f"{value:.0f} known {noun} ({n_unfixed} without a fix)"
+    # S7
+    if value is None:
+        return "dependencies not declared on PyPI"
+    prefix = "at least " if signal in p.signals.partial else ""
+    return f"{prefix}{value:.0f} direct dependencies"
 
 
-def _pct(q: float) -> str:
-    return f"{100 * q:.2f}%"
+def _main_factors(p: PackageScore) -> str:
+    contributions = p.placement.contributions
+    main = sorted(
+        (s for s in config.SIGNALS if contributions[s] >= _MAIN_FACTOR_MIN),
+        key=lambda s: (-contributions[s], s),
+    )[: config.REPORT_MAX_FACTORS]
+    if not main:
+        return "no signal riskier than the baseline middle"
+    return "; ".join(_factor(s, p) for s in main)
 
 
-def _flag_text(evidence: dict[str, Any]) -> str:
-    return json.dumps(evidence, sort_keys=True)
+def _summary(result: AnalysisResult) -> list[str]:
+    summary, meta = result.baseline_summary, result.run_meta
+    exclusions = ", ".join(f"{k}: {v}" for k, v in summary["exclusions"].items()) or "none"
+    analyzed = len(result.ranked) + len(result.unscored)
+    t = datetime.fromisoformat(meta["T"]).astimezone(UTC)
+    lines = [
+        "## Summary",
+        "",
+        f"- **Target environment:** CPython {config.PYTHON_VERSION[0]}.{config.PYTHON_VERSION[1]} "
+        f"on Linux {config.PLATFORM_ARCH} (glibc 2.{config.MANYLINUX_GLIBC_MINORS[0]}, "
+        "manylinux wheels), fresh install.",
+        f"- **Baseline:** {summary['definition']}; list dated "
+        f"{str(summary['list_last_update'])[:10]}; {summary['n']:,} scorable packages "
+        f"(excluded: {exclusions}).",
+        f"- **Analyzed:** {analyzed} packages analyzed, {len(result.ranked)} scored. "
+        f"Snapshot `{meta['snapshot_id']}`, reference time T = {t:%Y-%m-%d %H:%M} UTC.",
+    ]
+    if result.unscored:
+        names = ", ".join(f"{name} ({reason})" for name, reason in result.unscored.items())
+        lines.append(f"- **Not scored:** {names}.")
+    if result.issues:
+        issues = "; ".join(f"line {i.line_no} `{i.line}` ({i.reason})" for i in result.issues)
+        lines.append(f"- **Requirement lines not used:** {issues}.")
+    lines += [
+        "",
+        "**Risk score:** a score of X means the package's combined risk is higher than X% of "
+        "the baseline packages. Each signal (maintenance, Python 3.12 compatibility, known "
+        "vulnerabilities, dependencies) adds more the rarer its value is in the baseline. It "
+        "is a relative ranking, not a probability of failure. Method: `RISK_MODEL.md`; every "
+        "signal value, placement and flag: `results.json`.",
+        "",
+        "Signal ids used in the agent's rationales: "
+        + "; ".join(f"{s} {label}" for s, label in _SIGNAL_IDS.items())
+        + ".",
+        "",
+    ]
+    return lines
 
 
 def _ranking(result: AnalysisResult) -> list[str]:
     lines = [
-        "| Rank | Package | Requirement | Effective version | Score | Total | Flags |",
-        "|---:|---|---|---|---:|---:|---|",
+        "## Dependency ranking",
+        "",
+        "| Rank | Package | Effective version | Risk score | Main risk factors |",
+        "|---:|---|---|---:|---|",
     ]
     for i, p in enumerate(result.ranked, 1):
-        spec = p.signals.evidence.get("specifier") or "(any)"
-        flags = ", ".join(f.code for f in p.flags) or "-"
-        lines.append(
-            f"| {i} | {p.name} | {spec} | {p.signals.effective_version or 'none'} | "
-            f"{p.final_score:.2f} | {p.placement.total:.3f} | {flags} |"
-        )
-    return lines
-
-
-def _details(i: int, p: PackageScore) -> list[str]:
-    sig, placement = p.signals, p.placement
-    lines = [
-        f"### {i}. {p.name}",
-        "",
-        f"Score **{p.final_score:.2f}** (riskier than {p.final_score:.2f}% of the baseline), "
-        f"total {placement.total:.3f}. Effective version {sig.effective_version or 'none'}, "
-        f"reference version {sig.reference_version}. Categories: "
-        + ", ".join(f"{c} {v:.3f}" for c, v in placement.categories.items())
-        + ".",
-        "",
-    ]
-    # Every contributing signal, largest first, so the total is fully explained.
-    drivers = sorted(
-        (s for s in config.SIGNALS if placement.contributions[s] > 0),
-        key=lambda s: (-placement.contributions[s], s),
-    )
-    if drivers:
-        lines.append("Signals driving the score:")
-        for s in drivers:
-            value = sig.values[s]
-            share = (
-                "neutral placement (no data)"
-                if value is None
-                else f"only {_pct(placement.q[s])} of the baseline is as risky or riskier"
-            )
-            partial = " (lower bound: malformed entries)" if s in sig.partial else ""
-            lines.append(
-                f"- {s} {SIGNAL_LABELS[s]}: {_value(s, value)}{partial}; {share} "
-                f"(contribution {placement.contributions[s]:.3f})"
-            )
-    else:
-        lines.append("No signal is rarer than the most common value in the baseline.")
-    if p.flags:
-        lines += ["", "Flags:"]
-        lines += [f"- `{f.code}`: {_flag_text(dict(f.evidence))}" for f in p.flags]
-    evidence = ", ".join(
-        f"{EVIDENCE_LABELS[k]}: {_fmt(sig.evidence.get(k))}" for k in EVIDENCE_LABELS
-    )
-    lines += ["", f"Evidence only (not scored): {evidence}.", ""]
-    return lines
-
-
-def _fmt(value: Any) -> str:
-    if isinstance(value, float):
-        return f"{value:.2f}"
-    return "n/a" if value is None else str(value)
-
-
-def _not_scored(result: AnalysisResult) -> list[str]:
-    lines: list[str] = []
-    if result.unscored:
-        lines += ["## Not scored", "", "| Package | Reason |", "|---|---|"]
-        lines += [f"| {name} | {reason} |" for name, reason in result.unscored.items()]
-        lines.append("")
-    if result.issues:
-        lines += ["## Requirement lines not used", "", "| Line | Text | Reason |", "|---:|---|---|"]
-        lines += [f"| {i.line_no} | `{i.line}` | {i.reason} |" for i in result.issues]
-        lines.append("")
-    return lines
-
-
-def _baseline(result: AnalysisResult) -> list[str]:
-    summary = result.baseline_summary
-    exclusions = ", ".join(f"{k}: {v}" for k, v in summary["exclusions"].items()) or "none"
-    lines = [
-        "## Baseline summary",
-        "",
-        f"- Definition: {summary['definition']}",
-        f"- Packages scored (n): {summary['n']}; excluded: {exclusions}",
-        f"- Top list last updated: {summary['list_last_update']}; reference time T: {summary['T']}",
-        f"- Totals: median {summary['totals']['median']:.3f}, p90 {summary['totals']['p90']:.3f}",
-        "",
-        "| Signal | Meaning | Riskier when | n_s | Median | p90 | Ties at best "
-        "| Unknown | Partial |",
-        "|---|---|---|---:|---:|---:|---:|---:|---:|",
-    ]
-    for s, d in summary["signals"].items():
-        direction = "higher" if d["higher_is_riskier"] else "lower"
-        lines.append(
-            f"| {s} | {SIGNAL_LABELS[s]} | {direction} | {d['n_s']} | {d['median']:g} | "
-            f"{d['p90']:g} | {_pct(d['best_tie_share'])} | {d['unknown']} | {d['partial']} |"
-        )
+        version = p.signals.effective_version or f"none (newest: {p.signals.reference_version})"
+        lines.append(f"| {i} | {p.name} | {version} | {p.final_score:.2f} | {_main_factors(p)} |")
     return [*lines, ""]
 
 
-def _recommendations(recommendations: Sequence[Recommendation] | None) -> list[str]:
-    lines = ["## Recommendations for the top packages", ""]
+def _action(out: dict) -> str:
+    action, target = out.get("action"), out.get("target")
+    if action == "replace":
+        kind = _REPLACEMENT_KIND.get(str(out.get("replacement_type")), "package")
+        return f"replace with `{target}` ({kind})"
+    if action == "do_nothing":
+        return "do nothing"
+    return f"{action} to `{target}`"
+
+
+def _recommendations(
+    result: AnalysisResult, recommendations: Sequence[Recommendation] | None
+) -> list[str]:
     if recommendations is None:
-        return [*lines, "Not run (`--no-llm`).", ""]
-    lines += ["Labels: facts validated; suitability not verified.", ""]
+        return ["## Top recommendations", "", "Not run (`--no-llm`).", ""]
+    ranks = {p.name: i for i, p in enumerate(result.ranked, 1)}
+    lines = [
+        f"## Top {len(recommendations)} recommendations",
+        "",
+        "Produced by the agent; code validated every fact it cites against the PyPI data "
+        "(facts validated; suitability not verified). The cited evidence and the agent's "
+        "tool calls are in `results.json`.",
+        "",
+    ]
     for rec in recommendations:
-        lines.append(f"### {rec.package}: {rec.status}")
-        if rec.output:
-            lines += [f"- {k}: {_fmt(v)}" for k, v in sorted(rec.output.items())]
-        if rec.errors:
-            lines.append(f"- validation errors: {'; '.join(rec.errors)}")
-        lines.append("")
+        out = dict(rec.output or {})
+        heading = f"### {ranks.get(rec.package, '-')}. {rec.package}"
+        if not out:
+            lines += [
+                f"{heading}: no validated recommendation",
+                "",
+                f"Unresolved after {rec.attempts} attempts; the errors are in `results.json`.",
+                "",
+            ]
+            continue
+        lines += [f"{heading}: {_action(out)}", "", str(out.get("rationale", "")), ""]
+        if out.get("suitability_assumptions"):
+            assumptions = "; ".join(a.strip().rstrip(".") for a in out["suitability_assumptions"])
+            lines += [f"Assumptions: {assumptions}.", ""]
     return lines
 
 
 def render_report(result: AnalysisResult, recommendations: Sequence[Recommendation] | None) -> str:
-    """The full Markdown report (deterministic for the same inputs)."""
-    meta = result.run_meta
+    """The Markdown report (deterministic for the same inputs)."""
     lines = [
         "# Dependency risk report",
         "",
-        f"Snapshot `{meta['snapshot_id']}`, T = {meta['T']}, baseline n = {meta['baseline_n']}, "
-        f"config `{meta['config_hash']}`.",
-        "",
-        "The score says how much riskier a package looks than the baseline: a score of X "
-        "means its total is higher than X% of the baseline totals. It is a relative index, "
-        "not a probability of failure, and unusual is not the same as unsafe. Each signal "
-        "adds -ln(q), where q is the share of the baseline that is as risky or riskier.",
-        "",
-        "## Ranking",
-        "",
+        *_summary(result),
         *_ranking(result),
-        "",
-        "## Package details",
-        "",
+        *_recommendations(result, recommendations),
     ]
-    for i, p in enumerate(result.ranked, 1):
-        lines += _details(i, p)
-    lines += _not_scored(result)
-    lines += _recommendations(recommendations)
-    lines += _baseline(result)
     return "\n".join(lines).rstrip() + "\n"

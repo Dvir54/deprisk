@@ -12,6 +12,7 @@ build/
 .cache/
 data/smoke/
 output/smoke/
+output/offline/
 *.log
 
 # Secrets

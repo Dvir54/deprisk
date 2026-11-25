@@ -134,6 +134,54 @@ def test_submit_schema_strict_and_closed() -> None:
     assert "untrusted" in SYSTEM_PROMPT
 
 
+def test_system_prompt_defines_every_signal_and_flag() -> None:
+    """The agent explains scores in its rationale, so it must know what each id means."""
+    for signal in (*config.SIGNALS, "S3", "S8", "S9", "S10", "S14"):
+        assert f"- {signal}:" in SYSTEM_PROMPT, signal
+    for flag in (
+        "no_eligible_version",
+        "python_fallback",
+        "unfixed_advisory",
+        "advisory_with_fix",
+        "sdist_only",
+        "missing:",
+        "beyond_baseline_range",
+    ):
+        assert f"- {flag}" in SYSTEM_PROMPT, flag
+    assert "get_requirement" in SYSTEM_PROMPT.split("Signals")[0]
+
+
+def test_first_message_states_each_signal_value_with_its_meaning(tools: AgentTools) -> None:
+    """The agent gets each value already described, so it does not translate states itself."""
+    client = ScriptedClient([submit(submission(tools))])
+    loop.recommend("legacy", tools, client, SETTINGS)
+    first = client.requests[0]["messages"][0]["content"]
+    signals = tools.profiles["legacy"]["signals"]
+    s1 = signals["S1"]
+    assert f"- S1 = {s1['value']:.1f} days since the last upload" in first
+    assert f"(contribution {s1['contribution']:.2f})" in first
+    assert "- S2 = 0 final releases in the 24 months before T" in first
+    assert "- S4 = 3: only classifiers for older Python 3 versions" in first
+    assert "- S5 = 1: sdist only, built from source at install" in first
+    assert "- S6 = 1 distinct known vulnerabilities" in first
+    assert "- S7 = unknown: PyPI returns null for requires_dist" in first
+
+
+def test_prompt_wording_matches_what_the_tools_check() -> None:
+    """spec_allows_advisories describes the oldest allowed release only; exists/valid of a
+    candidate describe PyPI only; a stdlib target names the module that is imported."""
+    descriptions = {t["name"]: t["description"] for t in TOOL_SCHEMAS}
+    assert "oldest allowed version" in descriptions["get_requirement"]
+    assert "does not show" in descriptions["get_requirement"]
+    assert "PyPI only" in descriptions["lookup_candidate"]
+    assert "concurrent.futures" in SYSTEM_PROMPT
+
+
+def test_system_prompt_restricts_rationale_to_logged_facts() -> None:
+    assert "Write the rationale only from facts in the tool outputs" in SYSTEM_PROMPT
+    assert "suitability_assumptions or uncertainties" in SYSTEM_PROMPT
+
+
 def test_happy_path_validated(tools: AgentTools) -> None:
     text = {"type": "text", "text": "Looking."}
     first = message("tool_use", THINK, text, use("get_release_history", {}))

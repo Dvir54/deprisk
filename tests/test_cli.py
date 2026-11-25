@@ -86,7 +86,7 @@ def test_cli_missing_target_exits_1_and_lists_it(tmp_path: Path, mini_snapshot) 
     assert rc == cli.EXIT_INVALID_RUN
     results = json.loads((out / "results.json").read_text("utf-8"))  # outputs are still written
     assert results["unscored"] == {"not-there": "not in snapshot"}
-    assert "| not-there | not in snapshot |" in (out / "REPORT.md").read_text("utf-8")
+    assert "**Not scored:** not-there (not in snapshot)." in (out / "REPORT.md").read_text("utf-8")
 
 
 def test_missing_snapshot_exits_2(tmp_path: Path) -> None:
@@ -198,4 +198,4 @@ def test_cli_exit_code_follows_recommendation_status(
     assert rec["calls"][0]["name"] == "get_package_profile"
     assert results["run"]["model"] == "claude-sonnet-5-5"
     report = (out / "REPORT.md").read_text("utf-8")
-    assert "### legacy:" in report and "suitability not verified" in report
+    assert "1. legacy:" in report and "suitability not verified" in report
