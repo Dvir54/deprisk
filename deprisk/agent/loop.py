@@ -86,8 +86,14 @@ def _supported(capabilities: Mapping[str, Any] | None, *path: str) -> bool:
     return isinstance(node, Mapping) and node.get("supported") is True
 
 
-def missing_capabilities(capabilities: Mapping[str, Any] | None, effort: str) -> list[str]:
-    """List the capabilities the agent needs that the model does not report."""
+def missing_capabilities(capabilities: Any, effort: str) -> list[str]:
+    """List the capabilities the agent needs that the model does not report.
+
+    ``capabilities`` is the Models API tree: the SDK returns a typed object
+    (``ModelCapabilities``), which is converted to a plain dict before reading.
+    """
+    if capabilities is not None and not isinstance(capabilities, Mapping):
+        capabilities = capabilities.to_dict()
     required = {
         "adaptive thinking": ("thinking", "types", "adaptive"),
         f"effort '{effort}'": ("effort", effort),

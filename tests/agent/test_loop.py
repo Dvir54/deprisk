@@ -87,3 +87,61 @@ def test_check_connectivity_rejects_missing_capability(
     with pytest.raises(ConfigError, match=expected):
         loop.check_connectivity(client, SETTINGS)
     assert client.requests == []  # no message request when a capability is missing
+
+
+# The capability tree the live Models API returned for claude-sonnet-5-5 (2026-11-25).
+LIVE_SONNET_55_CAPABILITIES = {
+    "batch": {"supported": True},
+    "citations": {"supported": True},
+    "code_execution": {"supported": True},
+    "context_management": {
+        "clear_thinking_20251015": {"supported": True},
+        "clear_tool_uses_20250919": {"supported": True},
+        "compact_20260112": {"supported": True},
+        "supported": True,
+    },
+    "effort": {
+        "high": {"supported": True},
+        "low": {"supported": True},
+        "max": {"supported": True},
+        "medium": {"supported": True},
+        "supported": True,
+        "xhigh": {"supported": True},
+    },
+    "image_input": {"supported": True},
+    "pdf_input": {"supported": True},
+    "server_tools": {
+        "code_execution": {"supported": True},
+        "supported": True,
+        "web_search": {"supported": True},
+    },
+    "structured_outputs": {"supported": True},
+    "thinking": {
+        "supported": True,
+        "types": {
+            "adaptive": {"supported": True},
+            "between_tools": {"supported": True},
+            "disabled": {"supported": False},
+            "enabled": {"supported": False},
+        },
+    },
+}
+
+
+def test_check_connectivity_accepts_sdk_capabilities_object() -> None:
+    """The real SDK returns a typed ModelCapabilities object, not a dict (found by the
+    first live check-llm run): it must be read the same way."""
+    from anthropic.types.model_capabilities import ModelCapabilities
+
+    caps = ModelCapabilities.model_validate(LIVE_SONNET_55_CAPABILITIES)
+    assert loop.missing_capabilities(caps, "medium") == []
+    result = loop.check_connectivity(FakeClient(caps), SETTINGS)
+    assert result["stop_reason"] == "end_turn"
+
+
+def test_sdk_capabilities_object_still_detects_a_missing_level() -> None:
+    from anthropic.types.model_capabilities import ModelCapabilities
+
+    tree = {**LIVE_SONNET_55_CAPABILITIES, "structured_outputs": {"supported": False}}
+    caps = ModelCapabilities.model_validate(tree)
+    assert loop.missing_capabilities(caps, "medium") == ["structured outputs (strict tools)"]
