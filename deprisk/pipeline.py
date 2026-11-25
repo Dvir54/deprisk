@@ -22,7 +22,11 @@ from deprisk.config import ConfigError, llm_settings
 from deprisk.data.models import FetchError, PackageRecord, Requirement, Snapshot
 from deprisk.data.pypi_client import FetchReport, PyPIClient, top_package_names
 from deprisk.data.records import add_version_meta, extract_record
-from deprisk.data.snapshot import reference_time
+from deprisk.data.requirements import parse_requirements
+from deprisk.data.snapshot import load_snapshot, reference_time, save_snapshot
+from deprisk.reporting.report_md import render_report
+from deprisk.reporting.results_json import write_results
+from deprisk.risk.analysis import analyze
 from deprisk.risk.models import UnscorableError
 from deprisk.risk.versions import reference_version
 
@@ -172,6 +176,90 @@ def build_snapshot(
         meta["T"],
     )
     return Snapshot(meta=meta, baseline_names=tuple(baseline), records=records)
+
+
+def _baseline_names(top_list: Any, limit: int | None, sample: int | None) -> tuple[list[str], str]:
+    """Baseline names and their human-readable definition (recorded in the snapshot)."""
+    names = top_package_names(top_list, config.TOP_N)
+    source = "PyPI projects by downloads"
+    if sample is not None:
+        # Evenly spaced ranks keep a small sample representative of the whole top list.
+        picked = [names[i * len(names) // sample] for i in range(sample)]
+        return picked, f"{sample} evenly spaced ranks of the top {config.TOP_N} {source}"
+    if limit is not None:
+        return names[:limit], f"top {limit} {source} (hugovk top-pypi-packages)"
+    return names, f"top {config.TOP_N} {source} (hugovk top-pypi-packages)"
+
+
+def create_snapshot(
+    out: Path,
+    *,
+    limit: int | None = None,
+    sample: int | None = None,
+    requirements_path: Path | None = config.REQUIREMENTS_PATH,
+    include_targets: bool = False,
+    cache_dir: Path = config.CACHE_DIR,
+    http: httpx.Client | None = None,
+) -> Snapshot:
+    """Phase A, step 2: select the baseline, build the snapshot (fetching only what the
+    cache lacks) and save it to ``out``. Arguments are checked before any request."""
+    if limit is not None and sample is not None:
+        raise ConfigError("Use either --limit or --sample, not both")
+    size = limit if limit is not None else sample
+    if size is not None and not 1 <= size <= config.TOP_N:
+        raise ConfigError(f"--limit/--sample must be between 1 and {config.TOP_N}, got {size}")
+    requirements: list[Requirement] = []
+    if requirements_path is not None:
+        requirements, issues = parse_requirements(requirements_path)
+        for issue in issues:
+            log.warning(
+                "%s line %d not used (%s): %s",
+                requirements_path,
+                issue.line_no,
+                issue.reason,
+                issue.line,
+            )
+    with PyPIClient(cache_dir, client=http) as client:
+        top_list, _ = client.get_top_list()
+        names, definition = _baseline_names(top_list, limit, sample)
+        if include_targets:
+            definition += ", plus the requirement targets"
+        snap = build_snapshot(client, names, requirements, include_targets, definition=definition)
+    save_snapshot(snap, out)
+    excluded_targets = sorted(r.name for r in requirements if r.name in snap.meta["exclusions"])
+    if excluded_targets:
+        log.warning("Targets excluded (data unavailable): %s", ", ".join(excluded_targets))
+    return snap
+
+
+def run_analysis(
+    requirements_path: Path,
+    snapshot_path: Path,
+    out_dir: Path,
+    *,
+    use_llm: bool,
+    top_n: int = config.AGENT_TOP_N,
+) -> int:
+    """Phase B (Phase C from M7): score, rank, write results.json and REPORT.md.
+
+    Returns the exit code: 0 ok, 1 invalid run (an unscored target; outputs are still
+    written). Raises ConfigError or SnapshotDataError for unusable inputs (exit 2).
+    """
+    if top_n < 1:
+        raise ConfigError(f"--top-n must be at least 1, got {top_n}")
+    if use_llm:
+        raise ConfigError("The agent phase is not implemented yet (M7); run with --no-llm")
+    requirements, issues = parse_requirements(requirements_path)
+    snapshot = load_snapshot(snapshot_path)
+    result = analyze(snapshot, requirements, issues=issues)
+    write_results(result, None, out_dir / "results.json")
+    (out_dir / "REPORT.md").write_text(render_report(result, None), encoding="utf-8")
+    log.info(
+        "Scored %d of %d packages; outputs in %s", len(result.ranked), len(requirements), out_dir
+    )
+    for name, reason in result.unscored.items():
+        log.error("Not scored: %s (%s)", name, reason)
+    return 1 if result.unscored else 0
 
 
 def check_llm() -> dict[str, Any]:

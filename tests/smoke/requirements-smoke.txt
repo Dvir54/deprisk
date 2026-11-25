@@ -1,0 +1,11 @@
+# Smoke targets: obsolete, pip-fallback, sdist-only, advisory and healthy cases (PLAN.md M5.3)
+pycrypto
+typing
+futures
+nose
+enum34
+six
+flask>=2.0
+requests>=2.25
+pydantic>=1.10
+numpy>=1.21

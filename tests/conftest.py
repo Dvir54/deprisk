@@ -6,6 +6,7 @@ Tests run with ``--import-mode=importlib``, so helpers are exposed as fixtures
 
 from __future__ import annotations
 
+import socket
 from collections.abc import Callable, Mapping
 from datetime import UTC, datetime
 from typing import Any
@@ -123,3 +124,69 @@ def make_record() -> RecordBuilder:
 def fixed_t() -> datetime:
     """A fixed reference time ``T`` for deterministic tests."""
     return FIXED_T
+
+
+_CLEAN = {"classifiers": [], "requires_dist": [], "vulnerabilities": []}
+
+
+def build_mini_snapshot() -> Snapshot:
+    """Nine synthetic packages covering the main cases, plus one build-time exclusion.
+
+    fresh0-4: maintained pure-Python wheels with 0-4 dependencies; legacy: sdist only,
+    stale classifiers, unknown dependencies, an unfixed advisory; fallback: the latest
+    release excludes 3.12 (pip falls back to 1.0); beta: only pre-releases (unscored);
+    gone: excluded when the snapshot was built ("data unavailable").
+    """
+    recs: dict[str, PackageRecord] = {}
+    for i in range(5):
+        upload = datetime(2026, 11 - 2 * i, 1, tzinfo=UTC).isoformat()
+        wheel = {
+            "packagetype": "bdist_wheel",
+            "filename": f"fresh{i}-1.{i}-py3-none-any.whl",
+            "upload_time": upload,
+            "requires_python": ">=3.9",
+        }
+        meta = {
+            **_CLEAN,
+            "classifiers": ["Programming Language :: Python :: 3.12"],
+            "requires_dist": [f"dep{j}" for j in range(i)],
+        }
+        recs[f"fresh{i}"] = build_record({f"1.{i}": [wheel]}, {f"1.{i}": meta}, name=f"fresh{i}")
+    recs["legacy"] = build_record(
+        {"2.6": [{"upload_time": "2014-06-20T00:00:00+00:00"}]},
+        {
+            "2.6": {
+                "classifiers": ["Programming Language :: Python :: 3.4"],
+                "requires_dist": None,
+                "vulnerabilities": [{"id": "PYSEC-1", "aliases": ["CVE-2013-1"], "fixed_in": []}],
+            }
+        },
+        name="legacy",
+    )
+    recs["fallback"] = build_record(
+        {
+            "1.0": [{"upload_time": "2019-01-01T00:00:00+00:00"}],
+            "2.0": [{"upload_time": "2021-01-01T00:00:00+00:00", "requires_python": ">=3.13"}],
+        },
+        {"1.0": _CLEAN, "2.0": _CLEAN},
+        name="fallback",
+    )
+    recs["beta"] = build_record({"1.0b1": [{}]}, name="beta")
+    return build_snapshot(recs, exclusions={"gone": "data unavailable"})
+
+
+@pytest.fixture
+def mini_snapshot() -> Snapshot:
+    """A small synthetic snapshot (see ``build_mini_snapshot``)."""
+    return build_mini_snapshot()
+
+
+@pytest.fixture
+def block_network(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Make any outgoing socket connection fail, so a test proves it works offline."""
+
+    def refuse(*_: object, **__: object) -> None:
+        raise OSError("network access is blocked in this test")
+
+    monkeypatch.setattr(socket.socket, "connect", refuse)
+    monkeypatch.setattr(socket.socket, "connect_ex", refuse)

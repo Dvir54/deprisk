@@ -1,0 +1,3309 @@
+{
+  "baseline_summary": {
+    "T": "2026-11-25T13:50:06.898024+00:00",
+    "definition": "top 5000 PyPI projects by downloads (hugovk top-pypi-packages)",
+    "exclusions": {
+      "data unavailable": 1,
+      "only pre-releases": 77,
+      "only yanked files": 2
+    },
+    "list_last_update": "2026-11-01 06:41:05",
+    "n": 4920,
+    "signals": {
+      "S1": {
+        "best_tie_share": 0.000203,
+        "higher_is_riskier": true,
+        "median": 82.849004,
+        "n_s": 4920,
+        "p90": 1453.007567,
+        "partial": 0,
+        "unknown": 0
+      },
+      "S2": {
+        "best_tie_share": 0.000203,
+        "higher_is_riskier": false,
+        "median": 5.0,
+        "n_s": 4920,
+        "p90": 41.0,
+        "partial": 0,
+        "unknown": 0
+      },
+      "S4": {
+        "best_tie_share": 0.60122,
+        "higher_is_riskier": true,
+        "median": 0.0,
+        "n_s": 4920,
+        "p90": 2.0,
+        "partial": 0,
+        "unknown": 0
+      },
+      "S5": {
+        "best_tie_share": 0.954065,
+        "higher_is_riskier": true,
+        "median": 0.0,
+        "n_s": 4920,
+        "p90": 0.0,
+        "partial": 0,
+        "unknown": 0
+      },
+      "S6": {
+        "best_tie_share": 0.997764,
+        "higher_is_riskier": true,
+        "median": 0.0,
+        "n_s": 4920,
+        "p90": 0.0,
+        "partial": 0,
+        "unknown": 0
+      },
+      "S7": {
+        "best_tie_share": 0.170196,
+        "higher_is_riskier": true,
+        "median": 2.0,
+        "n_s": 3778,
+        "p90": 8.0,
+        "partial": 0,
+        "unknown": 1142
+      }
+    },
+    "totals": {
+      "median": 1.741649,
+      "p90": 3.970578
+    }
+  },
+  "issues": [],
+  "packages": [
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 2.55231,
+        "dependencies": 0.693147,
+        "maintenance": 3.948574,
+        "security": 7.402452
+      },
+      "effective_version": "2.6.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 4541.23595,
+        "S8": 2,
+        "S9": 0.0,
+        "advisories": [
+          {
+            "aliases": [
+              "CVE-2013-7459",
+              "GHSA-cq27-v7xp-c356"
+            ],
+            "fixed_in": [],
+            "id": "PYSEC-2017-94"
+          },
+          {
+            "aliases": [
+              "CVE-2018-6594",
+              "GHSA-6528-wvf6-f6qg"
+            ],
+            "fixed_in": [],
+            "id": "PYSEC-2018-97"
+          },
+          {
+            "aliases": [
+              "CVE-2018-6594",
+              "PYSEC-2018-97"
+            ],
+            "fixed_in": [],
+            "id": "GHSA-6528-wvf6-f6qg"
+          },
+          {
+            "aliases": [
+              "CVE-2013-7459",
+              "PYSEC-2017-94"
+            ],
+            "fixed_in": [],
+            "id": "GHSA-cq27-v7xp-c356"
+          }
+        ],
+        "dependencies": [],
+        "last_upload": "2014-06-20T08:10:20.813938+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 3
+        },
+        "specifier": ">=2.6"
+      },
+      "final_score": 99.96,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "2.6.1"
+          }
+        },
+        {
+          "code": "sdist_only",
+          "evidence": {
+            "S5": 1,
+            "effective_version": "2.6.1"
+          }
+        },
+        {
+          "code": "unfixed_advisory",
+          "evidence": {
+            "advisories": [
+              {
+                "aliases": [
+                  "CVE-2013-7459",
+                  "GHSA-cq27-v7xp-c356"
+                ],
+                "fixed_in": [],
+                "id": "PYSEC-2017-94"
+              },
+              {
+                "aliases": [
+                  "CVE-2018-6594",
+                  "GHSA-6528-wvf6-f6qg"
+                ],
+                "fixed_in": [],
+                "id": "PYSEC-2018-97"
+              },
+              {
+                "aliases": [
+                  "CVE-2018-6594",
+                  "PYSEC-2018-97"
+                ],
+                "fixed_in": [],
+                "id": "GHSA-6528-wvf6-f6qg"
+              },
+              {
+                "aliases": [
+                  "CVE-2013-7459",
+                  "PYSEC-2017-94"
+                ],
+                "fixed_in": [],
+                "id": "GHSA-cq27-v7xp-c356"
+              }
+            ],
+            "version": "2.6.1"
+          }
+        }
+      ],
+      "name": "pycrypto",
+      "rank": 1,
+      "reference_version": "2.6.1",
+      "signals": {
+        "S1": {
+          "contribution": 6.303839,
+          "partial": false,
+          "q": 0.001829,
+          "value": 4541.23595
+        },
+        "S2": {
+          "contribution": 1.593309,
+          "partial": false,
+          "q": 0.203252,
+          "value": 0.0
+        },
+        "S4": {
+          "contribution": 2.024091,
+          "partial": false,
+          "q": 0.132114,
+          "value": 2.0
+        },
+        "S5": {
+          "contribution": 3.080529,
+          "partial": false,
+          "q": 0.045935,
+          "value": 1.0
+        },
+        "S6": {
+          "contribution": 7.402452,
+          "partial": false,
+          "q": 0.00061,
+          "value": 4.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": ">=2.6",
+      "total": 14.596483
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 4.181358,
+        "dependencies": 0.693147,
+        "maintenance": 2.220942,
+        "security": 0.0
+      },
+      "effective_version": "3.7.4.3",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 2325.60445,
+        "S8": 8,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2021-05-01T18:03:58.186786+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 1
+        },
+        "specifier": ""
+      },
+      "final_score": 99.29,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "3.7.4.3"
+          }
+        },
+        {
+          "code": "python_fallback",
+          "evidence": {
+            "S4": 4,
+            "effective_version": "3.7.4.3"
+          }
+        },
+        {
+          "code": "sdist_only",
+          "evidence": {
+            "S5": 1,
+            "effective_version": "3.7.4.3"
+          }
+        }
+      ],
+      "name": "typing",
+      "rank": 2,
+      "reference_version": "3.7.4.3",
+      "signals": {
+        "S1": {
+          "contribution": 2.848575,
+          "partial": false,
+          "q": 0.057927,
+          "value": 2033.823712
+        },
+        "S2": {
+          "contribution": 1.593309,
+          "partial": false,
+          "q": 0.203252,
+          "value": 0.0
+        },
+        "S4": {
+          "contribution": 5.282188,
+          "partial": false,
+          "q": 0.005081,
+          "value": 4.0
+        },
+        "S5": {
+          "contribution": 3.080529,
+          "partial": false,
+          "q": 0.045935,
+          "value": 1.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": "",
+      "total": 7.095447
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 4.181358,
+        "dependencies": 0.693147,
+        "maintenance": 1.967639,
+        "security": 0.0
+      },
+      "effective_version": "3.0.5",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 3936.665598,
+        "S8": 2,
+        "S9": 0.083333,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2022-10-31T21:40:32.078999+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ""
+      },
+      "final_score": 99.11,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "3.0.5"
+          }
+        },
+        {
+          "code": "python_fallback",
+          "evidence": {
+            "S4": 4,
+            "effective_version": "3.0.5"
+          }
+        },
+        {
+          "code": "sdist_only",
+          "evidence": {
+            "S5": 1,
+            "effective_version": "3.0.5"
+          }
+        }
+      ],
+      "name": "futures",
+      "rank": 3,
+      "reference_version": "3.0.5",
+      "signals": {
+        "S1": {
+          "contribution": 2.341968,
+          "partial": false,
+          "q": 0.096138,
+          "value": 1485.67332
+        },
+        "S2": {
+          "contribution": 1.593309,
+          "partial": false,
+          "q": 0.203252,
+          "value": 0.0
+        },
+        "S4": {
+          "contribution": 5.282188,
+          "partial": false,
+          "q": 0.005081,
+          "value": 4.0
+        },
+        "S5": {
+          "contribution": 3.080529,
+          "partial": false,
+          "q": 0.045935,
+          "value": 1.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": "",
+      "total": 6.842144
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 1.012045,
+        "dependencies": 0.693147,
+        "maintenance": 3.549321,
+        "security": 0.0
+      },
+      "effective_version": "1.3.7",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 4194.192754,
+        "S8": 3,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2015-06-02T09:12:40.570975+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ""
+      },
+      "final_score": 96.34,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "1.3.7"
+          }
+        }
+      ],
+      "name": "nose",
+      "rank": 4,
+      "reference_version": "1.3.7",
+      "signals": {
+        "S1": {
+          "contribution": 5.505332,
+          "partial": false,
+          "q": 0.004065,
+          "value": 4194.192666
+        },
+        "S2": {
+          "contribution": 1.593309,
+          "partial": false,
+          "q": 0.203252,
+          "value": 0.0
+        },
+        "S4": {
+          "contribution": 2.024091,
+          "partial": false,
+          "q": 0.132114,
+          "value": 2.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": "",
+      "total": 5.254513
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 1.333127,
+        "dependencies": 0.693147,
+        "maintenance": 2.456295,
+        "security": 0.0
+      },
+      "effective_version": "1.1.10",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 2450.834824,
+        "S8": 1,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2020-03-10T17:48:03.174785+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ""
+      },
+      "final_score": 93.54,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "1.1.10"
+          }
+        }
+      ],
+      "name": "enum34",
+      "rank": 5,
+      "reference_version": "1.1.10",
+      "signals": {
+        "S1": {
+          "contribution": 3.31928,
+          "partial": false,
+          "q": 0.036179,
+          "value": 2450.834765
+        },
+        "S2": {
+          "contribution": 1.593309,
+          "partial": false,
+          "q": 0.203252,
+          "value": 0.0
+        },
+        "S4": {
+          "contribution": 2.666253,
+          "partial": false,
+          "q": 0.069512,
+          "value": 3.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": "",
+      "total": 4.482569
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 1.333127,
+        "dependencies": 0.693147,
+        "maintenance": 2.02587,
+        "security": 0.0
+      },
+      "effective_version": "1.0.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 4465.922335,
+        "S8": 1,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2022-05-04T13:37:20.585901+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ""
+      },
+      "final_score": 90.81,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "1.0.1"
+          }
+        }
+      ],
+      "name": "pathlib",
+      "rank": 6,
+      "reference_version": "1.0.1",
+      "signals": {
+        "S1": {
+          "contribution": 2.458431,
+          "partial": false,
+          "q": 0.085569,
+          "value": 1666.008869
+        },
+        "S2": {
+          "contribution": 1.593309,
+          "partial": false,
+          "q": 0.203252,
+          "value": 0.0
+        },
+        "S4": {
+          "contribution": 2.666253,
+          "partial": false,
+          "q": 0.069512,
+          "value": 3.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": "",
+      "total": 4.052144
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.459672,
+        "dependencies": 1.6916,
+        "maintenance": 0.952978,
+        "security": 0.0
+      },
+      "effective_version": "3.1.3",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 279.367487,
+        "S8": 0,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [
+          "blinker",
+          "click",
+          "itsdangerous",
+          "jinja2",
+          "markupsafe",
+          "werkzeug"
+        ],
+        "last_upload": "2026-02-19T05:00:57.678803+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 2
+        },
+        "specifier": ">=2.0"
+      },
+      "final_score": 81.36,
+      "flags": [],
+      "name": "flask",
+      "rank": 7,
+      "reference_version": "3.1.3",
+      "signals": {
+        "S1": {
+          "contribution": 1.07392,
+          "partial": false,
+          "q": 0.341667,
+          "value": 279.367468
+        },
+        "S2": {
+          "contribution": 0.832036,
+          "partial": false,
+          "q": 0.435163,
+          "value": 3.0
+        },
+        "S4": {
+          "contribution": 0.919344,
+          "partial": false,
+          "q": 0.39878,
+          "value": 1.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 1.6916,
+          "partial": false,
+          "q": 0.184224,
+          "value": 6.0
+        }
+      },
+      "specifier": ">=2.0",
+      "total": 3.10425
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 2.443936,
+        "maintenance": 0.38199,
+        "security": 0.0
+      },
+      "effective_version": "5.7.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 19.941542,
+        "S8": 5,
+        "S9": 0.008772,
+        "advisories": [],
+        "dependencies": [
+          "billiard",
+          "click",
+          "click-didyoumean",
+          "click-plugins",
+          "click-repl",
+          "kombu",
+          "python-dateutil",
+          "tzlocal",
+          "vine"
+        ],
+        "last_upload": "2026-11-05T15:14:24.027748+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 54
+        },
+        "specifier": ">=5.0"
+      },
+      "final_score": 77.09,
+      "flags": [],
+      "name": "celery",
+      "rank": 8,
+      "reference_version": "5.7.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.319343,
+          "partial": false,
+          "q": 0.726626,
+          "value": 19.941468
+        },
+        "S2": {
+          "contribution": 0.444637,
+          "partial": false,
+          "q": 0.641057,
+          "value": 9.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 2.443936,
+          "partial": false,
+          "q": 0.086818,
+          "value": 9.0
+        }
+      },
+      "specifier": ">=5.0",
+      "total": 2.825926
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.459672,
+        "dependencies": 0.693147,
+        "maintenance": 1.419482,
+        "security": 0.0
+      },
+      "effective_version": "1.17.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 720.843523,
+        "S8": 1,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2024-12-04T17:35:28.174320+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 1
+        },
+        "specifier": ""
+      },
+      "final_score": 72.97,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "1.17.0"
+          }
+        }
+      ],
+      "name": "six",
+      "rank": 9,
+      "reference_version": "1.17.0",
+      "signals": {
+        "S1": {
+          "contribution": 1.596313,
+          "partial": false,
+          "q": 0.202642,
+          "value": 720.843504
+        },
+        "S2": {
+          "contribution": 1.242652,
+          "partial": false,
+          "q": 0.288618,
+          "value": 1.0
+        },
+        "S4": {
+          "contribution": 0.919344,
+          "partial": false,
+          "q": 0.39878,
+          "value": 1.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": "",
+      "total": 2.572301
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 2.206265,
+        "maintenance": 0.33014,
+        "security": 0.0
+      },
+      "effective_version": "3.14.5",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 45.535408,
+        "S8": 5,
+        "S9": 0.022293,
+        "advisories": [],
+        "dependencies": [
+          "aiohappyeyeballs",
+          "aiosignal",
+          "attrs",
+          "frozenlist",
+          "multidict",
+          "propcache",
+          "typing-extensions",
+          "yarl"
+        ],
+        "last_upload": "2026-10-11T01:05:12.408664+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 82
+        },
+        "specifier": ">=3.8"
+      },
+      "final_score": 72.34,
+      "flags": [],
+      "name": "aiohttp",
+      "rank": 10,
+      "reference_version": "3.14.5",
+      "signals": {
+        "S1": {
+          "contribution": 0.527908,
+          "partial": false,
+          "q": 0.589837,
+          "value": 45.531186
+        },
+        "S2": {
+          "contribution": 0.132371,
+          "partial": false,
+          "q": 0.876016,
+          "value": 34.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 2.206265,
+          "partial": false,
+          "q": 0.110111,
+          "value": 8.0
+        }
+      },
+      "specifier": ">=3.8",
+      "total": 2.536405
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 1.123808,
+        "maintenance": 0.848781,
+        "security": 0.0
+      },
+      "effective_version": "0.28.1",
+      "evidence": {
+        "S10": true,
+        "S14": false,
+        "S3": 718.925525,
+        "S8": 2,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [
+          "anyio",
+          "certifi",
+          "httpcore",
+          "idna"
+        ],
+        "last_upload": "2026-08-31T17:59:55.135021+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 9
+        },
+        "specifier": ">=0.23"
+      },
+      "final_score": 57.93,
+      "flags": [],
+      "name": "httpx",
+      "rank": 11,
+      "reference_version": "0.28.1",
+      "signals": {
+        "S1": {
+          "contribution": 0.702541,
+          "partial": false,
+          "q": 0.495325,
+          "value": 85.826525
+        },
+        "S2": {
+          "contribution": 0.995022,
+          "partial": false,
+          "q": 0.369715,
+          "value": 2.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 1.123808,
+          "partial": false,
+          "q": 0.32504,
+          "value": 4.0
+        }
+      },
+      "specifier": ">=0.23",
+      "total": 1.972589
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.459672,
+        "dependencies": 0.186566,
+        "maintenance": 1.258471,
+        "security": 0.0
+      },
+      "effective_version": "3.1.6",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 629.739659,
+        "S8": 0,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [
+          "markupsafe"
+        ],
+        "last_upload": "2025-03-05T20:05:02.478302+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 4
+        },
+        "specifier": ">=3.0"
+      },
+      "final_score": 55.75,
+      "flags": [],
+      "name": "jinja2",
+      "rank": 12,
+      "reference_version": "3.1.6",
+      "signals": {
+        "S1": {
+          "contribution": 1.521919,
+          "partial": false,
+          "q": 0.218293,
+          "value": 629.739634
+        },
+        "S2": {
+          "contribution": 0.995022,
+          "partial": false,
+          "q": 0.369715,
+          "value": 2.0
+        },
+        "S4": {
+          "contribution": 0.919344,
+          "partial": false,
+          "q": 0.39878,
+          "value": 1.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.186566,
+          "partial": false,
+          "q": 0.829804,
+          "value": 1.0
+        }
+      },
+      "specifier": ">=3.0",
+      "total": 1.904709
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 1.123808,
+        "maintenance": 0.735398,
+        "security": 0.0
+      },
+      "effective_version": "2.34.2",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 194.767135,
+        "S8": 3,
+        "S9": 0.0125,
+        "advisories": [],
+        "dependencies": [
+          "certifi",
+          "charset-normalizer",
+          "idna",
+          "urllib3"
+        ],
+        "last_upload": "2026-05-14T19:25:27.735762+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 1
+        },
+        "specifier": ">=2.25"
+      },
+      "final_score": 53.88,
+      "flags": [],
+      "name": "requests",
+      "rank": 13,
+      "reference_version": "2.34.2",
+      "signals": {
+        "S1": {
+          "contribution": 0.934235,
+          "partial": false,
+          "q": 0.392886,
+          "value": 194.76712
+        },
+        "S2": {
+          "contribution": 0.53656,
+          "partial": false,
+          "q": 0.584756,
+          "value": 7.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 1.123808,
+          "partial": false,
+          "q": 0.32504,
+          "value": 4.0
+        }
+      },
+      "specifier": ">=2.25",
+      "total": 1.859206
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.510737,
+        "maintenance": 1.244063,
+        "security": 0.0
+      },
+      "effective_version": "1.4.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 402.835662,
+        "S8": 4,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [
+          "python-dateutil",
+          "tzdata"
+        ],
+        "last_upload": "2025-10-18T17:46:46.761994+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ">=1.0"
+      },
+      "final_score": 50.43,
+      "flags": [],
+      "name": "arrow",
+      "rank": 14,
+      "reference_version": "1.4.0",
+      "signals": {
+        "S1": {
+          "contribution": 1.245473,
+          "partial": false,
+          "q": 0.287805,
+          "value": 402.83565
+        },
+        "S2": {
+          "contribution": 1.242652,
+          "partial": false,
+          "q": 0.288618,
+          "value": 1.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.510737,
+          "partial": false,
+          "q": 0.600053,
+          "value": 2.0
+        }
+      },
+      "specifier": ">=1.0",
+      "total": 1.7548
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.693147,
+        "maintenance": 1.030131,
+        "security": 0.0
+      },
+      "effective_version": "1.4.2",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 479.426887,
+        "S8": 1,
+        "S9": 0.111111,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2025-08-03T03:35:25.189544+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ">=1.3"
+      },
+      "final_score": 49.27,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "1.4.2"
+          }
+        }
+      ],
+      "name": "retrying",
+      "rank": 15,
+      "reference_version": "1.4.2",
+      "signals": {
+        "S1": {
+          "contribution": 1.338666,
+          "partial": false,
+          "q": 0.262195,
+          "value": 479.426872
+        },
+        "S2": {
+          "contribution": 0.721597,
+          "partial": false,
+          "q": 0.485976,
+          "value": 4.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": ">=1.3",
+      "total": 1.723278
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.459672,
+        "dependencies": 0.510737,
+        "maintenance": 0.648613,
+        "security": 0.0
+      },
+      "effective_version": "4.15.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 170.87901,
+        "S8": 1,
+        "S9": 0.018519,
+        "advisories": [],
+        "dependencies": [
+          "soupsieve",
+          "typing-extensions"
+        ],
+        "last_upload": "2026-06-07T16:44:21.566528+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 2
+        },
+        "specifier": ">=4.10"
+      },
+      "final_score": 45.22,
+      "flags": [],
+      "name": "beautifulsoup4",
+      "rank": 16,
+      "reference_version": "4.15.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.886258,
+          "partial": false,
+          "q": 0.412195,
+          "value": 170.878997
+        },
+        "S2": {
+          "contribution": 0.410968,
+          "partial": false,
+          "q": 0.663008,
+          "value": 10.0
+        },
+        "S4": {
+          "contribution": 0.919344,
+          "partial": false,
+          "q": 0.39878,
+          "value": 1.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.510737,
+          "partial": false,
+          "q": 0.600053,
+          "value": 2.0
+        }
+      },
+      "specifier": ">=4.10",
+      "total": 1.619022
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.459672,
+        "dependencies": 0.693147,
+        "maintenance": 0.3315,
+        "security": 0.0
+      },
+      "effective_version": "8.5.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 18.842449,
+        "S8": 0,
+        "S9": 0.015152,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-11-06T17:37:01.021167+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 3
+        },
+        "specifier": ">=8.0"
+      },
+      "final_score": 40.1,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "8.5.1"
+          }
+        }
+      ],
+      "name": "click",
+      "rank": 17,
+      "reference_version": "8.5.1",
+      "signals": {
+        "S1": {
+          "contribution": 0.305454,
+          "partial": false,
+          "q": 0.736789,
+          "value": 18.842429
+        },
+        "S2": {
+          "contribution": 0.357546,
+          "partial": false,
+          "q": 0.69939,
+          "value": 12.0
+        },
+        "S4": {
+          "contribution": 0.919344,
+          "partial": false,
+          "q": 0.39878,
+          "value": 1.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": ">=8.0",
+      "total": 1.484319
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.693147,
+        "maintenance": 0.751138,
+        "security": 0.0
+      },
+      "effective_version": "2.9.13",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 76.580572,
+        "S8": 1,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-09-10T00:06:12.199969+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ">=2.9"
+      },
+      "final_score": 38.6,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "2.9.13"
+          }
+        }
+      ],
+      "name": "psycopg2-binary",
+      "rank": 18,
+      "reference_version": "2.9.13",
+      "signals": {
+        "S1": {
+          "contribution": 0.670241,
+          "partial": false,
+          "q": 0.511585,
+          "value": 76.572161
+        },
+        "S2": {
+          "contribution": 0.832036,
+          "partial": false,
+          "q": 0.435163,
+          "value": 3.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": ">=2.9",
+      "total": 1.444285
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 1.383217,
+        "security": 0.0
+      },
+      "effective_version": "5.2.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 632.05446,
+        "S8": 6,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2025-03-03T12:31:42.911672+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 8
+        },
+        "specifier": ">=4.0"
+      },
+      "final_score": 36.1,
+      "flags": [],
+      "name": "mock",
+      "rank": 19,
+      "reference_version": "5.2.0",
+      "signals": {
+        "S1": {
+          "contribution": 1.523782,
+          "partial": false,
+          "q": 0.217886,
+          "value": 632.054444
+        },
+        "S2": {
+          "contribution": 1.242652,
+          "partial": false,
+          "q": 0.288618,
+          "value": 1.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=4.0",
+      "total": 1.383217
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 1.123808,
+        "maintenance": 0.122916,
+        "security": 0.0
+      },
+      "effective_version": "2.14.4",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 6.036449,
+        "S8": 2,
+        "S9": 0.009434,
+        "advisories": [],
+        "dependencies": [
+          "annotated-types",
+          "pydantic-core",
+          "typing-extensions",
+          "typing-inspection"
+        ],
+        "last_upload": "2026-11-19T12:57:39.767682+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 36
+        },
+        "specifier": ">=1.10"
+      },
+      "final_score": 30.3,
+      "flags": [],
+      "name": "pydantic",
+      "rank": 20,
+      "reference_version": "2.14.4",
+      "signals": {
+        "S1": {
+          "contribution": 0.138888,
+          "partial": false,
+          "q": 0.870325,
+          "value": 6.036425
+        },
+        "S2": {
+          "contribution": 0.106943,
+          "partial": false,
+          "q": 0.898577,
+          "value": 40.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 1.123808,
+          "partial": false,
+          "q": 0.32504,
+          "value": 4.0
+        }
+      },
+      "specifier": ">=1.10",
+      "total": 1.246724
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.693147,
+        "maintenance": 0.548276,
+        "security": 0.0
+      },
+      "effective_version": "6.0.4",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 4.594064,
+        "S8": 3,
+        "S9": 0.03125,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-11-20T23:37:05.977886+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 15
+        },
+        "specifier": ">=5.4"
+      },
+      "final_score": 29.94,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "6.0.4"
+          }
+        }
+      ],
+      "name": "pyyaml",
+      "rank": 21,
+      "reference_version": "6.0.4",
+      "signals": {
+        "S1": {
+          "contribution": 0.101529,
+          "partial": false,
+          "q": 0.903455,
+          "value": 4.592372
+        },
+        "S2": {
+          "contribution": 0.995022,
+          "partial": false,
+          "q": 0.369715,
+          "value": 2.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": ">=5.4",
+      "total": 1.241423
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.510737,
+        "maintenance": 0.674148,
+        "security": 0.0
+      },
+      "effective_version": "3.3.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 43.707045,
+        "S8": 2,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [
+          "python-dateutil",
+          "tzdata"
+        ],
+        "last_upload": "2026-10-12T20:54:11.461742+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 3
+        },
+        "specifier": ">=2.1"
+      },
+      "final_score": 27.7,
+      "flags": [],
+      "name": "pendulum",
+      "rank": 22,
+      "reference_version": "3.3.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.51626,
+          "partial": false,
+          "q": 0.596748,
+          "value": 43.705503
+        },
+        "S2": {
+          "contribution": 0.832036,
+          "partial": false,
+          "q": 0.435163,
+          "value": 3.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.510737,
+          "partial": false,
+          "q": 0.600053,
+          "value": 2.0
+        }
+      },
+      "specifier": ">=2.1",
+      "total": 1.184885
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.812785,
+        "maintenance": 0.329039,
+        "security": 0.0
+      },
+      "effective_version": "1.20.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 34.434386,
+        "S8": 2,
+        "S9": 0.013605,
+        "advisories": [],
+        "dependencies": [
+          "mako",
+          "sqlalchemy",
+          "typing-extensions"
+        ],
+        "last_upload": "2026-10-22T03:24:37.667799+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 2
+        },
+        "specifier": ">=1.7"
+      },
+      "final_score": 26.18,
+      "flags": [],
+      "name": "alembic",
+      "rank": 23,
+      "reference_version": "1.20.1",
+      "signals": {
+        "S1": {
+          "contribution": 0.461261,
+          "partial": false,
+          "q": 0.630488,
+          "value": 34.434366
+        },
+        "S2": {
+          "contribution": 0.196816,
+          "partial": false,
+          "q": 0.821341,
+          "value": 23.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.812785,
+          "partial": false,
+          "q": 0.443621,
+          "value": 3.0
+        }
+      },
+      "specifier": ">=1.7",
+      "total": 1.141824
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.693147,
+        "maintenance": 0.401253,
+        "security": 0.0
+      },
+      "effective_version": "2026.6",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 27.197474,
+        "S8": 1,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-10-29T09:05:47.011737+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 45,
+          "prerelease": 15
+        },
+        "specifier": ""
+      },
+      "final_score": 24.67,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "2026.6"
+          }
+        }
+      ],
+      "name": "pytz",
+      "rank": 24,
+      "reference_version": "2026.6",
+      "signals": {
+        "S1": {
+          "contribution": 0.391538,
+          "partial": false,
+          "q": 0.676016,
+          "value": 27.197452
+        },
+        "S2": {
+          "contribution": 0.410968,
+          "partial": false,
+          "q": 0.663008,
+          "value": 10.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": "",
+      "total": 1.0944
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.693147,
+        "maintenance": 0.358228,
+        "security": 0.0
+      },
+      "effective_version": "4.3.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 14.705335,
+        "S8": 3,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-11-10T20:57:37.642667+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 1
+        },
+        "specifier": ">=3.17"
+      },
+      "final_score": 23.07,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "4.3.0"
+          }
+        }
+      ],
+      "name": "simplejson",
+      "rank": 25,
+      "reference_version": "4.3.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.271819,
+          "partial": false,
+          "q": 0.761992,
+          "value": 14.703116
+        },
+        "S2": {
+          "contribution": 0.444637,
+          "partial": false,
+          "q": 0.641057,
+          "value": 9.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": ">=3.17",
+      "total": 1.051375
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.693147,
+        "maintenance": 0.270112,
+        "security": 0.0
+      },
+      "effective_version": "4.4.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 21.569964,
+        "S8": 2,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-11-04T00:09:23.777252+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 39
+        },
+        "specifier": ">=3.14"
+      },
+      "final_score": 19.74,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "4.4.0"
+          }
+        }
+      ],
+      "name": "marshmallow",
+      "rank": 26,
+      "reference_version": "4.4.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.343407,
+          "partial": false,
+          "q": 0.70935,
+          "value": 21.569944
+        },
+        "S2": {
+          "contribution": 0.196816,
+          "partial": false,
+          "q": 0.821341,
+          "value": 23.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": ">=3.14",
+      "total": 0.963259
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.693147,
+        "maintenance": 0.197028,
+        "security": 0.0
+      },
+      "effective_version": "2.5.5",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 9.680518,
+        "S8": 3,
+        "S9": 0.007194,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-11-15T21:32:28.607313+00:00",
+        "malformed_requires_dist": [],
+        "missing": [
+          "requires_dist"
+        ],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 8
+        },
+        "specifier": ">=1.21"
+      },
+      "final_score": 17.09,
+      "flags": [
+        {
+          "code": "missing:requires_dist",
+          "evidence": {
+            "field": "requires_dist",
+            "value": null,
+            "version": "2.5.5"
+          }
+        }
+      ],
+      "name": "numpy",
+      "rank": 27,
+      "reference_version": "2.5.5",
+      "signals": {
+        "S1": {
+          "contribution": 0.210269,
+          "partial": false,
+          "q": 0.810366,
+          "value": 9.678915
+        },
+        "S2": {
+          "contribution": 0.183786,
+          "partial": false,
+          "q": 0.832114,
+          "value": 25.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.693147,
+          "partial": false,
+          "q": 0.5,
+          "value": null
+        }
+      },
+      "specifier": ">=1.21",
+      "total": 0.890175
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.186566,
+        "maintenance": 0.683455,
+        "security": 0.0
+      },
+      "effective_version": "4.0.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 24.282941,
+        "S8": 4,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [
+          "tzdata"
+        ],
+        "last_upload": "2026-11-01T07:02:42.426237+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ">=2.8"
+      },
+      "final_score": 16.3,
+      "flags": [],
+      "name": "python-dateutil",
+      "rank": 28,
+      "reference_version": "4.0.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.371889,
+          "partial": false,
+          "q": 0.689431,
+          "value": 24.282922
+        },
+        "S2": {
+          "contribution": 0.995022,
+          "partial": false,
+          "q": 0.369715,
+          "value": 2.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.186566,
+          "partial": false,
+          "q": 0.829804,
+          "value": 1.0
+        }
+      },
+      "specifier": ">=2.8",
+      "total": 0.870021
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.510737,
+        "maintenance": 0.347904,
+        "security": 0.0
+      },
+      "effective_version": "3.1.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 20.947648,
+        "S8": 3,
+        "S9": 0.008264,
+        "advisories": [],
+        "dependencies": [
+          "numpy",
+          "python-dateutil"
+        ],
+        "last_upload": "2026-11-04T15:08:01.994382+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 4
+        },
+        "specifier": ">=1.3"
+      },
+      "final_score": 16.02,
+      "flags": [],
+      "name": "pandas",
+      "rank": 29,
+      "reference_version": "3.1.1",
+      "signals": {
+        "S1": {
+          "contribution": 0.338262,
+          "partial": false,
+          "q": 0.713008,
+          "value": 20.94589
+        },
+        "S2": {
+          "contribution": 0.357546,
+          "partial": false,
+          "q": 0.69939,
+          "value": 12.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.510737,
+          "partial": false,
+          "q": 0.600053,
+          "value": 2.0
+        }
+      },
+      "specifier": ">=1.3",
+      "total": 0.858641
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.812785,
+        "maintenance": 0.013059,
+        "security": 0.0
+      },
+      "effective_version": "1.44.11",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 0.726295,
+        "S8": 1,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [
+          "botocore",
+          "jmespath",
+          "s3transfer"
+        ],
+        "last_upload": "2026-11-24T20:24:16.211002+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ">=1.20"
+      },
+      "final_score": 15.28,
+      "flags": [],
+      "name": "boto3",
+      "rank": 30,
+      "reference_version": "1.44.11",
+      "signals": {
+        "S1": {
+          "contribution": 0.024693,
+          "partial": false,
+          "q": 0.97561,
+          "value": 0.726281
+        },
+        "S2": {
+          "contribution": 0.001424,
+          "partial": false,
+          "q": 0.998577,
+          "value": 483.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.812785,
+          "partial": false,
+          "q": 0.443621,
+          "value": 3.0
+        }
+      },
+      "specifier": ">=1.20",
+      "total": 0.825844
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 0.63432,
+        "security": 0.0
+      },
+      "effective_version": "9.2.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 49.06744,
+        "S8": 2,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-10-07T12:13:01.633347+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 2
+        },
+        "specifier": ">=8.0"
+      },
+      "final_score": 8.94,
+      "flags": [],
+      "name": "tenacity",
+      "rank": 31,
+      "reference_version": "9.2.1",
+      "signals": {
+        "S1": {
+          "contribution": 0.547043,
+          "partial": false,
+          "q": 0.578659,
+          "value": 49.067422
+        },
+        "S2": {
+          "contribution": 0.721597,
+          "partial": false,
+          "q": 0.485976,
+          "value": 4.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=8.0",
+      "total": 0.63432
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 0.626533,
+        "security": 0.0
+      },
+      "effective_version": "0.8.0",
+      "evidence": {
+        "S10": true,
+        "S14": false,
+        "S3": 13.791467,
+        "S8": 1,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-11-11T18:50:26.248211+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ">=0.5"
+      },
+      "final_score": 8.76,
+      "flags": [],
+      "name": "loguru",
+      "rank": 32,
+      "reference_version": "0.8.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.258044,
+          "partial": false,
+          "q": 0.772561,
+          "value": 13.791443
+        },
+        "S2": {
+          "contribution": 0.995022,
+          "partial": false,
+          "q": 0.369715,
+          "value": 2.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=0.5",
+      "total": 0.626533
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.186566,
+        "maintenance": 0.385084,
+        "security": 0.0
+      },
+      "effective_version": "50.0.2",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 55.962761,
+        "S8": 1,
+        "S9": 0.01875,
+        "advisories": [],
+        "dependencies": [
+          "cffi"
+        ],
+        "last_upload": "2026-09-30T15:30:04.884601+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ">=3.4"
+      },
+      "final_score": 7.5,
+      "flags": [],
+      "name": "cryptography",
+      "rank": 33,
+      "reference_version": "50.0.2",
+      "signals": {
+        "S1": {
+          "contribution": 0.595622,
+          "partial": false,
+          "q": 0.55122,
+          "value": 55.930579
+        },
+        "S2": {
+          "contribution": 0.174547,
+          "partial": false,
+          "q": 0.839837,
+          "value": 26.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.186566,
+          "partial": false,
+          "q": 0.829804,
+          "value": 1.0
+        }
+      },
+      "specifier": ">=3.4",
+      "total": 0.57165
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 0.54653,
+        "security": 0.0
+      },
+      "effective_version": "2.15.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 57.798211,
+        "S8": 1,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-09-28T18:40:42.598678+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 2
+        },
+        "specifier": ">=2.0"
+      },
+      "final_score": 6.91,
+      "flags": [],
+      "name": "pyjwt",
+      "rank": 34,
+      "reference_version": "2.15.1",
+      "signals": {
+        "S1": {
+          "contribution": 0.606,
+          "partial": false,
+          "q": 0.545528,
+          "value": 57.798198
+        },
+        "S2": {
+          "contribution": 0.487059,
+          "partial": false,
+          "q": 0.614431,
+          "value": 8.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=2.0",
+      "total": 0.54653
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 0.525615,
+        "security": 0.0
+      },
+      "effective_version": "4.70.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 75.267272,
+        "S8": 2,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-09-11T07:25:16.601180+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 1
+        },
+        "specifier": ">=4.60"
+      },
+      "final_score": 6.34,
+      "flags": [],
+      "name": "tqdm",
+      "rank": 35,
+      "reference_version": "4.70.1",
+      "signals": {
+        "S1": {
+          "contribution": 0.665089,
+          "partial": false,
+          "q": 0.514228,
+          "value": 75.267249
+        },
+        "S2": {
+          "contribution": 0.386141,
+          "partial": false,
+          "q": 0.679675,
+          "value": 11.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=4.60",
+      "total": 0.525615
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 0.52555,
+        "security": 0.0
+      },
+      "effective_version": "6.1.3",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 83.961132,
+        "S8": 2,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-09-03T12:04:50.126177+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 4
+        },
+        "specifier": ">=4.6"
+      },
+      "final_score": 6.32,
+      "flags": [],
+      "name": "lxml",
+      "rank": 36,
+      "reference_version": "6.1.3",
+      "signals": {
+        "S1": {
+          "contribution": 0.693554,
+          "partial": false,
+          "q": 0.499797,
+          "value": 83.073111
+        },
+        "S2": {
+          "contribution": 0.357546,
+          "partial": false,
+          "q": 0.69939,
+          "value": 12.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=4.6",
+      "total": 0.52555
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 0.467007,
+        "security": 0.0
+      },
+      "effective_version": "13.0.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 39.6491,
+        "S8": 4,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-10-16T22:18:09.718711+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 3
+        },
+        "specifier": ">=9.0"
+      },
+      "final_score": 5.33,
+      "flags": [],
+      "name": "pillow",
+      "rank": 37,
+      "reference_version": "13.0.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.489377,
+          "partial": false,
+          "q": 0.613008,
+          "value": 39.64719
+        },
+        "S2": {
+          "contribution": 0.444637,
+          "partial": false,
+          "q": 0.641057,
+          "value": 9.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=9.0",
+      "total": 0.467007
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.186566,
+        "maintenance": 0.163219,
+        "security": 0.0
+      },
+      "effective_version": "2.1.9",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 8.700771,
+        "S8": 2,
+        "S9": 0.008721,
+        "advisories": [],
+        "dependencies": [
+          "typing-extensions"
+        ],
+        "last_upload": "2026-11-16T21:53:43.918260+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 48
+        },
+        "specifier": ">=1.4"
+      },
+      "final_score": 3.52,
+      "flags": [],
+      "name": "sqlalchemy",
+      "rank": 38,
+      "reference_version": "2.1.9",
+      "signals": {
+        "S1": {
+          "contribution": 0.184275,
+          "partial": false,
+          "q": 0.831707,
+          "value": 8.664155
+        },
+        "S2": {
+          "contribution": 0.142163,
+          "partial": false,
+          "q": 0.86748,
+          "value": 32.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.186566,
+          "partial": false,
+          "q": 0.829804,
+          "value": 1.0
+        }
+      },
+      "specifier": ">=1.4",
+      "total": 0.349785
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 0.269713,
+        "security": 0.0
+      },
+      "effective_version": "27.0.1",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 12.631216,
+        "S8": 2,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-11-12T22:41:11.334267+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 0
+        },
+        "specifier": ">=20.0"
+      },
+      "final_score": 2.03,
+      "flags": [],
+      "name": "gunicorn",
+      "rank": 39,
+      "reference_version": "27.0.1",
+      "signals": {
+        "S1": {
+          "contribution": 0.240571,
+          "partial": false,
+          "q": 0.786179,
+          "value": 12.631199
+        },
+        "S2": {
+          "contribution": 0.298855,
+          "partial": false,
+          "q": 0.741667,
+          "value": 15.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=20.0",
+      "total": 0.269713
+    },
+    {
+      "beyond_baseline_range": [],
+      "categories": {
+        "compatibility": 0.0,
+        "dependencies": 0.0,
+        "maintenance": 0.130856,
+        "security": 0.0
+      },
+      "effective_version": "8.2.0",
+      "evidence": {
+        "S10": false,
+        "S14": false,
+        "S3": 2.220971,
+        "S8": 3,
+        "S9": 0.0,
+        "advisories": [],
+        "dependencies": [],
+        "last_upload": "2026-11-23T08:31:56.692180+00:00",
+        "malformed_requires_dist": [],
+        "missing": [],
+        "skipped_versions": {
+          "invalid": 0,
+          "prerelease": 40
+        },
+        "specifier": ">=4.0"
+      },
+      "final_score": 0.59,
+      "flags": [],
+      "name": "redis",
+      "rank": 40,
+      "reference_version": "8.2.0",
+      "signals": {
+        "S1": {
+          "contribution": 0.072046,
+          "partial": false,
+          "q": 0.930488,
+          "value": 2.220951
+        },
+        "S2": {
+          "contribution": 0.189666,
+          "partial": false,
+          "q": 0.827236,
+          "value": 24.0
+        },
+        "S4": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S5": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S6": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        },
+        "S7": {
+          "contribution": 0.0,
+          "partial": false,
+          "q": 1.0,
+          "value": 0.0
+        }
+      },
+      "specifier": ">=4.0",
+      "total": 0.130856
+    }
+  ],
+  "recommendations": null,
+  "run": {
+    "T": "2026-11-25T13:50:06.898024+00:00",
+    "baseline_n": 4920,
+    "config_hash": "84831a861b3516fb",
+    "list_last_update": "2026-11-01 06:41:05",
+    "model": null,
+    "snapshot_config_hash": "84831a861b3516fb",
+    "snapshot_id": "5c1e0e851f88d945"
+  },
+  "unscored": {}
+}

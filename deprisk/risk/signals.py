@@ -107,6 +107,7 @@ def compute_signals(record: PackageRecord, spec: SpecifierSet, t: datetime) -> P
         versions.release_date(record.releases[effective]) if effective is not None else None
     )
     evidence: dict[str, Any] = {
+        "specifier": str(spec),
         "last_upload": last_upload.isoformat(),
         "missing": missing,
         "advisories": advisories,

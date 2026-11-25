@@ -10,25 +10,18 @@ from __future__ import annotations
 
 import argparse
 import logging
-from collections.abc import Callable, Sequence
+from collections.abc import Sequence
+from pathlib import Path
 
-from deprisk import pipeline
+from deprisk import config, pipeline
 from deprisk.config import ConfigError
-from deprisk.data.models import FetchError
+from deprisk.data.models import FetchError, SnapshotDataError
 
 EXIT_OK = 0
 EXIT_INVALID_RUN = 1
 EXIT_CONFIG = 2
 
 log = logging.getLogger("deprisk")
-
-
-def _not_implemented(milestone: str) -> Callable[[argparse.Namespace], int]:
-    def handler(_: argparse.Namespace) -> int:
-        log.error("This command is not implemented yet (%s).", milestone)
-        return EXIT_CONFIG
-
-    return handler
 
 
 def _fetch(args: argparse.Namespace) -> int:
@@ -40,6 +33,27 @@ def _fetch(args: argparse.Namespace) -> int:
         log.error("Some packages failed; re-run `fetch` to retry them (cached ones are skipped).")
         return EXIT_INVALID_RUN
     return EXIT_OK
+
+
+def _snapshot(args: argparse.Namespace) -> int:
+    snap = pipeline.create_snapshot(
+        args.out,
+        limit=args.limit,
+        sample=args.sample,
+        requirements_path=args.requirements,
+        include_targets=args.include_targets,
+    )
+    print(
+        f"snapshot {snap.meta['id']}: {len(snap.records)} records, "
+        f"{len(snap.meta['exclusions'])} excluded, T={snap.meta['T']} -> {args.out}"
+    )
+    return EXIT_OK
+
+
+def _analyze(args: argparse.Namespace) -> int:
+    return pipeline.run_analysis(
+        args.requirements, args.snapshot, args.out, use_llm=not args.no_llm, top_n=args.top_n
+    )
 
 
 def _check_llm(_: argparse.Namespace) -> int:
@@ -67,10 +81,30 @@ def build_parser() -> argparse.ArgumentParser:
     fetch.set_defaults(handler=_fetch)
 
     snapshot = sub.add_parser("snapshot", help="build the compact baseline snapshot")
-    snapshot.set_defaults(handler=_not_implemented("M5"))  # needs the requirements parser (5.1)
+    size = snapshot.add_mutually_exclusive_group()
+    size.add_argument("--limit", type=int, help="baseline = the first N packages")
+    size.add_argument("--sample", type=int, help="baseline = N evenly spaced ranks (smoke runs)")
+    snapshot.add_argument(
+        "--requirements",
+        type=Path,
+        default=config.REQUIREMENTS_PATH,
+        help="targets whose specifiers may need extra version data",
+    )
+    snapshot.add_argument(
+        "--include-targets", action="store_true", help="add the targets to the baseline (smoke)"
+    )
+    snapshot.add_argument("--out", type=Path, default=config.SNAPSHOT_PATH)
+    snapshot.set_defaults(handler=_snapshot)
 
     analyze = sub.add_parser("analyze", help="score and rank a requirements file")
-    analyze.set_defaults(handler=_not_implemented("M5"))
+    analyze.add_argument("requirements", nargs="?", type=Path, default=config.REQUIREMENTS_PATH)
+    analyze.add_argument("--snapshot", type=Path, default=config.SNAPSHOT_PATH)
+    analyze.add_argument("--out", type=Path, default=config.OUTPUT_DIR)
+    analyze.add_argument("--no-llm", action="store_true", help="scores and ranking only")
+    analyze.add_argument(
+        "--top-n", type=int, default=config.AGENT_TOP_N, help="packages sent to the agent"
+    )
+    analyze.set_defaults(handler=_analyze)
 
     check = sub.add_parser("check-llm", help="verify Claude API access and the request shape")
     check.set_defaults(handler=_check_llm)
@@ -88,6 +122,6 @@ def main(argv: Sequence[str] | None = None) -> int:
     logging.getLogger("httpx").setLevel(logging.DEBUG if args.verbose else logging.WARNING)
     try:
         return args.handler(args)
-    except (ConfigError, FetchError) as exc:
+    except (ConfigError, FetchError, SnapshotDataError) as exc:
         log.error("%s", exc)
         return EXIT_CONFIG

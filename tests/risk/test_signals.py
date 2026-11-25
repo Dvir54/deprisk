@@ -171,3 +171,8 @@ def test_evidence_only_signals(make_record) -> None:
 def test_values_cover_every_scored_signal(make_record) -> None:
     rec = make_record({"1.0": [{}]}, {"1.0": CLEAN})
     assert set(compute_signals(rec, ANY, T).values) == {"S1", "S2", "S4", "S5", "S6", "S7"}
+
+
+def test_evidence_records_the_specifier(make_record) -> None:
+    rec = make_record({"1.0": [{}], "2.0": [{}]}, {"1.0": CLEAN})
+    assert compute_signals(rec, SpecifierSet("<2,>=1"), T).evidence["specifier"] == "<2,>=1"

@@ -10,10 +10,11 @@ import httpx
 import pytest
 from packaging.specifiers import SpecifierSet
 
-from deprisk import pipeline
+from deprisk import config, pipeline
 from deprisk.config import CONFIG_HASH, ConfigError
 from deprisk.data.models import FetchError, Requirement
 from deprisk.data.pypi_client import top_package_names
+from deprisk.data.snapshot import load_snapshot
 
 TOP_LIST = {
     "last_update": "2026-11-01 06:41:05",
@@ -194,3 +195,81 @@ def test_build_meta_records_definition_and_sources() -> None:
     assert meta["config_hash"] == CONFIG_HASH
     assert meta["env"]["marker_env"]["sys_platform"] == "linux"
     assert isinstance(meta["id"], str) and meta["id"]
+
+
+# --- run_analysis and create_snapshot ---------------------------------------------------
+
+
+def test_pipeline_twice_identical_outputs(tmp_path: Path, mini_snapshot) -> None:
+    from deprisk.data.snapshot import save_snapshot
+
+    snap = tmp_path / "snap.json.gz"
+    save_snapshot(mini_snapshot, snap)
+    reqs = tmp_path / "requirements.txt"
+    reqs.write_text("legacy\nfresh2\nfallback\nbeta\n", encoding="utf-8")
+    for out in ("a", "b"):
+        rc = pipeline.run_analysis(reqs, snap, tmp_path / out, use_llm=False, top_n=10)
+        assert rc == 1  # beta is unscored
+    for name in ("results.json", "REPORT.md"):
+        assert (tmp_path / "a" / name).read_bytes() == (tmp_path / "b" / name).read_bytes()
+
+
+def project_handler(top_list: dict) -> httpx.MockTransport:
+    def handler(request: httpx.Request) -> httpx.Response:
+        if request.url.host == "hugovk.github.io":
+            return httpx.Response(200, json=top_list)
+        name = request.url.path.split("/")[2]
+        return httpx.Response(200, json=project(name, {"1.0": [sdist("1.0")]}, "1.0"))
+
+    return httpx.MockTransport(handler)
+
+
+SIX_TOP = {
+    "last_update": "2026-11-01 06:41:05",
+    "rows": [{"project": f"p{i}", "download_count": 100 - i} for i in range(6)],
+}
+
+
+def test_create_snapshot_sample_is_evenly_spaced(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(config, "TOP_N", 6)
+    reqs = tmp_path / "requirements.txt"
+    reqs.write_text("extra-target\n", encoding="utf-8")
+    out = tmp_path / "snap.json.gz"
+    snap = pipeline.create_snapshot(
+        out,
+        sample=3,
+        requirements_path=reqs,
+        include_targets=True,
+        cache_dir=tmp_path / "cache",
+        http=httpx.Client(transport=project_handler(SIX_TOP)),
+    )
+    assert snap.baseline_names == ("p0", "p2", "p4", "extra-target")
+    assert snap.meta["baseline"]["definition"] == (
+        "3 evenly spaced ranks of the top 6 PyPI projects by downloads, "
+        "plus the requirement targets"
+    )
+    assert load_snapshot(out) == snap
+
+
+def test_create_snapshot_limit(tmp_path: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    monkeypatch.setattr(config, "TOP_N", 6)
+    snap = pipeline.create_snapshot(
+        tmp_path / "s.json.gz",
+        limit=2,
+        requirements_path=None,
+        cache_dir=tmp_path / "cache",
+        http=httpx.Client(transport=project_handler(SIX_TOP)),
+    )
+    assert snap.baseline_names == ("p0", "p1")
+    assert snap.meta["baseline"]["definition"].startswith("top 2 PyPI projects by downloads")
+
+
+@pytest.mark.parametrize("kwargs", [{"limit": 0}, {"sample": 7}, {"limit": 2, "sample": 2}])
+def test_create_snapshot_rejects_bad_sizes(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, kwargs, block_network
+) -> None:
+    monkeypatch.setattr(config, "TOP_N", 6)
+    with pytest.raises(ConfigError):
+        pipeline.create_snapshot(tmp_path / "s.json.gz", cache_dir=tmp_path, **kwargs)
