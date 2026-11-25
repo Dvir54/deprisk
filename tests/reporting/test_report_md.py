@@ -81,7 +81,7 @@ def test_summary_states_environment_baseline_and_score_meaning(mini_snapshot) ->
     assert "5 packages analyzed, 3 scored" in summary
     assert "absent (not in snapshot)" in summary and "beta (only pre-releases)" in summary
     assert "line 9 `-r more.txt`" in summary
-    assert "not a probability" in summary and "RISK_MODEL.md" in summary
+    assert "not a probability" in summary and "`docs/RISK_MODEL.md`" in summary
     assert "T = 2026-11-25 00:00 UTC" in summary
     assert "S1 days since the last upload" in summary  # legend for the agent's signal ids
 

@@ -6,7 +6,7 @@
 - **Baseline:** top 5000 PyPI projects by downloads (hugovk top-pypi-packages); list dated 2026-11-01; 4,920 scorable packages (excluded: data unavailable: 1, only pre-releases: 77, only yanked files: 2).
 - **Analyzed:** 40 packages analyzed, 40 scored. Snapshot `5c1e0e851f88d945`, reference time T = 2026-11-25 13:50 UTC.
 
-**Risk score:** a score of X means the package's combined risk is higher than X% of the baseline packages. Each signal (maintenance, Python 3.12 compatibility, known vulnerabilities, dependencies) adds more the rarer its value is in the baseline. It is a relative ranking, not a probability of failure. Method: `RISK_MODEL.md`; every signal value, placement and flag: `results.json`.
+**Risk score:** a score of X means the package's combined risk is higher than X% of the baseline packages. Each signal (maintenance, Python 3.12 compatibility, known vulnerabilities, dependencies) adds more the rarer its value is in the baseline. It is a relative ranking, not a probability of failure. Method: `docs/RISK_MODEL.md`; every signal value, placement and flag: `results.json`.
 
 Signal ids used in the agent's rationales: S1 days since the last upload; S2 final releases in the last 24 months; S4 Python 3.12 evidence state; S5 install path state; S6 known vulnerabilities; S7 direct dependencies.
 

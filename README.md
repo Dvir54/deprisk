@@ -7,12 +7,17 @@ agent then recommends one concrete action (upgrade, pin, replace, do nothing) fo
 10 riskiest packages, and code checks every fact the agent cites before the recommendation is
 accepted.
 
-- **Output for the assignment's `requirements.txt`:** [`output/REPORT.md`](output/REPORT.md)
-  (readable) and [`output/results.json`](output/results.json) (machine-readable, including the
-  agent's full tool-call log).
-- **Risk model and baseline methodology:** [`RISK_MODEL.md`](RISK_MODEL.md).
-- **How it was built (AI delegation, decisions, a caught AI mistake):**
-  [`HOW_I_BUILT_IT.md`](HOW_I_BUILT_IT.md).
+## Submission contents
+
+| Deliverable | Where |
+|---|---|
+| The code and how to run it | [`deprisk/`](deprisk), [`tests/`](tests), this README |
+| Output for the attached `requirements.txt` | [`output/REPORT.md`](output/REPORT.md): the 40 ranked packages with score and main risk factors, and the top-10 recommendations. [`output/results.json`](output/results.json): every signal value, placement, flag and the agent's tool-call log |
+| The risk model: signals, why, how they combine, assumptions | [`docs/RISK_MODEL.md`](docs/RISK_MODEL.md) |
+| How the top-5,000 baseline is used: what was measured, how each of the 40 is placed | [`docs/RISK_MODEL.md`](docs/RISK_MODEL.md), sections "Baseline", "What was measured across the baseline" and "Worked example" |
+| `HOW_I_BUILT_IT.md` | [`docs/HOW_I_BUILT_IT.md`](docs/HOW_I_BUILT_IT.md) |
+| Input | [`assignment/requirements.txt`](assignment/requirements.txt) |
+| Frozen baseline data (reproduces every score offline) | [`data/snapshot.json.gz`](data/snapshot.json.gz) |
 
 ## Setup
 
@@ -94,7 +99,7 @@ uv run python -m deprisk analyze tests/smoke/requirements-smoke.txt --snapshot d
    each signal contributes `−ln q`, where `q` is the share of the baseline that is as risky or
    riskier. Critical flags (unfixed advisory, no installable version, pip fallback, sdist
    only, missing metadata) are shown next to the score but never change it. Details in
-   [`RISK_MODEL.md`](RISK_MODEL.md).
+   [`docs/RISK_MODEL.md`](docs/RISK_MODEL.md).
 3. **Phase C, agent (network):** for each of the top 10, Claude gets the deterministic profile
    and six read-only tools (profile, release history, version details, eligible versions,
    requirement context, replacement lookup scored against the same frozen baseline). It
@@ -129,5 +134,5 @@ The score is a relative ranking index, not a probability of failure. It reads me
 no build, runtime or transitive-dependency checks, a fresh install is assumed, and advisory
 data inherits OSV's coverage gaps. `requires_dist: null` (23% of the baseline) is scored as
 unknown rather than as zero dependencies. The agent's recommendations are factually checked
-but not tested against the service's code. See [`RISK_MODEL.md`](RISK_MODEL.md) for the full
+but not tested against the service's code. See [`docs/RISK_MODEL.md`](docs/RISK_MODEL.md) for the full
 list.

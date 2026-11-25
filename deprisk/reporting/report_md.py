@@ -3,7 +3,7 @@
 Three sections: a summary, the ranking of every package with its main risk factors in
 plain words, and the top recommendations. Every detail (signal values, placements,
 flags with evidence, the baseline distributions and the agent's tool-call log) lives in
-results.json; the method lives in RISK_MODEL.md.
+results.json; the method lives in docs/RISK_MODEL.md.
 """
 
 from __future__ import annotations
@@ -114,7 +114,7 @@ def _summary(result: AnalysisResult) -> list[str]:
         "**Risk score:** a score of X means the package's combined risk is higher than X% of "
         "the baseline packages. Each signal (maintenance, Python 3.12 compatibility, known "
         "vulnerabilities, dependencies) adds more the rarer its value is in the baseline. It "
-        "is a relative ranking, not a probability of failure. Method: `RISK_MODEL.md`; every "
+        "is a relative ranking, not a probability of failure. Method: `docs/RISK_MODEL.md`; every "
         "signal value, placement and flag: `results.json`.",
         "",
         "Signal ids used in the agent's rationales: "
