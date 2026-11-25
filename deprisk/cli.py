@@ -67,7 +67,7 @@ def build_parser() -> argparse.ArgumentParser:
     fetch.set_defaults(handler=_fetch)
 
     snapshot = sub.add_parser("snapshot", help="build the compact baseline snapshot")
-    snapshot.set_defaults(handler=_not_implemented("M3"))
+    snapshot.set_defaults(handler=_not_implemented("M5"))  # needs the requirements parser (5.1)
 
     analyze = sub.add_parser("analyze", help="score and rank a requirements file")
     analyze.set_defaults(handler=_not_implemented("M5"))

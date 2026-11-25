@@ -1,21 +1,23 @@
 """Effective/reference versions and the S4/S5 ordinal states (SPEC §11, §12.2, §12.3; AC3).
 
-The three real-record tests (typing, futures, flask) need ``extract_record`` (Task 3.1)
-and are added at the end of M3.
+The real-record fixtures in ``tests/fixtures/records/`` are compact records produced by
+``deprisk.data.records.extract_record`` from the cached PyPI project JSON (2026-11-25).
 """
 
 from __future__ import annotations
 
 from datetime import UTC, datetime
+from pathlib import Path
 
 import pytest
 from packaging.specifiers import SpecifierSet
 
-from deprisk.data.models import FileInfo
+from deprisk.data.models import FileInfo, PackageRecord
 from deprisk.risk import versions
 from deprisk.risk.models import UnscorableError
 
 ANY = SpecifierSet("")
+FIXTURES = Path(__file__).resolve().parents[1] / "fixtures" / "records"
 CP312_WHEEL = {
     "packagetype": "bdist_wheel",
     "filename": "pkg-{v}-cp312-cp312-manylinux_2_17_x86_64.whl",
@@ -47,6 +49,35 @@ def states(record, spec=ANY, meta=None) -> tuple[str | None, int, int]:
         versions.install_path_state(record, eff),
         versions.py312_evidence_state(record, spec, eff, meta),
     )
+
+
+def real_record(name: str) -> PackageRecord:
+    return PackageRecord.model_validate_json((FIXTURES / f"{name}.json").read_text("utf-8"))
+
+
+# --- real records (SPEC §12.2 verified cases) --------------------------------------------
+
+
+def test_typing_effective_is_3_7_4_3() -> None:
+    """typing 3.8+ releases declare requires_python excluding 3.12; pip falls back."""
+    record = real_record("typing")
+    assert versions.effective_version(record, ANY) == "3.7.4.3"
+    assert versions.reference_version(record, ANY) == "3.7.4.3"
+    assert versions.py312_evidence_state(record, ANY, "3.7.4.3", None) == 4
+
+
+def test_futures_effective_is_3_0_5_via_sdist() -> None:
+    record = real_record("futures")
+    assert versions.effective_version(record, ANY) == "3.0.5"
+    assert versions.install_path_state(record, "3.0.5") == 1  # only the sdist is eligible
+    assert versions.py312_evidence_state(record, ANY, "3.0.5", None) == 4
+
+
+def test_flask_effective_is_latest() -> None:
+    record = real_record("flask")
+    latest = str(versions.parse_final_versions(record.releases)[0][0])
+    assert versions.effective_version(record, SpecifierSet(">=2.0")) == latest == "3.1.3"
+    assert versions.install_path_state(record, latest) == 0
 
 
 # --- eligibility -----------------------------------------------------------------

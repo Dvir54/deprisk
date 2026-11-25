@@ -1,0 +1,390 @@
+{
+ "fetched_at": "2026-11-25T13:06:59.267382Z",
+ "last_serial": 15602876,
+ "name": "futures",
+ "releases": {
+  "0.1": [
+   {
+    "filename": "futures-0.1.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2009-06-04T06:25:55.425121Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-0.1.win32.exe",
+    "packagetype": "bdist_wininst",
+    "requires_python": null,
+    "upload_time": "2009-06-04T06:25:57.039792Z",
+    "yanked": false
+   }
+  ],
+  "0.2": [
+   {
+    "filename": "futures-0.2.python3.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2009-06-17T23:49:09.096993Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-0.2.python3.win32.exe",
+    "packagetype": "bdist_wininst",
+    "requires_python": null,
+    "upload_time": "2009-06-17T23:49:31.584991Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-0.2.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2009-06-17T23:44:31.518556Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-0.2.win32.exe",
+    "packagetype": "bdist_wininst",
+    "requires_python": null,
+    "upload_time": "2009-06-17T23:44:34.725601Z",
+    "yanked": false
+   }
+  ],
+  "1.0": [
+   {
+    "filename": "futures-1.0.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2009-10-25T07:27:38.063499Z",
+    "yanked": false
+   }
+  ],
+  "2.0": [
+   {
+    "filename": "futures-2.0.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2010-11-13T11:42:10.234815Z",
+    "yanked": false
+   }
+  ],
+  "2.1": [
+   {
+    "filename": "futures-2.1.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2010-12-23T23:52:40.731018Z",
+    "yanked": false
+   }
+  ],
+  "2.1.1": [
+   {
+    "filename": "futures-2.1.1.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2011-01-08T00:40:20.429252Z",
+    "yanked": false
+   }
+  ],
+  "2.1.2": [
+   {
+    "filename": "futures-2.1.2.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2011-01-08T17:43:34.680806Z",
+    "yanked": false
+   }
+  ],
+  "2.1.3": [
+   {
+    "filename": "futures-2.1.3.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2012-08-25T07:03:09.220326Z",
+    "yanked": false
+   }
+  ],
+  "2.1.4": [
+   {
+    "filename": "futures-2.1.4.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2013-06-23T22:23:46.154907Z",
+    "yanked": false
+   }
+  ],
+  "2.1.5": [
+   {
+    "filename": "futures-2.1.5-py2.py3-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2013-11-12T18:56:14.957942Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-2.1.5.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2013-11-12T18:56:59.141112Z",
+    "yanked": false
+   }
+  ],
+  "2.1.6": [
+   {
+    "filename": "futures-2.1.6-py2.py3-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2014-01-14T09:21:13.954783Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-2.1.6.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2014-01-14T09:21:19.978480Z",
+    "yanked": false
+   }
+  ],
+  "2.2.0": [
+   {
+    "filename": "futures-2.2.0-py2.py3-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2014-09-25T21:21:25.455888Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-2.2.0.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2014-09-25T21:21:32.781075Z",
+    "yanked": false
+   }
+  ],
+  "3.0.0": [
+   {
+    "filename": "futures-3.0.0-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2015-05-03T05:39:24.544786Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.0.0.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2015-05-03T05:39:27.349089Z",
+    "yanked": false
+   }
+  ],
+  "3.0.1": [
+   {
+    "filename": "futures-3.0.1-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2015-05-03T06:32:39.897846Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.0.1.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2015-05-03T06:32:42.560392Z",
+    "yanked": false
+   }
+  ],
+  "3.0.2": [
+   {
+    "filename": "futures-3.0.2-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2015-05-12T06:39:37.052506Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.0.2.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2015-05-12T06:39:43.302007Z",
+    "yanked": false
+   }
+  ],
+  "3.0.3": [
+   {
+    "filename": "futures-3.0.3-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2015-06-12T21:26:54.765214Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.0.3.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2015-06-12T21:26:58.291754Z",
+    "yanked": false
+   }
+  ],
+  "3.0.4": [
+   {
+    "filename": "futures-3.0.4-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2016-01-18T00:42:29.823678Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.0.4.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2016-01-18T00:42:35.672264Z",
+    "yanked": false
+   }
+  ],
+  "3.0.5": [
+   {
+    "filename": "futures-3.0.5-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2016-02-14T21:51:39.259761Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.0.5.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2016-02-14T21:51:44.762173Z",
+    "yanked": false
+   }
+  ],
+  "3.1.0": [
+   {
+    "filename": "futures-3.1.0-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2017-04-14T13:51:21.961016Z",
+    "yanked": true
+   },
+   {
+    "filename": "futures-3.1.0.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2017-04-14T13:51:23.379470Z",
+    "yanked": true
+   }
+  ],
+  "3.1.1": [
+   {
+    "filename": "futures-3.1.1-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2017-04-14T14:33:22.773480Z",
+    "yanked": true
+   },
+   {
+    "filename": "futures-3.1.1-py3-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": null,
+    "upload_time": "2019-09-15T10:58:22.186659Z",
+    "yanked": true
+   },
+   {
+    "filename": "futures-3.1.1.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": null,
+    "upload_time": "2017-04-14T14:33:24.409112Z",
+    "yanked": true
+   }
+  ],
+  "3.1.1.post1": [
+   {
+    "filename": "futures-3.1.1.post1-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": ">=2.6, <3",
+    "upload_time": "2021-10-09T11:11:46.176401Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.1.1.post1.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": ">=2.6, <3",
+    "upload_time": "2021-10-09T11:11:47.733606Z",
+    "yanked": false
+   }
+  ],
+  "3.2.0": [
+   {
+    "filename": "futures-3.2.0-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": ">=2.6, <3",
+    "upload_time": "2017-11-30T23:22:35.590688Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.2.0.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": ">=2.6, <3",
+    "upload_time": "2017-11-30T23:22:36.994073Z",
+    "yanked": false
+   }
+  ],
+  "3.3.0": [
+   {
+    "filename": "futures-3.3.0-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": ">=2.6, <3",
+    "upload_time": "2019-07-15T09:33:00.532291Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.3.0.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": ">=2.6, <3",
+    "upload_time": "2019-07-15T09:33:01.743768Z",
+    "yanked": false
+   }
+  ],
+  "3.4.0": [
+   {
+    "filename": "futures-3.4.0-py2-none-any.whl",
+    "packagetype": "bdist_wheel",
+    "requires_python": ">=2.6, <3",
+    "upload_time": "2022-10-31T21:40:30.639119Z",
+    "yanked": false
+   },
+   {
+    "filename": "futures-3.4.0.tar.gz",
+    "packagetype": "sdist",
+    "requires_python": ">=2.6, <3",
+    "upload_time": "2022-10-31T21:40:32.078999Z",
+    "yanked": false
+   }
+  ]
+ },
+ "roles": [
+  [
+   "Owner",
+   "agronholm"
+  ],
+  [
+   "Owner",
+   "bquinlan"
+  ]
+ ],
+ "version_fetched_at": {
+  "3.4.0": "2026-11-25T13:06:59.267382Z"
+ },
+ "version_meta": {
+  "3.4.0": {
+   "classifiers": [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Python Software Foundation License",
+    "Programming Language :: Python :: 2 :: Only",
+    "Programming Language :: Python :: 2.6",
+    "Programming Language :: Python :: 2.7"
+   ],
+   "requires_dist": null,
+   "vulnerabilities": []
+  }
+ }
+}
