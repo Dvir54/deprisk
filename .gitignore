@@ -1,0 +1,32 @@
+# Python / tooling
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+dist/
+build/
+*.egg-info/
+
+# Local data: raw PyPI cache, smoke artefacts, logs
+.cache/
+data/smoke/
+output/smoke/
+*.log
+
+# Secrets
+.env
+.env.*
+
+# Editors and local assistant settings
+.idea/
+.vscode/
+.claude/
+
+# Internal working documents (not part of the submission)
+assignment/*.pdf
+RESEARCH.md
+SPEC.md
+PLAN.md
+HANDOFF.md
+AI_LOG.md

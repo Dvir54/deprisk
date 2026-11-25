@@ -1,0 +1,34 @@
+[project]
+name = "deprisk"
+version = "0.1.0"
+description = "Rank Python dependencies by risk relative to a top-5,000 PyPI baseline, with validated agent recommendations."
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "anthropic>=2.14.0",
+    "httpx>=0.28.1",
+    "packaging>=26.4",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["deprisk"]
+
+[tool.pytest.ini_options]
+addopts = "--import-mode=importlib"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+    "ruff>=0.17.6",
+]
