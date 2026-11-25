@@ -70,7 +70,10 @@ def test_s6_excludes_withdrawn(make_record) -> None:
     rec = make_record({"1.0": [{}]}, {"1.0": {**CLEAN, "vulnerabilities": vulns}})
     sig = compute_signals(rec, ANY, T)
     assert sig.values["S6"] == 2
-    assert sig.evidence["advisories"] == ["A", "C"]
+    assert sig.evidence["advisories"] == [
+        {"id": "A", "aliases": [], "fixed_in": []},
+        {"id": "C", "aliases": [], "fixed_in": []},
+    ]
 
 
 def test_s6_null_is_unknown_and_empty_is_zero(make_record) -> None:

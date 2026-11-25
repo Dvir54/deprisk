@@ -12,7 +12,7 @@ from typing import Any
 
 import pytest
 
-from deprisk.data.models import Advisory, FileInfo, PackageRecord, VersionMeta
+from deprisk.data.models import Advisory, FileInfo, PackageRecord, Snapshot, VersionMeta
 
 FIXED_T = datetime(2026, 11, 25, tzinfo=UTC)
 DEFAULT_UPLOAD = datetime(2024, 1, 1, tzinfo=UTC)
@@ -85,6 +85,32 @@ def build_record(
         version_meta=metas,
         version_fetched_at={v: FIXED_T for v in metas},
     )
+
+
+def build_snapshot(
+    records: Mapping[str, PackageRecord],
+    exclusions: Mapping[str, str] | None = None,
+    baseline_names: tuple[str, ...] | None = None,
+    t: datetime = FIXED_T,
+) -> Snapshot:
+    """A snapshot over ``records`` (keyed by name); excluded names join the baseline list."""
+    exclusions = dict(exclusions or {})
+    names = baseline_names or (*records, *exclusions)
+    meta = {
+        "id": "test-snapshot",
+        "T": t.isoformat(),
+        "top_list": {"last_update": "2026-11-01 06:41:05", "fetched_at": t.isoformat()},
+        "baseline": {"definition": "test baseline", "n_requested": len(names)},
+        "config_hash": "test",
+        "exclusions": exclusions,
+    }
+    return Snapshot(meta=meta, baseline_names=tuple(names), records=dict(records))
+
+
+@pytest.fixture
+def make_snapshot() -> Callable[..., Snapshot]:
+    """The ``build_snapshot`` builder: a Snapshot with test metadata and ``T``."""
+    return build_snapshot
 
 
 @pytest.fixture

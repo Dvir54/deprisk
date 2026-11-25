@@ -83,11 +83,15 @@ def compute_signals(record: PackageRecord, spec: SpecifierSet, t: datetime) -> P
     missing: list[str] = []
 
     s6: float | None = None
-    advisories: list[str] = []
+    advisories: list[dict[str, Any]] = []
     if meta.vulnerabilities is None:
         missing.append("vulnerabilities")
     else:
-        advisories = [a.id for a in meta.vulnerabilities if not a.withdrawn]
+        advisories = [
+            {"id": a.id, "aliases": list(a.aliases), "fixed_in": list(a.fixed_in)}
+            for a in meta.vulnerabilities
+            if not a.withdrawn
+        ]
         s6 = len(advisories)
 
     s7: float | None = None
