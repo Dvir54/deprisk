@@ -4,6 +4,8 @@ Scored: S1, S2 (whole project), S4, S5 (versions module), S6, S7 (reference vers
 Evidence only: S3, S8, S9, S10, S14. Unknown values are ``None`` and listed under
 ``evidence["missing"]``; malformed ``requires_dist`` entries count as dependencies
 (they cannot be shown not to apply) and mark S7 as ``partial`` (a lower bound).
+S6 counts distinct vulnerabilities: PyPI lists one vulnerability under several advisory
+ids (e.g. PYSEC and GHSA), so entries linked by a shared id or alias count once.
 """
 
 from __future__ import annotations
@@ -47,6 +49,46 @@ def _dependencies(requires_dist: tuple[str, ...]) -> tuple[list[str], list[str]]
     return sorted(names), malformed
 
 
+UNKNOWN_ADVISORY_ID = "unknown"  # set by records.extract_record for a malformed entry
+
+
+def group_advisories(advisories: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Merge advisory entries that describe the same vulnerability.
+
+    Two entries are linked when their identifier sets (``id`` plus ``aliases``) share a
+    value; links are transitive (union-find), so A-B and B-C make one group. The
+    placeholder id "unknown" links nothing, so malformed entries still count on their
+    own (the riskier reading). Each group lists its sorted ids, the aliases that are not
+    member ids, and the union of the members' ``fixed_in``. Groups are sorted by ids.
+    """
+    parent = list(range(len(advisories)))
+
+    def root(i: int) -> int:
+        while parent[i] != i:
+            parent[i] = parent[parent[i]]
+            i = parent[i]
+        return i
+
+    owner: dict[str, int] = {}
+    for i, adv in enumerate(advisories):
+        for ident in {adv["id"], *adv["aliases"]} - {UNKNOWN_ADVISORY_ID}:
+            if ident in owner:
+                parent[root(i)] = root(owner[ident])
+            else:
+                owner[ident] = i
+
+    members: dict[int, list[dict[str, Any]]] = {}
+    for i, adv in enumerate(advisories):
+        members.setdefault(root(i), []).append(adv)
+    groups = []
+    for entries in members.values():
+        ids = sorted({a["id"] for a in entries})
+        aliases = sorted({alias for a in entries for alias in a["aliases"]} - set(ids))
+        fixed_in = sorted({v for a in entries for v in a["fixed_in"]})
+        groups.append({"ids": ids, "aliases": aliases, "fixed_in": fixed_in})
+    return sorted(groups, key=lambda g: g["ids"])
+
+
 def _releases_in_window(record: PackageRecord, t: datetime) -> int:
     """S2: final releases whose release date (earliest non-yanked upload) is in the window."""
     start = t - timedelta(days=config.S2_WINDOW_DAYS)
@@ -84,15 +126,17 @@ def compute_signals(record: PackageRecord, spec: SpecifierSet, t: datetime) -> P
 
     s6: float | None = None
     advisories: list[dict[str, Any]] = []
+    advisory_groups: list[dict[str, Any]] = []
     if meta.vulnerabilities is None:
         missing.append("vulnerabilities")
     else:
-        advisories = [
+        advisories = [  # the original PyPI entries, kept as evidence
             {"id": a.id, "aliases": list(a.aliases), "fixed_in": list(a.fixed_in)}
             for a in meta.vulnerabilities
             if not a.withdrawn
         ]
-        s6 = len(advisories)
+        advisory_groups = group_advisories(advisories)
+        s6 = len(advisory_groups)
 
     s7: float | None = None
     dependencies: list[str] = []
@@ -111,6 +155,7 @@ def compute_signals(record: PackageRecord, spec: SpecifierSet, t: datetime) -> P
         "last_upload": last_upload.isoformat(),
         "missing": missing,
         "advisories": advisories,
+        "advisory_groups": advisory_groups,
         "dependencies": dependencies,
         "malformed_requires_dist": malformed,
         "skipped_versions": versions.count_skipped_versions(record.releases),

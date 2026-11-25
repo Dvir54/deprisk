@@ -36,21 +36,22 @@ def critical_flags(sig: PackageSignals, placement: Placement) -> tuple[Flag, ...
             Flag(code="sdist_only", evidence={"effective_version": sig.effective_version, "S5": 1})
         )
 
-    advisories: list[dict[str, Any]] = ev.get("advisories", [])
-    unfixed = [a for a in advisories if not a["fixed_in"]]
-    fixed = [a for a in advisories if a["fixed_in"]]
+    # Per vulnerability (deduplicated advisory group): fixed if any member names a fix.
+    groups: list[dict[str, Any]] = ev.get("advisory_groups", [])
+    unfixed = [g for g in groups if not g["fixed_in"]]
+    fixed = [g for g in groups if g["fixed_in"]]
     if unfixed:
         flags.append(
             Flag(
                 code="unfixed_advisory",
-                evidence={"version": sig.reference_version, "advisories": unfixed},
+                evidence={"version": sig.reference_version, "vulnerabilities": unfixed},
             )
         )
     if fixed:
         flags.append(
             Flag(
                 code="advisory_with_fix",
-                evidence={"version": sig.reference_version, "advisories": fixed},
+                evidence={"version": sig.reference_version, "vulnerabilities": fixed},
             )
         )
 

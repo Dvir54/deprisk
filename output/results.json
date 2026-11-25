@@ -121,6 +121,28 @@
             "id": "GHSA-cq27-v7xp-c356"
           }
         ],
+        "advisory_groups": [
+          {
+            "aliases": [
+              "CVE-2018-6594"
+            ],
+            "fixed_in": [],
+            "ids": [
+              "GHSA-6528-wvf6-f6qg",
+              "PYSEC-2018-97"
+            ]
+          },
+          {
+            "aliases": [
+              "CVE-2013-7459"
+            ],
+            "fixed_in": [],
+            "ids": [
+              "GHSA-cq27-v7xp-c356",
+              "PYSEC-2017-94"
+            ]
+          }
+        ],
         "dependencies": [],
         "last_upload": "2014-06-20T08:10:20.813938+00:00",
         "malformed_requires_dist": [],
@@ -153,41 +175,29 @@
         {
           "code": "unfixed_advisory",
           "evidence": {
-            "advisories": [
+            "version": "2.6.1",
+            "vulnerabilities": [
               {
                 "aliases": [
-                  "CVE-2013-7459",
-                  "GHSA-cq27-v7xp-c356"
+                  "CVE-2018-6594"
                 ],
                 "fixed_in": [],
-                "id": "PYSEC-2017-94"
-              },
-              {
-                "aliases": [
-                  "CVE-2018-6594",
-                  "GHSA-6528-wvf6-f6qg"
-                ],
-                "fixed_in": [],
-                "id": "PYSEC-2018-97"
-              },
-              {
-                "aliases": [
-                  "CVE-2018-6594",
+                "ids": [
+                  "GHSA-6528-wvf6-f6qg",
                   "PYSEC-2018-97"
-                ],
-                "fixed_in": [],
-                "id": "GHSA-6528-wvf6-f6qg"
+                ]
               },
               {
                 "aliases": [
-                  "CVE-2013-7459",
-                  "PYSEC-2017-94"
+                  "CVE-2013-7459"
                 ],
                 "fixed_in": [],
-                "id": "GHSA-cq27-v7xp-c356"
+                "ids": [
+                  "GHSA-cq27-v7xp-c356",
+                  "PYSEC-2017-94"
+                ]
               }
-            ],
-            "version": "2.6.1"
+            ]
           }
         }
       ],
@@ -223,7 +233,7 @@
           "contribution": 7.402452,
           "partial": false,
           "q": 0.00061,
-          "value": 4.0
+          "value": 2.0
         },
         "S7": {
           "contribution": 0.693147,
@@ -251,6 +261,7 @@
         "S8": 8,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2021-05-01T18:03:58.186786+00:00",
         "malformed_requires_dist": [],
@@ -348,6 +359,7 @@
         "S8": 2,
         "S9": 0.083333,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2022-10-31T21:40:32.078999+00:00",
         "malformed_requires_dist": [],
@@ -445,6 +457,7 @@
         "S8": 3,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2015-06-02T09:12:40.570975+00:00",
         "malformed_requires_dist": [],
@@ -528,6 +541,7 @@
         "S8": 1,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2020-03-10T17:48:03.174785+00:00",
         "malformed_requires_dist": [],
@@ -611,6 +625,7 @@
         "S8": 1,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2022-05-04T13:37:20.585901+00:00",
         "malformed_requires_dist": [],
@@ -694,6 +709,7 @@
         "S8": 0,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "blinker",
           "click",
@@ -773,6 +789,7 @@
         "S8": 5,
         "S9": 0.008772,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "billiard",
           "click",
@@ -855,6 +872,7 @@
         "S8": 1,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2024-12-04T17:35:28.174320+00:00",
         "malformed_requires_dist": [],
@@ -938,6 +956,7 @@
         "S8": 5,
         "S9": 0.022293,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "aiohappyeyeballs",
           "aiosignal",
@@ -1019,6 +1038,7 @@
         "S8": 2,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "anyio",
           "certifi",
@@ -1096,6 +1116,7 @@
         "S8": 0,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "markupsafe"
         ],
@@ -1170,6 +1191,7 @@
         "S8": 3,
         "S9": 0.0125,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "certifi",
           "charset-normalizer",
@@ -1247,6 +1269,7 @@
         "S8": 4,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "python-dateutil",
           "tzdata"
@@ -1322,6 +1345,7 @@
         "S8": 1,
         "S9": 0.111111,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2025-08-03T03:35:25.189544+00:00",
         "malformed_requires_dist": [],
@@ -1405,6 +1429,7 @@
         "S8": 1,
         "S9": 0.018519,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "soupsieve",
           "typing-extensions"
@@ -1480,6 +1505,7 @@
         "S8": 0,
         "S9": 0.015152,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-11-06T17:37:01.021167+00:00",
         "malformed_requires_dist": [],
@@ -1563,6 +1589,7 @@
         "S8": 1,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-09-10T00:06:12.199969+00:00",
         "malformed_requires_dist": [],
@@ -1646,6 +1673,7 @@
         "S8": 6,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2025-03-03T12:31:42.911672+00:00",
         "malformed_requires_dist": [],
@@ -1718,6 +1746,7 @@
         "S8": 2,
         "S9": 0.009434,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "annotated-types",
           "pydantic-core",
@@ -1795,6 +1824,7 @@
         "S8": 3,
         "S9": 0.03125,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-11-20T23:37:05.977886+00:00",
         "malformed_requires_dist": [],
@@ -1878,6 +1908,7 @@
         "S8": 2,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "python-dateutil",
           "tzdata"
@@ -1953,6 +1984,7 @@
         "S8": 2,
         "S9": 0.013605,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "mako",
           "sqlalchemy",
@@ -2029,6 +2061,7 @@
         "S8": 1,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-10-29T09:05:47.011737+00:00",
         "malformed_requires_dist": [],
@@ -2112,6 +2145,7 @@
         "S8": 3,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-11-10T20:57:37.642667+00:00",
         "malformed_requires_dist": [],
@@ -2195,6 +2229,7 @@
         "S8": 2,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-11-04T00:09:23.777252+00:00",
         "malformed_requires_dist": [],
@@ -2278,6 +2313,7 @@
         "S8": 3,
         "S9": 0.007194,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-11-15T21:32:28.607313+00:00",
         "malformed_requires_dist": [],
@@ -2361,6 +2397,7 @@
         "S8": 4,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "tzdata"
         ],
@@ -2435,6 +2472,7 @@
         "S8": 3,
         "S9": 0.008264,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "numpy",
           "python-dateutil"
@@ -2510,6 +2548,7 @@
         "S8": 1,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "botocore",
           "jmespath",
@@ -2586,6 +2625,7 @@
         "S8": 2,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-10-07T12:13:01.633347+00:00",
         "malformed_requires_dist": [],
@@ -2658,6 +2698,7 @@
         "S8": 1,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-11-11T18:50:26.248211+00:00",
         "malformed_requires_dist": [],
@@ -2730,6 +2771,7 @@
         "S8": 1,
         "S9": 0.01875,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "cffi"
         ],
@@ -2804,6 +2846,7 @@
         "S8": 1,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-09-28T18:40:42.598678+00:00",
         "malformed_requires_dist": [],
@@ -2876,6 +2919,7 @@
         "S8": 2,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-09-11T07:25:16.601180+00:00",
         "malformed_requires_dist": [],
@@ -2948,6 +2992,7 @@
         "S8": 2,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-09-03T12:04:50.126177+00:00",
         "malformed_requires_dist": [],
@@ -3020,6 +3065,7 @@
         "S8": 4,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-10-16T22:18:09.718711+00:00",
         "malformed_requires_dist": [],
@@ -3092,6 +3138,7 @@
         "S8": 2,
         "S9": 0.008721,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [
           "typing-extensions"
         ],
@@ -3166,6 +3213,7 @@
         "S8": 2,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-11-12T22:41:11.334267+00:00",
         "malformed_requires_dist": [],
@@ -3238,6 +3286,7 @@
         "S8": 3,
         "S9": 0.0,
         "advisories": [],
+        "advisory_groups": [],
         "dependencies": [],
         "last_upload": "2026-11-23T08:31:56.692180+00:00",
         "malformed_requires_dist": [],

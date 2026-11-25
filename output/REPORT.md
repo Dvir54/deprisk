@@ -56,7 +56,7 @@ The score says how much riskier a package looks than the baseline: a score of X 
 Score **99.96** (riskier than 99.96% of the baseline), total 14.596. Effective version 2.6.1, reference version 2.6.1. Categories: maintenance 3.949, compatibility 2.552, security 7.402, dependencies 0.693.
 
 Signals driving the score:
-- S6 advisories on the reference version: 4; only 0.06% of the baseline is as risky or riskier (contribution 7.402)
+- S6 distinct vulnerabilities on the reference version: 2; only 0.06% of the baseline is as risky or riskier (contribution 7.402)
 - S1 days since the last upload: 4541 days; only 0.18% of the baseline is as risky or riskier (contribution 6.304)
 - S5 install path: state 1: sdist only (build required); only 4.59% of the baseline is as risky or riskier (contribution 3.081)
 - S4 Python 3.12 evidence: state 2: no requires_python and no Python 3 minor classifiers; only 13.21% of the baseline is as risky or riskier (contribution 2.024)
@@ -66,7 +66,7 @@ Signals driving the score:
 Flags:
 - `missing:requires_dist`: {"field": "requires_dist", "value": null, "version": "2.6.1"}
 - `sdist_only`: {"S5": 1, "effective_version": "2.6.1"}
-- `unfixed_advisory`: {"advisories": [{"aliases": ["CVE-2013-7459", "GHSA-cq27-v7xp-c356"], "fixed_in": [], "id": "PYSEC-2017-94"}, {"aliases": ["CVE-2018-6594", "GHSA-6528-wvf6-f6qg"], "fixed_in": [], "id": "PYSEC-2018-97"}, {"aliases": ["CVE-2018-6594", "PYSEC-2018-97"], "fixed_in": [], "id": "GHSA-6528-wvf6-f6qg"}, {"aliases": ["CVE-2013-7459", "PYSEC-2017-94"], "fixed_in": [], "id": "GHSA-cq27-v7xp-c356"}], "version": "2.6.1"}
+- `unfixed_advisory`: {"version": "2.6.1", "vulnerabilities": [{"aliases": ["CVE-2018-6594"], "fixed_in": [], "ids": ["GHSA-6528-wvf6-f6qg", "PYSEC-2018-97"]}, {"aliases": ["CVE-2013-7459"], "fixed_in": [], "ids": ["GHSA-cq27-v7xp-c356", "PYSEC-2017-94"]}]}
 
 Evidence only (not scored): effective version age (days): 4541.24, PyPI role accounts: 2, share of fully yanked releases: 0.00, 0.x reference version: False, 'Development Status :: 7 - Inactive': False.
 
@@ -565,5 +565,5 @@ Not run (`--no-llm`).
 | S2 | final releases in the last 24 months | lower | 4920 | 5 | 41 | 0.02% | 0 | 0 |
 | S4 | Python 3.12 evidence | higher | 4920 | 0 | 2 | 60.12% | 0 | 0 |
 | S5 | install path | higher | 4920 | 0 | 0 | 95.41% | 0 | 0 |
-| S6 | advisories on the reference version | higher | 4920 | 0 | 0 | 99.78% | 0 | 0 |
+| S6 | distinct vulnerabilities on the reference version | higher | 4920 | 0 | 0 | 99.78% | 0 | 0 |
 | S7 | direct runtime dependencies | higher | 3778 | 2 | 8 | 17.02% | 1142 | 0 |

@@ -25,6 +25,7 @@ def sig(
         evidence={
             "missing": [],
             "advisories": [],
+            "advisory_groups": [],
             "malformed_requires_dist": [],
             **(evidence or {}),
         },
@@ -61,19 +62,20 @@ def test_sdist_only() -> None:
 
 
 def test_unfixed_and_fixed_advisories() -> None:
-    advisories = [
-        {"id": "GHSA-a", "aliases": ["CVE-1"], "fixed_in": []},
-        {"id": "GHSA-b", "aliases": [], "fixed_in": ["1.1"]},
+    """Flags are per vulnerability (deduplicated advisory group), not per PyPI entry."""
+    groups = [
+        {"ids": ["GHSA-a", "PYSEC-a"], "aliases": ["CVE-1"], "fixed_in": []},
+        {"ids": ["GHSA-b"], "aliases": [], "fixed_in": ["1.1"]},
     ]
-    flags = critical_flags(sig(S6=2, evidence={"advisories": advisories}), PLACEMENT)
+    flags = critical_flags(sig(S6=2, evidence={"advisory_groups": groups}), PLACEMENT)
     assert codes(flags) == ["advisory_with_fix", "unfixed_advisory"]
     assert by_code(flags, "unfixed_advisory").evidence == {
         "version": "1.0",
-        "advisories": [advisories[0]],
+        "vulnerabilities": [groups[0]],
     }
     assert by_code(flags, "advisory_with_fix").evidence == {
         "version": "1.0",
-        "advisories": [advisories[1]],
+        "vulnerabilities": [groups[1]],
     }
 
 

@@ -176,3 +176,101 @@ def test_values_cover_every_scored_signal(make_record) -> None:
 def test_evidence_records_the_specifier(make_record) -> None:
     rec = make_record({"1.0": [{}], "2.0": [{}]}, {"1.0": CLEAN})
     assert compute_signals(rec, SpecifierSet("<2,>=1"), T).evidence["specifier"] == "<2,>=1"
+
+
+# --- S6 advisory deduplication (approved by the user after M5) ----------------------------
+
+
+def s6(make_record, vulns: list[dict]):
+    rec = make_record({"1.0": [{}]}, {"1.0": {**CLEAN, "vulnerabilities": vulns}})
+    return compute_signals(rec, ANY, T)
+
+
+def test_s6_counts_pysec_and_ghsa_aliases_once(make_record) -> None:
+    """PyPI lists one vulnerability under several ids (pycrypto: 4 entries, 2 CVEs)."""
+    vulns = [
+        {"id": "PYSEC-2017-94", "aliases": ["CVE-2013-7459", "GHSA-cq27"]},
+        {"id": "GHSA-cq27", "aliases": ["CVE-2013-7459", "PYSEC-2017-94"]},
+        {"id": "PYSEC-2018-97", "aliases": ["CVE-2018-6594", "GHSA-6528"]},
+        {"id": "GHSA-6528", "aliases": ["CVE-2018-6594", "PYSEC-2018-97"]},
+    ]
+    sig = s6(make_record, vulns)
+    assert sig.values["S6"] == 2
+    assert [g["ids"] for g in sig.evidence["advisory_groups"]] == [
+        ["GHSA-6528", "PYSEC-2018-97"],
+        ["GHSA-cq27", "PYSEC-2017-94"],
+    ]
+    assert len(sig.evidence["advisories"]) == 4  # the original records stay available
+
+
+def test_s6_shared_alias_only_links_entries(make_record) -> None:
+    """Two entries that never name each other but share a CVE are one vulnerability."""
+    vulns = [{"id": "PYSEC-1", "aliases": ["CVE-1"]}, {"id": "GHSA-1", "aliases": ["CVE-1"]}]
+    assert s6(make_record, vulns).values["S6"] == 1
+
+
+def test_s6_overlapping_aliases_merge_transitively(make_record) -> None:
+    """A-B share CVE-1 and B-C share CVE-2, so A, B and C are one group; D stays apart."""
+    vulns = [
+        {"id": "A", "aliases": ["CVE-1"]},
+        {"id": "B", "aliases": ["CVE-1", "CVE-2"]},
+        {"id": "C", "aliases": ["CVE-2"]},
+        {"id": "D", "aliases": ["CVE-9"]},
+    ]
+    sig = s6(make_record, vulns)
+    assert sig.values["S6"] == 2
+    groups = sig.evidence["advisory_groups"]
+    assert groups[0] == {"ids": ["A", "B", "C"], "aliases": ["CVE-1", "CVE-2"], "fixed_in": []}
+    assert groups[1]["ids"] == ["D"]
+
+
+def test_s6_group_order_independent_of_entry_order(make_record) -> None:
+    vulns = [
+        {"id": "C", "aliases": ["CVE-2"]},
+        {"id": "D", "aliases": []},
+        {"id": "A", "aliases": ["CVE-1"]},
+        {"id": "B", "aliases": ["CVE-1", "CVE-2"]},
+    ]
+    forward = s6(make_record, vulns).evidence["advisory_groups"]
+    backward = s6(make_record, list(reversed(vulns))).evidence["advisory_groups"]
+    assert forward == backward
+
+
+def test_s6_repeated_id_counts_once(make_record) -> None:
+    vulns = [{"id": "GHSA-x", "fixed_in": ["1.1"]}, {"id": "GHSA-x", "fixed_in": ["1.2"]}]
+    sig = s6(make_record, vulns)
+    assert sig.values["S6"] == 1
+    assert sig.evidence["advisory_groups"][0]["fixed_in"] == ["1.1", "1.2"]
+
+
+def test_s6_unknown_ids_never_merge(make_record) -> None:
+    """Malformed entries (id "unknown", no aliases) cannot be shown to be the same
+    vulnerability, so each still counts (the riskier reading)."""
+    vulns = [
+        {"id": "unknown"},
+        {"id": "unknown"},
+        {"id": "unknown", "aliases": ["CVE-7"]},
+        {"id": "X", "aliases": ["CVE-7"]},
+    ]
+    assert s6(make_record, vulns).values["S6"] == 3
+
+
+def test_s6_withdrawn_entries_excluded_before_grouping(make_record) -> None:
+    vulns = [
+        {"id": "PYSEC-1", "aliases": ["CVE-1"], "withdrawn": True},
+        {"id": "GHSA-1", "aliases": ["CVE-1"]},
+        {"id": "GHSA-2", "aliases": ["CVE-2"], "withdrawn": True},
+    ]
+    sig = s6(make_record, vulns)
+    assert sig.values["S6"] == 1
+    assert sig.evidence["advisory_groups"] == [
+        {"ids": ["GHSA-1"], "aliases": ["CVE-1"], "fixed_in": []}
+    ]
+
+
+def test_s6_group_fix_is_union_of_member_fixes(make_record) -> None:
+    vulns = [
+        {"id": "PYSEC-1", "aliases": ["GHSA-1"], "fixed_in": []},
+        {"id": "GHSA-1", "fixed_in": ["2.0"]},
+    ]
+    assert s6(make_record, vulns).evidence["advisory_groups"][0]["fixed_in"] == ["2.0"]

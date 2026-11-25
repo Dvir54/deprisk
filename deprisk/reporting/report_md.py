@@ -20,7 +20,7 @@ SIGNAL_LABELS = {
     "S2": "final releases in the last 24 months",
     "S4": "Python 3.12 evidence",
     "S5": "install path",
-    "S6": "advisories on the reference version",
+    "S6": "distinct vulnerabilities on the reference version",
     "S7": "direct runtime dependencies",
 }
 S4_STATES = {
