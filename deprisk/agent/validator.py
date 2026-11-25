@@ -318,7 +318,7 @@ def _in_excluded(finding: str, supporting: Sequence[Item], excluded: set[Version
     )
 
 
-def _top_signals(profile: Mapping[str, Any]) -> list[str]:
+def top_signals(profile: Mapping[str, Any]) -> list[str]:
     """The two largest positive signal contributions (ties: signal id order)."""
     positive = [
         (s, entry["contribution"])
@@ -580,7 +580,7 @@ def validate(rec: Mapping[str, Any], ctx: ValidationContext) -> list[str]:
         return ["missing evidence: no deterministic profile for the package"]
 
     errors: list[str] = []
-    top = _top_signals(ctx.profile)
+    top = top_signals(ctx.profile)
     flags = {f["code"] for f in ctx.profile.get("flags", []) if isinstance(f.get("code"), str)}
     facts = {
         fact

@@ -96,7 +96,106 @@ def test_missing_snapshot_exits_2(tmp_path: Path) -> None:
     assert rc == cli.EXIT_CONFIG
 
 
-def test_analyze_with_llm_not_available_before_m7(tmp_path: Path, mini_snapshot) -> None:
+def _no_credentials(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+    for var in ("ANTHROPIC_API_KEY", "ANTHROPIC_AUTH_TOKEN", "ANTHROPIC_PROFILE"):
+        monkeypatch.delenv(var, raising=False)
+    monkeypatch.setenv("ANTHROPIC_CONFIG_DIR", str(tmp_path))
+
+
+def test_analyze_with_llm_without_credentials_exits_2(
+    tmp_path: Path, mini_snapshot, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    _no_credentials(monkeypatch, tmp_path)
     reqs, snap = write_inputs(tmp_path, mini_snapshot, ["fresh0"])
     rc = cli.main(["analyze", str(reqs), "--snapshot", str(snap), "--out", str(tmp_path / "o")])
     assert rc == cli.EXIT_CONFIG
+
+
+class _AgentStub:
+    """An SDK-shaped client that answers every request with one scripted ``Message``."""
+
+    def __init__(self, submission: dict | None) -> None:
+        from types import SimpleNamespace
+
+        from anthropic.types import Message
+
+        if submission is None:
+            content = [{"type": "text", "text": "No recommendation."}]
+            stop = "end_turn"
+        else:
+            content = [
+                {
+                    "type": "tool_use",
+                    "id": "toolu_1",
+                    "name": "submit_recommendation",
+                    "input": submission,
+                }
+            ]
+            stop = "tool_use"
+        self.response = Message.model_validate(
+            {
+                "id": "m",
+                "type": "message",
+                "role": "assistant",
+                "model": "claude-sonnet-5-5",
+                "stop_reason": stop,
+                "stop_sequence": None,
+                "content": content,
+                "usage": {"input_tokens": 10, "output_tokens": 2},
+            }
+        )
+        self.messages = SimpleNamespace(create=lambda **_: self.response)
+
+
+def _legacy_submission(mini_snapshot) -> dict:
+    from packaging.specifiers import SpecifierSet
+
+    from deprisk.data.models import Requirement
+    from deprisk.reporting.results_json import package_entry
+    from deprisk.risk.analysis import analyze
+
+    req = Requirement(name="legacy", specifier=SpecifierSet(""), line="legacy")
+    profile = package_entry(1, analyze(mini_snapshot, [req]).ranked[0])
+    index = [f["code"] for f in profile["flags"]].index("sdist_only")
+    return {
+        "action": "replace",
+        "target": "enum",
+        "replacement_type": "stdlib",
+        "finding": "sdist_only",
+        "rationale": "Only an sdist is published.",
+        "evidence": [{"call_id": "call_1", "field": f"flags[{index}].code", "value": "sdist_only"}],
+        "suitability_assumptions": ["Only the enum API is used."],
+        "uncertainties": [],
+        "confidence": "medium",
+    }
+
+
+@pytest.mark.parametrize(("validated", "expected_rc"), [(True, 0), (False, 1)])
+def test_cli_exit_code_follows_recommendation_status(
+    tmp_path: Path,
+    mini_snapshot,
+    monkeypatch: pytest.MonkeyPatch,
+    block_network,
+    validated: bool,
+    expected_rc: int,
+) -> None:
+    from deprisk import config
+    from deprisk.agent import loop
+
+    stub = _AgentStub(_legacy_submission(mini_snapshot) if validated else None)
+    monkeypatch.setattr(loop, "make_client", lambda settings: stub)
+    monkeypatch.setattr(config, "CACHE_DIR", tmp_path / "cache")
+    reqs, snap = write_inputs(tmp_path, mini_snapshot, ["legacy", "fresh0"])
+    out = tmp_path / "out"
+    rc = cli.main(
+        ["analyze", str(reqs), "--snapshot", str(snap), "--out", str(out), "--top-n", "1"]
+    )
+    assert rc == expected_rc
+    results = json.loads((out / "results.json").read_text("utf-8"))
+    (rec,) = results["recommendations"]
+    assert rec["package"] == "legacy"
+    assert rec["status"] == ("validated" if validated else "unresolved")
+    assert rec["calls"][0]["name"] == "get_package_profile"
+    assert results["run"]["model"] == "claude-sonnet-5-5"
+    report = (out / "REPORT.md").read_text("utf-8")
+    assert "### legacy:" in report and "suitability not verified" in report

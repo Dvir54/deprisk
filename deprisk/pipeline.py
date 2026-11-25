@@ -18,16 +18,19 @@ from packaging.specifiers import SpecifierSet
 from packaging.utils import canonicalize_name
 
 from deprisk import config
-from deprisk.config import ConfigError, llm_settings
+from deprisk.agent.models import Recommendation
+from deprisk.agent.tools import AgentTools
+from deprisk.config import ConfigError, LLMSettings, llm_settings
 from deprisk.data.models import FetchError, PackageRecord, Requirement, Snapshot
 from deprisk.data.pypi_client import FetchReport, PyPIClient, top_package_names
 from deprisk.data.records import add_version_meta, extract_record
 from deprisk.data.requirements import parse_requirements
 from deprisk.data.snapshot import load_snapshot, reference_time, save_snapshot
 from deprisk.reporting.report_md import render_report
-from deprisk.reporting.results_json import write_results
+from deprisk.reporting.results_json import package_entry, write_results
 from deprisk.risk.analysis import analyze
-from deprisk.risk.models import UnscorableError
+from deprisk.risk.baseline import build_baseline
+from deprisk.risk.models import AnalysisResult, Baseline, UnscorableError
 from deprisk.risk.versions import reference_version
 
 if TYPE_CHECKING:
@@ -240,26 +243,76 @@ def run_analysis(
     use_llm: bool,
     top_n: int = config.AGENT_TOP_N,
 ) -> int:
-    """Phase B (Phase C from M7): score, rank, write results.json and REPORT.md.
+    """Phase B (score and rank), then Phase C (agent recommendations for the top ``top_n``
+    unless ``use_llm`` is False); writes results.json and REPORT.md.
 
-    Returns the exit code: 0 ok, 1 invalid run (an unscored target; outputs are still
-    written). Raises ConfigError or SnapshotDataError for unusable inputs (exit 2).
+    Returns the exit code: 0 ok, 1 invalid run (an unscored target or an unresolved
+    recommendation; outputs are still written). Raises ConfigError (missing credentials,
+    authentication failure) or SnapshotDataError for unusable inputs (exit 2).
     """
     if top_n < 1:
         raise ConfigError(f"--top-n must be at least 1, got {top_n}")
-    if use_llm:
-        raise ConfigError("The agent phase is not implemented yet (M7); run with --no-llm")
+    client = settings = None
+    if use_llm:  # fail on credentials before the (slow) analysis
+        from deprisk.agent.loop import make_client
+
+        settings = llm_settings()
+        client = make_client(settings)
     requirements, issues = parse_requirements(requirements_path)
     snapshot = load_snapshot(snapshot_path)
-    result = analyze(snapshot, requirements, issues=issues)
-    write_results(result, None, out_dir / "results.json")
-    (out_dir / "REPORT.md").write_text(render_report(result, None), encoding="utf-8")
+    t = datetime.fromisoformat(snapshot.meta["T"])
+    baseline = build_baseline(snapshot, t)
+    result = analyze(snapshot, requirements, t=t, issues=issues, baseline=baseline)
+
+    recommendations = None
+    if client is not None and settings is not None:
+        recommendations = _recommend(
+            result, snapshot, baseline, requirements, top_n, client, settings
+        )
+
+    write_results(result, recommendations, out_dir / "results.json")
+    (out_dir / "REPORT.md").write_text(render_report(result, recommendations), encoding="utf-8")
     log.info(
         "Scored %d of %d packages; outputs in %s", len(result.ranked), len(requirements), out_dir
     )
     for name, reason in result.unscored.items():
         log.error("Not scored: %s (%s)", name, reason)
-    return 1 if result.unscored else 0
+    unresolved = [r.package for r in recommendations or () if r.status != "validated"]
+    if unresolved:
+        log.error("Unresolved recommendations: %s", ", ".join(unresolved))
+    return 1 if result.unscored or unresolved else 0
+
+
+def _recommend(
+    result: AnalysisResult,
+    snapshot: Snapshot,
+    baseline: Baseline,
+    requirements: Sequence[Requirement],
+    top_n: int,
+    client: Any,
+    settings: LLMSettings,
+) -> list[Recommendation]:
+    """Phase C: the agent on the top ``top_n`` packages, with live PyPI reads for what the
+    snapshot lacks (cached under ``config.CACHE_DIR``)."""
+    from deprisk.agent.loop import run_agent
+
+    profiles = {s.name: package_entry(i, s) for i, s in enumerate(result.ranked, 1)}
+    by_name: dict[str, Requirement] = {}
+    for req in requirements:
+        by_name.setdefault(req.name, req)
+    with PyPIClient(config.CACHE_DIR) as pypi:
+
+        def fetch_live(name: str, version: str | None) -> tuple[Any, datetime] | None:
+            return pypi.get_project(name) if version is None else pypi.get_version(name, version)
+
+        tools = AgentTools(
+            snapshot=snapshot,
+            baseline=baseline,
+            profiles=profiles,
+            requirements=by_name,
+            fetch_live=fetch_live,
+        )
+        return run_agent(result.ranked[:top_n], tools, client, settings)
 
 
 def check_llm() -> dict[str, Any]:

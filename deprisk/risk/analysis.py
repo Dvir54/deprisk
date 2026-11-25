@@ -13,7 +13,7 @@ from datetime import datetime
 from deprisk import config
 from deprisk.data.models import ParseIssue, Requirement, Snapshot
 from deprisk.risk.baseline import DATA_UNAVAILABLE, build_baseline, summarise
-from deprisk.risk.models import AnalysisResult, PackageScore, UnscorableError
+from deprisk.risk.models import AnalysisResult, Baseline, PackageScore, UnscorableError
 from deprisk.risk.scoring import rank, score_package
 from deprisk.risk.signals import compute_signals
 
@@ -25,15 +25,19 @@ def analyze(
     requirements: Sequence[Requirement],
     t: datetime | None = None,
     issues: Sequence[ParseIssue] = (),
+    baseline: Baseline | None = None,
 ) -> AnalysisResult:
     """Rank every target; ``t`` defaults to the snapshot's ``T`` (D13).
+
+    ``baseline`` may be passed when the caller already built it for the same snapshot
+    and ``t`` (the agent phase needs it too); otherwise it is built here.
 
     A repeated requirement name is scored once (its first line). Missing metadata for a
     target's reference version raises SnapshotDataError: the snapshot was built for
     other requirements, and data is never fetched silently.
     """
     t = t or datetime.fromisoformat(snapshot.meta["T"])
-    baseline = build_baseline(snapshot, t)
+    baseline = baseline or build_baseline(snapshot, t)
     excluded = snapshot.meta.get("exclusions", {})
 
     scores: list[PackageScore] = []
