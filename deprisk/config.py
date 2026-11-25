@@ -11,8 +11,9 @@ import hashlib
 import json
 import os
 from collections.abc import Mapping
-from dataclasses import dataclass
 from pathlib import Path
+
+from pydantic import BaseModel, ConfigDict
 
 
 class ConfigError(Exception):
@@ -99,9 +100,14 @@ LLM_TIMEOUT_S = 120
 LLM_SDK_MAX_RETRIES = 2
 
 
-@dataclass(frozen=True)
-class LLMSettings:
-    """Model and request settings for every Claude call."""
+class LLMSettings(BaseModel):
+    """Model and request settings for every Claude call.
+
+    Subclasses ``BaseModel`` directly: config imports no deprisk module, so it cannot
+    use ``data.models.FrozenModel``; same settings (immutable, unknown fields rejected).
+    """
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
 
     model: str
     effort: str

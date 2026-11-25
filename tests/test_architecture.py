@@ -7,14 +7,16 @@ paths that tests never execute.
 from __future__ import annotations
 
 import ast
-from dataclasses import dataclass
 from pathlib import Path
+
+from pydantic import BaseModel, ConfigDict
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1] / "deprisk"
 
 
-@dataclass(frozen=True)
-class Import:
+class Import(BaseModel):
+    model_config = ConfigDict(frozen=True)
+
     module: str  # importing module, e.g. "deprisk.risk.scoring"
     target: str  # imported module, e.g. "deprisk.data.models" or "httpx"
     top_level: bool  # False when the import sits inside a function (lazy import)
@@ -55,7 +57,9 @@ def collect_imports(root: Path) -> list[Import]:
             else:
                 continue
             for target in targets:
-                found.append(Import(module, target, id(node) in top_level_nodes))
+                found.append(
+                    Import(module=module, target=target, top_level=id(node) in top_level_nodes)
+                )
     return found
 
 

@@ -3,13 +3,13 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Literal
 
+from deprisk.data.models import FrozenModel
 
-@dataclass(frozen=True)
-class ToolCall:
+
+class ToolCall(FrozenModel):
     """One logged tool call: who made it, where the data came from, and when it was fetched."""
 
     id: str
@@ -22,8 +22,7 @@ class ToolCall:
     fetched_at: datetime | None
 
 
-@dataclass(frozen=True)
-class ValidationContext:
+class ValidationContext(FrozenModel):
     """Everything the pure validator may read for one submission (SPEC §15)."""
 
     package: str
@@ -33,8 +32,7 @@ class ValidationContext:
     t: datetime
 
 
-@dataclass(frozen=True)
-class Recommendation:
+class Recommendation(FrozenModel):
     """Final agent outcome for one package, validated or unresolved."""
 
     package: str

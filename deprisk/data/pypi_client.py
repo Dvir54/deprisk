@@ -17,13 +17,13 @@ import tempfile
 import time
 from collections.abc import Callable, Mapping, Sequence
 from concurrent.futures import ThreadPoolExecutor
-from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from pathlib import Path
 from typing import Any, Self
 
 import httpx
 from packaging.utils import canonicalize_name
+from pydantic import BaseModel, Field
 
 from deprisk import config
 from deprisk.data.models import FetchError
@@ -36,13 +36,15 @@ _RETRY_EXCEPTIONS = (httpx.TimeoutException, httpx.TransportError)
 Fetched = tuple[Any, datetime]
 
 
-@dataclass
-class FetchReport:
-    """Outcome of a bulk project download, in input order."""
+class FetchReport(BaseModel):
+    """Outcome of a bulk project download, in input order.
 
-    ok: list[str] = field(default_factory=list)
-    missing: list[str] = field(default_factory=list)  # 404 on PyPI
-    failed: dict[str, str] = field(default_factory=dict)  # name -> error
+    Mutable on purpose (filled in while downloads complete), so it is not a FrozenModel.
+    """
+
+    ok: list[str] = Field(default_factory=list)
+    missing: list[str] = Field(default_factory=list)  # 404 on PyPI
+    failed: dict[str, str] = Field(default_factory=dict)  # name -> error
 
 
 class PyPIClient:

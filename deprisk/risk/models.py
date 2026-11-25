@@ -3,10 +3,9 @@
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass
 from typing import Any
 
-from deprisk.data.models import ParseIssue
+from deprisk.data.models import FrozenModel, ParseIssue
 
 
 class UnscorableError(Exception):
@@ -17,8 +16,7 @@ class UnscorableError(Exception):
         self.reason = reason
 
 
-@dataclass(frozen=True)
-class PackageSignals:
+class PackageSignals(FrozenModel):
     """Raw signal values of one package at ``T``.
 
     ``values[s] is None`` = unknown (neutral contribution); ``partial`` = signals whose
@@ -33,8 +31,7 @@ class PackageSignals:
     evidence: Mapping[str, Any]
 
 
-@dataclass(frozen=True)
-class Placement:
+class Placement(FrozenModel):
     """Placement of a package's signals on the baseline distributions (SPEC §10)."""
 
     q: Mapping[str, float]
@@ -44,16 +41,14 @@ class Placement:
     beyond_range: tuple[str, ...]
 
 
-@dataclass(frozen=True)
-class Flag:
+class Flag(FrozenModel):
     """A display-only critical flag with its evidence (SPEC §10.4)."""
 
     code: str
     evidence: Mapping[str, Any]
 
 
-@dataclass(frozen=True)
-class PackageScore:
+class PackageScore(FrozenModel):
     """Everything the report shows about one scored package."""
 
     name: str
@@ -63,8 +58,7 @@ class PackageScore:
     flags: tuple[Flag, ...]
 
 
-@dataclass(frozen=True)
-class Baseline:
+class Baseline(FrozenModel):
     """The scored top-5,000 baseline: per-package results and reference distributions."""
 
     signals: Mapping[str, PackageSignals]
@@ -75,8 +69,7 @@ class Baseline:
     n: int
 
 
-@dataclass(frozen=True)
-class AnalysisResult:
+class AnalysisResult(FrozenModel):
     """Phase B output: ranked targets, unscored targets with reasons, and the summary."""
 
     ranked: tuple[PackageScore, ...]

@@ -7,11 +7,21 @@ empty tuple, so missing metadata stays visible to scoring (SPEC §11).
 from __future__ import annotations
 
 from collections.abc import Mapping
-from dataclasses import dataclass
 from datetime import datetime
 from typing import Any
 
 from packaging.specifiers import SpecifierSet
+from pydantic import BaseModel, ConfigDict
+
+
+class FrozenModel(BaseModel):
+    """Base of every deprisk data model: immutable, unknown fields rejected.
+
+    ``arbitrary_types_allowed`` lets models hold ``packaging`` objects such as
+    ``SpecifierSet``, which pydantic does not know natively.
+    """
+
+    model_config = ConfigDict(frozen=True, extra="forbid", arbitrary_types_allowed=True)
 
 
 class FetchError(Exception):
@@ -22,8 +32,7 @@ class SnapshotDataError(Exception):
     """Data needed for scoring is missing from the snapshot (never fetched silently)."""
 
 
-@dataclass(frozen=True)
-class FileInfo:
+class FileInfo(FrozenModel):
     """One distribution file of a release."""
 
     filename: str
@@ -33,8 +42,7 @@ class FileInfo:
     requires_python: str | None
 
 
-@dataclass(frozen=True)
-class Advisory:
+class Advisory(FrozenModel):
     """One entry of PyPI's ``vulnerabilities`` list (OSV-backed)."""
 
     id: str
@@ -44,8 +52,7 @@ class Advisory:
     summary: str
 
 
-@dataclass(frozen=True)
-class VersionMeta:
+class VersionMeta(FrozenModel):
     """Per-version metadata needed for scoring; ``None`` = absent/null, ``()`` = empty."""
 
     classifiers: tuple[str, ...] | None
@@ -53,8 +60,7 @@ class VersionMeta:
     vulnerabilities: tuple[Advisory, ...] | None
 
 
-@dataclass(frozen=True)
-class PackageRecord:
+class PackageRecord(FrozenModel):
     """Compact per-package record (SPEC §9.2); ``releases`` maps version string -> files."""
 
     name: str
@@ -66,8 +72,7 @@ class PackageRecord:
     version_fetched_at: Mapping[str, datetime]
 
 
-@dataclass(frozen=True)
-class Snapshot:
+class Snapshot(FrozenModel):
     """Frozen baseline data: run metadata, baseline names in rank order, records by name."""
 
     meta: Mapping[str, Any]
@@ -75,8 +80,7 @@ class Snapshot:
     records: Mapping[str, PackageRecord]
 
 
-@dataclass(frozen=True)
-class Requirement:
+class Requirement(FrozenModel):
     """One parsed requirements.txt entry (PEP 503-normalised name)."""
 
     name: str
@@ -84,8 +88,7 @@ class Requirement:
     line: str
 
 
-@dataclass(frozen=True)
-class ParseIssue:
+class ParseIssue(FrozenModel):
     """A requirements.txt line that was not parsed (reported, never silently skipped)."""
 
     line_no: int
